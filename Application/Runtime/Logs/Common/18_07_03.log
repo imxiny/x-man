@@ -1,0 +1,24 @@
+[ 2018-07-03T12:58:52+08:00 ] 127.0.0.1 /json/images.json
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000890s ]
+ERR: 无法加载模块:Json
+
+[ 2018-07-03T13:40:39+08:00 ] 127.0.0.1 /auth
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000648s ]
+ERR: 无法加载模块:Auth
+
+[ 2018-07-03T13:41:06+08:00 ] 127.0.0.1 /auth
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000883s ]
+ERR: 无法加载模块:Auth
+
+[ 2018-07-03T13:54:05+08:00 ] 127.0.0.1 /test
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002661s ]
+ERR: 无法加载模块:Test
+

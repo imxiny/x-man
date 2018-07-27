@@ -1,0 +1,84 @@
+[ 2018-07-23T11:32:57+08:00 ] 127.0.0.1 /system_log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003751s ]
+ERR: 无法加载模块:System_log
+
+[ 2018-07-23T11:33:12+08:00 ] 127.0.0.1 /system_log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000236s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003158s ]
+ERR: 无法加载模块:System_log
+
+[ 2018-07-23T11:41:31+08:00 ] 127.0.0.1 /system_log
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000642s ]
+ERR: 无法加载模块:System_log
+
+[ 2018-07-23T12:44:54+08:00 ] 127.0.0.1 /images/face.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001022s ]
+ERR: 无法加载模块:Images
+
+[ 2018-07-23T12:45:27+08:00 ] 127.0.0.1 /page/user/userInfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000695s ]
+ERR: 无法加载模块:Page
+
+[ 2018-07-23T12:45:28+08:00 ] 127.0.0.1 /page/user/changePwd.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000850s ]
+ERR: 无法加载模块:Page
+
+[ 2018-07-23T23:35:49+08:00 ] 127.0.0.1 /Public/static/json/userList.json
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001058s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-23T23:35:49+08:00 ] 127.0.0.1 /Public/static/json/newsList.json
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000316s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002581s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-23T23:37:07+08:00 ] 127.0.0.1 /public/static/page/news/newslist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000523s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-23T23:37:26+08:00 ] 127.0.0.1 /public/static/json/userGrade.json?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000070s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001123s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-23T23:37:28+08:00 ] 127.0.0.1 /public/static/json/userList.json?page=1&limit=20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000747s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-23T23:38:02+08:00 ] 127.0.0.1 /public/static/page/user/usergrade.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000745s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-23T23:38:03+08:00 ] 127.0.0.1 /public/static/page/user/userlist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000823s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-23T23:38:41+08:00 ] 127.0.0.1 /public/static/page/news/newslist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000680s ]
+ERR: 无法加载模块:Public
+

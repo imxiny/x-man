@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>修改</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" lay-filter="form1" style="width:90%;padding-left: 5%;">
+	{%{item}%}
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/Public/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['form','layer','laydate','upload','layedit'],function(){
+        let form = layui.form,
+		laydate = layui.laydate,
+		upload = layui.upload,
+		layedit = layui.layedit,
+        layer = parent.layer === undefined ? layui.layer : top.layer;
+
+        {%{js}%}
+
+        form.on("submit(addData)",function(data){
+            let index = layer.msg('数据提交中，请稍候',{icon: 16,time:false});
+            $.post("/admin/{%{controller}%}/edit",{para:$('form').serialize()},function(res){
+                window.parent.window.parent.toast(res.info,res.code);
+                layer.close(index);
+                if(0 === res.code){
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

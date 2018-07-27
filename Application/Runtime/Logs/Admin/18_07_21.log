@@ -1,0 +1,833 @@
+[ 2018-07-21T21:47:04+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004786s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001086s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001382s ]
+
+[ 2018-07-21T21:47:04+08:00 ] 127.0.0.1 /index.php/admin/login/index/jumpLink/http%253A%252F%252F127.0.0.24%252Fadmin.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000957s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001424s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001630s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000854s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000994s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011462s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011694s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000779s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000960s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000930s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001055s ]
+
+[ 2018-07-21T21:47:06+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001742s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003054s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003370s ]
+
+[ 2018-07-21T21:47:06+08:00 ] 127.0.0.1 /admin/login/getCodeImg?imageH=35&imageW=115&length=4&fontSize=17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001156s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001678s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001900s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002204s ]
+
+[ 2018-07-21T21:47:19+08:00 ] 127.0.0.1 /admin/login/getCodeImg?imageH=35&imageW=115&length=4&fontSize=17&rand=Sat%20Jul%2021%202018%2021:47:19%20GMT+0800%20(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000866s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000919s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001121s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000998s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001155s ]
+
+[ 2018-07-21T21:47:20+08:00 ] 127.0.0.1 /admin/login/getCodeImg?imageH=35&imageW=115&length=4&fontSize=17&rand=Sat%20Jul%2021%202018%2021:47:20%20GMT+0800%20(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000666s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002142s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002722s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001303s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001617s ]
+
+[ 2018-07-21T21:47:26+08:00 ] 127.0.0.1 /admin/login/check
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000672s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000729s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000852s ]
+SQL: SELECT * FROM `xman_admin_user` WHERE `username` = 'admin11' LIMIT 1   [ RunTime:0.0038s ]
+SQL: SELECT * FROM `xman_auth_group_access` WHERE `uid` = 2  [ RunTime:0.0020s ]
+
+[ 2018-07-21T21:47:27+08:00 ] 127.0.0.1 /admin/login/getCodeImg?imageH=35&imageW=115&length=4&fontSize=17&rand=Sat%20Jul%2021%202018%2021:47:26%20GMT+0800%20(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001119s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001639s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002347s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001100s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001264s ]
+
+[ 2018-07-21T21:47:28+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000762s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001368s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001624s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/index/index' LIMIT 1   [ RunTime:0.0056s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0103s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0055s ]
+SQL: SELECT * FROM `xman_auth_menus` WHERE `pid` = 0  [ RunTime:0.0031s ]
+SQL: SELECT * FROM `xman_admin_user` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000103s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000302s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020732s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020888s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002729s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003114s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001378s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001602s ]
+
+[ 2018-07-21T21:47:29+08:00 ] 127.0.0.1 /admin/index/getmenu/id/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000912s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003679s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003880s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/index/getmenu' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0240s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0006s ]
+SQL: SELECT a.*,r.name as href,r.is_url FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '1' AND r.status = '1'  [ RunTime:0.0022s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '9'  [ RunTime:0.0005s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '10'  [ RunTime:0.0005s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '11'  [ RunTime:0.0006s ]
+
+[ 2018-07-21T21:47:35+08:00 ] 127.0.0.1 /admin/index/getmenu/id/3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000679s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001041s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001158s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/index/getmenu' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0125s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0005s ]
+SQL: SELECT a.*,r.name as href,r.is_url FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '3' AND r.status = '1'  [ RunTime:0.0006s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '5'  [ RunTime:0.0005s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '18'  [ RunTime:0.0004s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '19'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '20'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '21'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '22'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '28'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '29'  [ RunTime:0.0003s ]
+
+[ 2018-07-21T21:47:44+08:00 ] 127.0.0.1 /admin/makecode/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000691s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000865s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000993s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/makecode/index' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0121s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0124s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0006s ]
+SQL: show tables [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000291s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000487s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021363s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021536s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000841s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000953s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001378s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002061s ]
+
+[ 2018-07-21T21:47:52+08:00 ] 127.0.0.1 /admin/Makecode/make
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000659s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001124s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001379s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/makecode/make' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0130s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0101s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0007s ]
+SQL: SELECT  * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'xinyadmin' AND table_name = 'xman_test' ORDER BY ORDINAL_POSITION [ RunTime:0.0172s ]
+
+[ 2018-07-21T21:47:54+08:00 ] 127.0.0.1 /admin/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000954s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004079s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004259s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/user/index' LIMIT 1   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0119s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0120s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0015s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000095s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000216s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017178s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017360s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002914s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003042s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002466s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002596s ]
+
+[ 2018-07-21T21:47:55+08:00 ] 127.0.0.1 /admin/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000199s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005545s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007173s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007352s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/user/index' LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0110s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0132s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\UserController.class.php 第 20 行.
+SQL: SELECT * FROM `xman_user` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0059s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_user` WHERE (  1  ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2018-07-21T21:48:01+08:00 ] 127.0.0.1 /admin/auth/rule
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000900s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001669s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001805s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/auth/rule' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0087s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0138s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT `title`,`id`,`pid` FROM `xman_auth_rule` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000144s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000313s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021944s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022133s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002607s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003058s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003362s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003632s ]
+
+[ 2018-07-21T21:48:01+08:00 ] 127.0.0.1 /admin/auth/rule
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001382s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003587s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003817s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/auth/rule' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0130s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0132s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: keyword C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\AuthController.class.php 第 48 行.
+SQL: SELECT * FROM `xman_auth_rule` WHERE (  1  )  [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE (  1  ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+
+[ 2018-07-21T21:48:32+08:00 ] 127.0.0.1 /admin/auth/edit_rule/id/51
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007661s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001252s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001544s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/auth/edit_rule' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0281s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0199s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0007s ]
+SQL: SELECT * FROM `xman_auth_rule` WHERE `id` = 51 LIMIT 1   [ RunTime:0.0013s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000125s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000326s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020122s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020384s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001125s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001345s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001935s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002298s ]
+
+[ 2018-07-21T21:48:39+08:00 ] 127.0.0.1 /admin/auth/edit_rule
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000657s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000815s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000941s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/auth/edit_rule' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0133s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0154s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE ( `id` != 51 and `name`='admin/Test/index' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `xman_auth_rule` SET `name`='admin/Test/index',`title`='测试控制器',`status`='1',`type`='1',`is_url`='1',`condition`='' WHERE `id` = 51 [ RunTime:0.0045s ]
+
+[ 2018-07-21T21:48:39+08:00 ] 127.0.0.1 /admin/auth/rule
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000782s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001058s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001290s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/auth/rule' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0139s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0135s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: keyword C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\AuthController.class.php 第 48 行.
+SQL: SELECT * FROM `xman_auth_rule` WHERE (  1  )  [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE (  1  ) LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 136 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 130 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+NOTIC: [8] Undefined index: weight C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Org\Util\Data.class.php 第 133 行.
+
+[ 2018-07-21T21:48:45+08:00 ] 127.0.0.1 /admin/index/getmenu/id/4
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000705s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000879s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001011s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/index/getmenu' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0129s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SELECT a.*,r.name as href,r.is_url FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '4' AND r.status = '1'  [ RunTime:0.0004s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '23'  [ RunTime:0.0005s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '24'  [ RunTime:0.0004s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '25'  [ RunTime:0.0005s ]
+
+[ 2018-07-21T21:48:45+08:00 ] 127.0.0.1 /admin/index/getmenu/id/2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000618s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000884s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001036s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/index/getmenu' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0144s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SELECT a.*,r.name as href,r.is_url FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '2' AND r.status = '1'  [ RunTime:0.0006s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '14'  [ RunTime:0.0005s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '27'  [ RunTime:0.0015s ]
+
+[ 2018-07-21T21:48:48+08:00 ] 127.0.0.1 /admin/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000108s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001537s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000893s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001057s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/user/index' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000080s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000203s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012116s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012284s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000801s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000915s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000917s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001039s ]
+
+[ 2018-07-21T21:48:48+08:00 ] 127.0.0.1 /admin/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000227s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003834s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001219s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001450s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/user/index' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\UserController.class.php 第 20 行.
+SQL: SELECT * FROM `xman_user` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_user` WHERE (  1  ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-07-21T21:48:56+08:00 ] 127.0.0.1 /admin/index/clearcache
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000732s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001052s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001249s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/index/clearcache' LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001821s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002029s ]
+
+[ 2018-07-21T21:48:57+08:00 ] 127.0.0.1 /admin/index/getmenu/id/3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000652s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000912s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001116s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0098s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/index/getmenu' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0106s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_menus` [ RunTime:0.0100s ]
+SQL: SELECT a.*,r.name as href,r.is_url FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '3' AND r.status = '1'  [ RunTime:0.0005s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '5'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '18'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '19'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '20'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '21'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '22'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '28'  [ RunTime:0.0003s ]
+SQL: SELECT a.*,r.name as href FROM xman_auth_menus as a left JOIN xman_auth_rule as r on r.id=a.rule_id  WHERE a.pid = '29'  [ RunTime:0.0003s ]
+
+[ 2018-07-21T21:48:58+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000558s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000839s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001014s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0106s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0121s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000093s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000212s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016297s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016734s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001889s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002185s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001690s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001968s ]
+
+[ 2018-07-21T21:48:58+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001031s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002730s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002937s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0149s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0239s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\TestController.class.php 第 20 行.
+SQL: SHOW COLUMNS FROM `xman_test` [ RunTime:0.0138s ]
+SQL: SELECT * FROM `xman_test` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_test` WHERE (  1  ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2018-07-21T22:10:20+08:00 ] 127.0.0.1 /admin/Makecode/make
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000805s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000954s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001057s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/makecode/make' LIMIT 1   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0109s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0022s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0106s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT  * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'xinyadmin' AND table_name = 'xman_test' ORDER BY ORDINAL_POSITION [ RunTime:0.0134s ]
+
+[ 2018-07-21T22:10:25+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001549s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001690s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0135s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0143s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000168s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000393s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015399s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015595s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001441s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001596s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002144s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002282s ]
+
+[ 2018-07-21T22:10:25+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002669s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001996s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002197s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0118s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0146s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\TestController.class.php 第 20 行.
+SQL: SELECT * FROM `xman_test` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_test` WHERE (  1  ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2018-07-21T22:13:14+08:00 ] 127.0.0.1 /admin/Test/delete
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000116s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003926s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001432s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/delete' LIMIT 1   [ RunTime:0.0005s ]
+SQL: DELETE FROM `xman_test` WHERE (  `id` in (4,6,7,8,9,10,11,12,13,15) ) [ RunTime:0.0009s ]
+
+[ 2018-07-21T22:13:14+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000759s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000962s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001123s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0147s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0162s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\TestController.class.php 第 20 行.
+SQL: SELECT * FROM `xman_test` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_test` WHERE (  1  ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2018-07-21T22:13:20+08:00 ] 127.0.0.1 /admin/Test/delete
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000749s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001016s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001128s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/delete' LIMIT 1   [ RunTime:0.0003s ]
+SQL: DELETE FROM `xman_test` WHERE (  `id` in (16,17,18,19) ) [ RunTime:0.0003s ]
+
+[ 2018-07-21T22:13:21+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001055s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002635s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003362s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0122s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0220s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\TestController.class.php 第 20 行.
+SQL: SELECT * FROM `xman_test` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_test` WHERE (  1  ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-07-21T22:15:32+08:00 ] 127.0.0.1 /admin/Makecode/make
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001107s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001346s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001520s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/makecode/make' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0111s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0108s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT  * FROM `information_schema`.`columns` WHERE TABLE_SCHEMA = 'xinyadmin' AND table_name = 'xman_test' ORDER BY ORDINAL_POSITION [ RunTime:0.0133s ]
+
+[ 2018-07-21T22:15:36+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000063s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000777s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001057s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001289s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0110s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0021s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0124s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000083s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000203s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009989s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010131s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000749s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000865s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004839s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006781s ]
+
+[ 2018-07-21T22:15:37+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000164s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001221s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001531s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001706s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0119s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0136s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0008s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\TestController.class.php 第 20 行.
+SQL: SELECT * FROM `xman_test` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_test` WHERE (  1  ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2018-07-21T22:19:54+08:00 ] 127.0.0.1 /admin/Test/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001312s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001097s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001299s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/add' LIMIT 1   [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000095s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000225s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014956s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015138s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001015s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001205s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001567s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001827s ]
+
+[ 2018-07-21T22:20:01+08:00 ] 127.0.0.1 /admin/FileUpload/upload
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000939s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001485s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001970s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2018-07-21T22:20:07+08:00 ] 127.0.0.1 /admin/FileUpload/uploadfile
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000092s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002905s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001204s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001319s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given C:\E\PHPIDE\VertrigoServ\www\xinyadmin\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+
+[ 2018-07-21T22:20:35+08:00 ] 127.0.0.1 /admin/Test/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000794s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001222s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001330s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/add' LIMIT 1   [ RunTime:0.0004s ]
+SQL: INSERT INTO `xman_test` (`week`,`genderdata`,`content`,`image`,`attachfile`,`keywords`,`price`,`startdate`,`activitytime`,`year`,`times`,`ttswitch`,`teststate`) VALUES ('monday','female','tt','/Public/Uploads/img/20180721/5b5341112a8e1.png','/Public/Uploads/file/20180721/5b534117f187a.txt','4rr','0.09','2018-07-21','2018-07-21 22:20:19','2018','22:20:25','1','2') [ RunTime:0.0050s ]
+
+[ 2018-07-21T22:20:35+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000860s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001999s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002141s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0114s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0115s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\TestController.class.php 第 20 行.
+SQL: SELECT * FROM `xman_test` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_test` WHERE (  1  ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-07-21T22:20:37+08:00 ] 127.0.0.1 /admin/Test/edit/id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000870s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001299s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001425s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/edit' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `xman_test` WHERE `id` = 20 LIMIT 1   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000127s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000304s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017364s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017504s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001336s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001475s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003243s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003628s ]
+
+[ 2018-07-21T22:20:59+08:00 ] 127.0.0.1 /admin/Test/edit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000681s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001680s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001792s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/edit' LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `xman_test` SET `week`='tuesday',`genderdata`='male',`content`='ttyyyy',`image`='/Public/Uploads/img/20180721/5b5341112a8e1.png',`attachfile`='/Public/Uploads/file/20180721/5b534117f187a.txt',`keywords`='4rr',`price`='0.09',`startdate`='2018-07-21',`activitytime`='2018-07-21 22:20:19',`year`='2018',`times`='22:20:25',`ttswitch`='1',`teststate`='2,3' WHERE `id` = 20 [ RunTime:0.0050s ]
+
+[ 2018-07-21T22:20:59+08:00 ] 127.0.0.1 /admin/Test/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003190s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001279s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001402s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_auth_rule` WHERE `status` = 1 AND `name` = 'admin/test/index' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_group_access` [ RunTime:0.0104s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM xman_auth_group_access a INNER JOIN xman_auth_group g on a.group_id=g.id  WHERE ( a.uid='2' and g.status='1' )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `xman_auth_rule` [ RunTime:0.0105s ]
+SQL: SELECT `condition`,`name` FROM `xman_auth_rule` WHERE `id` IN ('27','15','16','31','20','21','28','22','23','29','11','12','13','14','17','1','2','5','6','10','18','41','42','43','32','37','38','39','40','19','44','45','46','47','48','50','51','30','24','25','26') AND `type` = 1 AND `status` = 1  [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: para C:\E\PHPIDE\VertrigoServ\www\xinyadmin\Application\Admin\Controller\TestController.class.php 第 20 行.
+SQL: SELECT * FROM `xman_test` WHERE (  1  ) LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xman_test` WHERE (  1  ) LIMIT 1   [ RunTime:0.0011s ]
+

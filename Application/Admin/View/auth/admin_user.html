@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/Public/static/css/public.css" media="all"/>
+</head>
+<body class="childrenBody">
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form">
+            <div class="layui-inline">
+                <div class="layui-input-inline">
+                    <input type="text" name="keyword" autocomplete="off" class="layui-input" placeholder="管理员账号/id"/>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="status">
+                        <option value="">状态</option>
+                        <option value="1">使用</option>
+                        <option value='0'>停用</option>
+                    </select>
+                </div>
+                <div class="layui-btn-group">
+                    <a class="layui-btn layui-btn-green layui-btn-sm search_btn" title="搜索">
+                        <i class="layui-icon layui-icon-search "></i>
+                    </a>
+                    <a class="layui-btn layui-btn-normal layui-btn-sm add_btn" title="添加">
+                        <i class="layui-icon layui-icon-add-circle"></i>
+                    </a>
+                    <a class="layui-btn layui-btn-danger layui-btn-sm delAll_btn">
+                        <i class="layui-icon layui-icon-delete"></i>
+                    </a>
+                    <a class="layui-btn layui-btn-sm" title="刷新当前页" href="javascript:void(0);"
+                            onclick="layer.load(1);window.location.reload(true);"><i class="layui-icon">&#xe669;</i></a>
+                </div>
+            </div>
+        </form>
+    </blockquote>
+    <table id="table" lay-filter="table"></table>
+    <!--使用状态-->
+    <script type="text/html" id="status">
+       {{# if(d.status == 1){ }}
+       <span class="layui-blue">使用中</span>
+        {{# }else{ }}
+       <span class="layui-red">停用</span>
+        {{# } }}
+    </script>
+    <!--操作-->
+    <script type="text/html" id="tool">
+        <a class="layui-btn layui-btn-xs" lay-event="edit" title="编辑">
+            <i class="layui-icon layui-icon-edit"></i>
+        </a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del" title="删除">
+            <i class="layui-icon layui-icon-delete"></i>
+        </a>
+    </script>
+<script type="text/javascript" src="/Public/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    var tablist = '';
+    layui.use(['form', 'layer', 'laydate', 'table', 'laytpl'], function () {
+        var form = layui.form,
+            layer = parent.layer === undefined ? layui.layer : top.layer,
+            $ = layui.jquery,
+            laydate = layui.laydate,
+            laytpl = layui.laytpl,
+            table = layui.table;
+        //规则列表
+        tablist = table.render({
+            elem: '#table',
+            url: '/admin/auth/admin_user',
+            method: 'post',
+            cellMinWidth: 95,
+            page: true,
+            height: "full-85",
+            limit: 10,
+            limits: [10, 20, 25, 50, 100],
+            id: "table",
+            cols: [[
+                {type: "checkbox", fixed: "left", width: 50},
+                {field: 'id', title: 'ID', width: 60, align: "center"},
+                {field: 'username', title: '登陆账号',width:140},
+                {field: 'nickname', title: '昵称', align: 'center'},
+                {field: 'phone', title: '电话', align: 'center'},
+                {field: 'email', title: '邮箱', align: 'center'},
+                {field: 'groups', title: '所属角色组', align: 'center',width:200},
+                {field: 'status',unresize:true,width:95, title: '状态', align: 'center', templet: "#status"},
+                {title: '操作', width: 110, templet: '#tool', fixed: "right", align: "center"}
+            ]]
+        });
+        //搜索
+        $(".search_btn").on("click", function () {
+            search();
+        });
+        //搜索+刷新
+        function search(){
+            tablist.reload({
+                page:{curr:1}
+                ,where:{
+                    keyword:$("input[name=keyword]").val()
+                    ,type:$('select[name=type]').val()
+                    ,status:$('select[name=status]').val()
+                    ,is_url:$('select[name=is_url]').val()
+                }
+            });
+        }
+
+        //添加文章
+        function addoredit(url,name) {
+            var index = layui.layer.open({
+                title: name,
+                type: 2,
+                content: url,
+                maxmin:true,
+                area:['60%','98%']
+            });
+            //layui.layer.full(index);
+            //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
+            $(window).on("resize", function () {
+                layer.full(index);
+            })
+        }
+
+        $(".add_btn").on('click',function () {
+            addoredit('/admin/auth/add_admin','添加用户');
+        });
+
+        //批量删除
+        $(".delAll_btn").on('click',function () {
+            var checkStatus = table.checkStatus('table'),
+                data = checkStatus.data,
+                ids = [];
+            if (data.length > 0) {
+                for (var i in data) {
+                    ids.push(data[i].id);
+                }
+                layer.confirm('确定删除选中的数据？', {icon: 3, title: '提示信息'}, function (index) {
+                    $.post("/admin/auth/del_admin",{'id':ids},function(data){
+                        window.parent.toast(data.info,data.code);
+                        tablist.reload();
+                    });
+                    layer.close(index);
+                })
+            } else {
+                layer.msg("请选择需要删除的数据");
+            }
+        });
+
+        //列表操作
+        table.on('tool(table)', function (obj) {
+            var layEvent = obj.event,
+                data = obj.data;
+            if (layEvent === 'edit') { //编辑
+                addoredit('/admin/auth/edit_admin/id/'+data.id,'编辑用户信息');
+            } else if (layEvent === 'del') { //删除
+                layer.confirm('确定删除此数据？', {icon: 3, title: '提示'}, function (index) {
+                    layer.close(index);
+                    $.post("/admin/auth/del_admin",{'id':data.id},function(data){
+                        window.parent.toast(data.info,data.code);
+                        tablist.reload();
+                    });
+                });
+            }
+        });
+    })
+</script>
+</body>
+</html>

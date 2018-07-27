@@ -1,0 +1,24 @@
+[ 2018-07-12T09:54:19+08:00 ] 127.0.0.1 /Public/static/js/jquery.min.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000217s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003278s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-12T09:54:52+08:00 ] 127.0.0.1 /Public/static/js/jquery.min.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002803s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-12T09:55:11+08:00 ] 127.0.0.1 /Public/static/js/jquery.min.map
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001602s ]
+ERR: 无法加载模块:Public
+
+[ 2018-07-12T10:02:09+08:00 ] 127.0.0.1 /index.php/images/face.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000668s ]
+ERR: 无法加载模块:Images
+

@@ -123,14 +123,14 @@
 				<p>你好！<span class="userName">Xiny</span>, 欢迎登录</p>
 			</div>-->
 			<!-- 搜索 -->
-			<div class="layui-form component" style="margin:10px;">
+			<!--<div class="layui-form component" style="margin:10px;">
 				<select name="search" id="search" lay-search lay-filter="searchPage">
 					<option value="">搜索页面或功能</option>
 					<option value="1">layer</option>
 					<option value="2">form</option>
 				</select>
 				<i class="layui-icon">&#xe615;</i>
-			</div>
+			</div>-->
 			<div class="navBar layui-side-scroll" id="navBar" style="border-bottom: 1px dashed #454545">
 				<ul class="layui-nav layui-nav-tree">
 					<li class="layui-nav-item layui-this">
@@ -157,7 +157,7 @@
 				</ul>
 				<div class="layui-tab-content clildFrame">
 					<div class="layui-tab-item layui-show">
-						<iframe src="/Public/static/page/main.html"></iframe>
+						<iframe src="<?php echo U('Index/main');?>"></iframe>
 					</div>
 				</div>
 			</div>

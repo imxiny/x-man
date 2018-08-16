@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/layui/iconpick.css" media="all" />
     <link rel="stylesheet" href="/Public/static/css/public.css" media="all" />
     <link rel="stylesheet" href="//at.alicdn.com/t/font_495240_oxbe4zwl9tem6lxr.css" media="all"/>
 </head>
@@ -43,8 +44,11 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">图标</label>
-        <div class="layui-input-block">
-            <input type="text"  lay-verify="required" lay-vertype="tips" title="排序" name="icon" placeholder="图标" value="iconfont icon-menu1"  class="layui-input">
+        <div class="layui-inline">
+            <a class="layui-btn layui-btn-primary fl-l mr-5 icon-pick" style="width: 41px;padding: 0 10px;"><i class="{$info.icon}" style="font-size:18px;color:#76838f;"></i></a>
+        </div>
+        <div class="layui-inline" style="width: 50%">
+            <input type="text"  lay-verify="required" lay-vertype="tips" title="排序" name="icon" placeholder="图标" readonly id="iconpick" value="iconfont icon-menu1"  class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -68,14 +72,21 @@
 <script type="text/javascript" src="/Public/static/js/jquery-3.2.0.min.js"></script>
 <script type="text/javascript" src="/Public/static/layui/layui.js"></script>
 <script type="text/javascript">
-    function choseIcon(obj) {
-        var val = $(obj).prop('class');
-        $("input[name=icon]").val(val);
-        layui.layer.close(icon_open);
-    }
-    layui.use(['form','layer'],function(){
+    layui.config({
+        base: '/Public/static/layui/'
+    }).extend({
+        iconpick: 'iconpick'
+    });
+    layui.use(['form','layer','iconpick'],function(){
         var form = layui.form,
-        layer = layui.layer;
+        layer = layui.layer,
+        iconpick = layui.iconpick;
+        $("#iconpick").on('click',function(e){
+            $(".icon-pick").click();
+            e.stopPropagation();
+        });
+
+        iconpick.pickinit('icon-pick','iconpick');
         form.val('form1',{
             name:"{$info.name}",
             weight:"{$info.weight}",
@@ -96,16 +107,6 @@
                 }
             });
             return false;
-        });
-        //图表展示页面
-        $('input[name=icon]').on('click',function (e) {
-            icon_open = layer.open({
-                title: '选择图标',
-                type: 1,
-                content: '{$icons}',
-                closeBtn: false,
-                area: ['100%', '100%']
-            });
         });
     })
 </script>

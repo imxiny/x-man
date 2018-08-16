@@ -542,7 +542,6 @@ class AuthController extends AdminBaseController
             $list = M('auth_rule')->select();
             $list = Data::tree($list, 'title', 'id', 'pid');
             $this->assign('urlist', $list);
-            $this->assign('icons', $this->get_icon_list());
             $this->display('auth/menu_add');
         } elseif (IS_AJAX) {
             $data = [];
@@ -589,7 +588,6 @@ class AuthController extends AdminBaseController
             $list = M('auth_rule')->select();
             $list = Data::tree($list, 'title', 'id', 'pid');
             $this->assign('urlist', $list);
-            $this->assign('icons', $this->get_icon_list());
             $this->assign('menus', $menus);
             $this->display('auth/menu_edit');
         } elseif (IS_AJAX) {

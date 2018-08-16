@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -16,7 +16,7 @@
 </head>
 <body class="childrenBody">
 <form class="layui-form layui-form-pane">
-    <input type="hidden" name="pid" value="{$Think.get.pid}">
+    <input type="hidden" name="pid" value="<?php echo ($_GET['pid']); ?>">
     <div class="layui-form-item">
         <label class="layui-form-label">菜单名称</label>
         <div class="layui-input-block">
@@ -44,9 +44,7 @@
         <div class="layui-input-block">
             <select name="rule_id" lay-search>
                 <option value="">选择地址</option>
-                <volist name="urlist" id="v">
-                <option value="{$v.id}">{$v._name}-{$v.name}</option>
-                </volist>
+                <?php if(is_array($urlist)): $i = 0; $__LIST__ = $urlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>"><?php echo ($v["_name"]); ?>-<?php echo ($v["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
             </select>
         </div>
     </div>
@@ -98,7 +96,7 @@
             icon_open = layer.open({
                 title: '选择图标',
                 type: 1,
-                content: '{$icons}',
+                content: '<?php echo ($icons); ?>',
                 closeBtn: false,
                 area: ['100%', '100%']
             });

@@ -18,7 +18,6 @@ class IndexController extends AdminBaseController
         $menus = $M->field('a.*,r.name as href,r.is_url')->join(C('DB_PREFIX') . "auth_rule as r on r.id=a.rule_id", 'left')->where(['a.pid' => $pid, 'r.status' => '1'])->select();
         //过滤第一遍
         $men1 = array();
-        $Auth = new Auth();
         foreach ($menus as $k => $v) {
             if (in_array($v['rule_id'], $rules)) {
                 $men1[] = $v;
@@ -77,6 +76,13 @@ class IndexController extends AdminBaseController
         $user = M('admin_user')->find($id);
         $this->assign('user', $user);
         $this->display();
+    }
+
+    public function main()
+    {
+        $list = M('update_log')->order("addtime desc")->select();
+        $this->assign("list", $list);
+        $this->display("Index/main");
     }
 
     /**

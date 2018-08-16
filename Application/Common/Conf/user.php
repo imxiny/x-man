@@ -13,7 +13,7 @@ return array(
     //阿里云存储设置
     'ALIOSSCONF' => array(
         'KEY' => '',
-        'SECRET' => ',
+        'SECRET' => '',
         'ENDPOINT' => '',
         'BUCKET' => ''
     ),

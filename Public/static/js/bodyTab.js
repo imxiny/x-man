@@ -120,7 +120,7 @@ layui.define(["element","jquery"],function(exports){
 			//已打开的窗口中不存在
 			if(that.hasTab(_this.find("cite").text()) == -1 && _this.siblings("dl.layui-nav-child").length == 0){
 				if($(".layui-tab-title.top_tab li").length == openTabNum){
-					layer.msg('只能同时打开'+openTabNum+'个选项卡哦。不然系统会卡的！');
+					layer.msg('只能同时打开'+openTabNum+'个选项卡');
 					return;
 				}
 				tabIdIndex++;
@@ -128,7 +128,7 @@ layui.define(["element","jquery"],function(exports){
 				title += '<i class="layui-icon layui-unselect layui-tab-close layui-icon-close" data-id="'+tabIdIndex+'" title="关闭此页面"></i>';
 				element.tabAdd(tabFilter, {
 			        title : title,
-			        content :"<iframe src='"+_this.attr("data-url")+"' data-id='"+tabIdIndex+"'></frame>",
+			        content :"<iframe src='"+_this.attr("data-url")+"' data-id='"+tabIdIndex+"'></iframe>",
 			        id : new Date().getTime()
 			    });
 				//当前窗口内容
@@ -312,7 +312,7 @@ layui.define(["element","jquery"],function(exports){
 				$(".refresh").addClass("refreshThis");
 			},2000)
 		}else{
-			layer.msg("您点击的速度超过了服务器的响应速度，还是等两秒再刷新吧！");
+			layer.msg("点击次数过多，请稍后");
 		}
 	})
 
@@ -342,7 +342,7 @@ layui.define(["element","jquery"],function(exports){
 				}
 			})
 		}else{
-			layer.msg("没有可以关闭的窗口了@_@");
+			layer.msg("没有可以关闭的窗口");
 		}
 		//渲染顶部窗口
 		tab.tabMove();
@@ -359,7 +359,7 @@ layui.define(["element","jquery"],function(exports){
 				}
 			})
 		}else{
-			layer.msg("没有可以关闭的窗口了@_@");
+			layer.msg("没有可以关闭的窗口");
 		}
 		//渲染顶部窗口
 		tab.tabMove();

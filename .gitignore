@@ -1,4 +1,6 @@
 /Application/Runtime/*
-/Application/Common/Conf/*
+/Application/Common*
+/Public/Uploads*
 /.idea*
+
 

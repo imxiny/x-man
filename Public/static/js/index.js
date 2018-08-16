@@ -22,6 +22,29 @@ layui.use(['bodyTab','form','element','layer'],function(){
                 dataStr = data;
                 //重新渲染左侧菜单
                 tab.render();
+                //菜单搜索功能
+                let search = $('#search');
+                let option = 'op' + id;
+                let optinoStr = '';
+                if(!store.getItem(option)){
+                    optinoStr = '<option value="">搜索导航</option>';
+                    for(let k =0;k<dataStr.length;k++){
+                        let t = dataStr[k];
+                        if (t['children']) {
+                            for(let n =0;n<t['children'].length;n++){
+                                let t1 = t['children'][n];
+                                optinoStr += '<option value="'+t1.href+'">'+t1.title+'</option>';
+                            }
+                        } else {
+                            optinoStr += '<option value="'+t.href+'">'+t.title+'</option>';
+                        }
+                    }
+                    store.setItem(option,optinoStr);
+                } else {
+                    optinoStr = store.getItem(option);
+                }
+                search.html(optinoStr);
+                form.render('select');
             })
         }else{
             var key = 'menu' + id;
@@ -31,15 +54,66 @@ layui.use(['bodyTab','form','element','layer'],function(){
                     store.setItem(key,JSON.stringify(data));
                     //重新渲染左侧菜单
                     tab.render();
+                    //菜单搜索功能
+                    let search = $('#search');
+                    let option = 'op' + id;
+                    let optinoStr = '';
+                    if(!store.getItem(option)){
+                        optinoStr = '<option value="">搜索导航</option>';
+                        for(let k =0;k<dataStr.length;k++){
+                            let t = dataStr[k];
+                            if (t['children']) {
+                                for(let n =0;n<t['children'].length;n++){
+                                    let t1 = t['children'][n];
+                                    optinoStr += '<option value="'+t1.href+'">'+t1.title+'</option>';
+                                }
+                            } else {
+                                optinoStr += '<option value="'+t.href+'">'+t.title+'</option>';
+                            }
+                        }
+                        store.setItem(option,optinoStr);
+                    } else {
+                        optinoStr = store.getItem(option);
+                    }
+                    search.html(optinoStr);
+                    form.render('select');
                 });
             }else{
                 dataStr = JSON.parse(store.getItem(key));
                 //重新渲染左侧菜单
                 tab.render();
+                //菜单搜索功能
+                let search = $('#search');
+                let option = 'op' + id;
+                let optinoStr = '';
+                if(!store.getItem(option)){
+                    optinoStr = '<option value="">搜索导航</option>';
+                    for(let k =0;k<dataStr.length;k++){
+                        let t = dataStr[k];
+                        if (t['children']) {
+                            for(let n =0;n<t['children'].length;n++){
+                                let t1 = t['children'][n];
+                                optinoStr += '<option value="'+t1.href+'">'+t1.title+'</option>';
+                            }
+                        } else {
+                            optinoStr += '<option value="'+t.href+'">'+t.title+'</option>';
+                        }
+                    }
+                    store.setItem(option,optinoStr);
+                } else {
+                    optinoStr = store.getItem(option);
+                }
+                search.html(optinoStr);
+                form.render('select');
             }
         }
-
 	};
+    form.on('select(searchPage)',function(e){
+        let a = $("a[data-url='"+e.value+"']");
+        if(a.length){
+            a.click();
+        }
+    });
 	//页面加载时判断左侧菜单是否显示
 	//通过顶部菜单获取左侧菜单
 	$(".topLevelMenus li,.mobileTopLevelMenus dd").click(function(){

@@ -85,7 +85,7 @@ iframe{ position:absolute; height:100%; width:100%; border:none;}
 .component .layui-icon{ position: absolute; right:8px; top:8px; color:#000; }
 .component dl dd{ color:#000 !important;}
 .component dl dd.layui-this{ color:#fff !important;}
-.component dl dd.layui-select-tips{ color:#999 !important;}
+.component dl dd.layui-select-tips{ /*color:#999 !important;*/}
 
 /*layui-body*/
 .layui-body{overflow:hidden; border-top:5px solid #1AA094;border-left:2px solid #1AA094; background:#fff;}

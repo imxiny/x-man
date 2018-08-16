@@ -77,3 +77,6 @@
 .ui-context-menu-item a span {
     margin-left: 3px;
 }
+.layui-select-tips .layui-this{
+    background-color: white!important;
+}

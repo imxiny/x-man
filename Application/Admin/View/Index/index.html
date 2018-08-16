@@ -198,6 +198,17 @@
     };
     layui.use(['layer'],function(){
         let topmenu = $("#top_tabs_box");
+        $("body").on('mousedown','#top_tabs_box li',function(e){
+            if (3 === e.which) {
+                $(this).click();
+                let xx = e.originalEvent.x || e.originalEvent.layerX || 0;
+                let yy = e.originalEvent.y || e.originalEvent.layerY || 0;
+                menu1.css({'left':xx,'top':yy}).show();
+                $(document).one('click',function(){
+                    menu1.hide();
+                });
+            }
+        });
         topmenu.unbind("mousedown").bind("contextmenu", function (e) {
             e.preventDefault();
             return false;
@@ -233,7 +244,7 @@
                     menu1.hide();
                 });
             }
-            return false;//阻止链接跳转
+            //return false;//阻止链接跳转
         });
         $(".whoShow").on('click',function(){
             let frame = $(".clildFrame .layui-tab-item.layui-show").find("iframe")[0];

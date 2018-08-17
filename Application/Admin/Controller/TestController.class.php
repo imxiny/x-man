@@ -3,8 +3,8 @@
  * Created by Makecode
  * User: Xiny https://xbug.top i@xiny9.com
  * Coding Standard: PSR2
- * Date: 2018-07-24
- * Time: 23:08
+ * Date: 2018-08-17
+ * Time: 21:39
  */
 
 namespace Admin\Controller;
@@ -23,6 +23,6 @@ class TestController extends AdminBaseController
         $this->addTemplet = 'Test/add';
         $this->editTemplet = 'Test/edit';
         $this->indexTemplet = 'Test/index';
-        $this->whereList = [];
+        $this->whereList = ['keywords' => 'like'];
     }
 }

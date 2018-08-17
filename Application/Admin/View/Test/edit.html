@@ -61,22 +61,22 @@
 </div><div class="layui-form-item">
 	<label class="layui-form-label" for="startdate"><b style="color: red">* </b>开始日期</label>
 	<div class="layui-input-block">
-		<input type="text" name="startdate" id="startdate" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
+		<input type="text" readonly name="startdate" id="startdate" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
 	</div>
 </div><div class="layui-form-item">
 	<label class="layui-form-label" for="activitytime"><b style="color: red">* </b>活动时间(datetime)</label>
 	<div class="layui-input-block">
-		<input type="text" name="activitytime" id="activitytime" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
+		<input type="text" readonly name="activitytime" id="activitytime" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
 	</div>
 </div><div class="layui-form-item">
 	<label class="layui-form-label" for="year"><b style="color: red">* </b>年</label>
 	<div class="layui-input-block">
-		<input type="text" name="year" id="year" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
+		<input type="text" readonly name="year" id="year" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
 	</div>
 </div><div class="layui-form-item">
 	<label class="layui-form-label" for="times"><b style="color: red">* </b>时间</label>
 	<div class="layui-input-block">
-		<input type="text" name="times" id="times" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
+		<input type="text" readonly name="times" id="times" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
 	</div>
 </div><div class="layui-form-item">
 	<label class="layui-form-label" for="switch">上架状态</label>
@@ -186,24 +186,28 @@ laydate.render({
                           elem: '#startdate'
                           ,theme: '#01AAED'
                           ,type: 'date'
+                          ,trigger: 'click'
                         });
 
 laydate.render({
                           elem: '#activitytime'
                           ,theme: '#01AAED'
                           ,type: 'datetime'
+                          ,trigger: 'click'
                         });
 
 laydate.render({
                           elem: '#year'
                           ,theme: '#01AAED'
                           ,type: 'year'
+                          ,trigger: 'click'
                         });
 
 laydate.render({
                           elem: '#times'
                           ,theme: '#01AAED'
                           ,type: 'time'
+                          ,trigger: 'click'
                         });
 
 form.on('switch(switch)', function(data){

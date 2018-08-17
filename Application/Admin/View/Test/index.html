@@ -17,7 +17,7 @@
         <form class="layui-form">
             <div class="layui-inline">
                 <div class="layui-input-inline" style="width: 16%">
-    <input type="text" name="id" autocomplete="off" class="layui-input" placeholder="ID"/>
+    <input type="search" name="id" autocomplete="off" class="layui-input" placeholder="ID"/>
 </div><div class="layui-input-inline" style="width: 13%">
     <select title="星期" name="week">
         <option value="">星期</option>
@@ -35,7 +35,9 @@
 
     </select>
 </div>
-<div class="layui-input-inline" style="width: 13%">
+<div class="layui-input-inline" style="width: 16%">
+    <input type="search" name="keywords" autocomplete="off" class="layui-input" placeholder="关键字"/>
+</div><div class="layui-input-inline" style="width: 13%">
     <select title="上架状态" name="switch">
         <option value="">上架状态</option>
         <option value='0' >下架</option>
@@ -111,7 +113,9 @@ if(d.week == 'wednesday') return '星期三';
                 if(d.genderdata == 'male') return '男';
 if(d.genderdata == 'female') return '女';
 
-            },width:110},{field:'textarea',title:'内容',align:'center'},{field:'image',title:'图片',align:'center'},{field:'attachfile',title:'附件',align:'center'},{field:'keywords',title:'关键字',align:'center'},{field:'price',title:'价格',align:'center'},{field:'startdate',title:'开始日期',align:'center'},{field:'activitytime',title:'活动时间(datetime)',align:'center'},{field:'year',title:'年',align:'center'},{field:'times',title:'时间',align:'center'},{field:'switch',
+            },width:110},{field:'textarea',title:'内容',align:'center'},{field:'image',title:'图片',align:'center',templet:function(d){
+                return '<div><img height="28" src="'+d.image+'"></div>';
+            }},{field:'attachfile',title:'附件',align:'center'},{field:'keywords',title:'关键字',align:'center'},{field:'price',title:'价格',align:'center'},{field:'startdate',title:'开始日期',align:'center'},{field:'activitytime',title:'活动时间(datetime)',align:'center'},{field:'year',title:'年',align:'center'},{field:'times',title:'时间',align:'center'},{field:'switch',
                 title:'上架状态',align:'center',templet:function(d){
                     if('1' === d.switch) return '<div> <span class="layui-badge layui-btn-green">正常</span></div>';
                     if('0' === d.switch) 

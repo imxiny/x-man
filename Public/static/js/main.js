@@ -23,6 +23,7 @@ function getLangDate(){
     setTimeout("getLangDate()",1000);
 }
 
+/*
 layui.use(['form','element','layer','jquery'],function(){
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : top.layer,
@@ -77,4 +78,4 @@ layui.use(['form','element','layer','jquery'],function(){
         $(".outIcons span").text(data.split(".icon-").length-1);
     })
 
-})
+})*/

@@ -201,10 +201,13 @@
         $("body").on('mousedown','#top_tabs_box li',function(e){
             if (3 === e.which) {
                 $(this).click();
-                let xx = e.originalEvent.x || e.originalEvent.layerX || 0;
-                let yy = e.originalEvent.y || e.originalEvent.layerY || 0;
-                menu1.css({'left':xx,'top':yy}).show();
-                $(document).one('click',function(){
+                e = e || window.event;
+                let xx = e.pageX || e.clientX + document.body.scroolLeft;
+                let yy = e.pageY || e.clientY + document.body.scrollTop;
+                /*let xx = e.originalEvent.x || e.originalEvent.layerX || 0;
+                let yy = e.originalEvent.y || e.originalEvent.layerY || 0;*/
+                menu1.css({'left':xx -5,'top':yy- 5}).show();
+                $(document).one('click','.ui-context-menu-item',function(){
                     menu1.hide();
                 });
             }
@@ -237,10 +240,11 @@
         });
         topmenu.mousedown(function(e){
             if (3 === e.which) {
-                let xx = e.originalEvent.x || e.originalEvent.layerX || 0;
-                let yy = e.originalEvent.y || e.originalEvent.layerY || 0;
-                menu1.css({'left':xx,'top':yy}).show();
-                $(document).one('click',function(){
+                e = e||window.event;
+                let xx = e.pageX || e.clientX + document.body.scroolLeft;
+                let yy = e.pageY || e.clientY + document.body.scrollTop;
+                menu1.css({'left': xx - 5, 'top': yy - 5}).show();
+                $(document).one('click','.ui-context-menu-item',function(){
                     menu1.hide();
                 });
             }

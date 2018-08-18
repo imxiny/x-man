@@ -123,6 +123,7 @@ layui.use(['bodyTab','form','element','layer'],function(){
 			$(".mobileTopLevelMenus dd").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
 		}
 		$(".layui-layout-admin").removeClass("showMenu");
+		$('.hideMenu').find('i').removeClass("layui-icon-spread-left").addClass('layui-icon-shrink-right');
 		$("body").addClass("site-mobile");
 		getData($(this).data("menu"));
 		//渲染顶部窗口
@@ -135,6 +136,12 @@ layui.use(['bodyTab','form','element','layer'],function(){
 			layer.msg("此栏目状态下左侧菜单不可展开");  //主要为了避免左侧显示的内容与顶部菜单不匹配
 			return false;
 		}
+		let _this = $(this).find('i');
+		if( _this.hasClass('layui-icon-shrink-right') ) {
+		    _this.removeClass('layui-icon-shrink-right').addClass('layui-icon-spread-left');
+        } else {
+            _this.removeClass('layui-icon-spread-left').addClass('layui-icon-shrink-right');
+        }
 		$(".layui-layout-admin").toggleClass("showMenu");
 		//渲染顶部窗口
 		tab.tabMove();
@@ -166,7 +173,7 @@ layui.use(['bodyTab','form','element','layer'],function(){
             window.localStorage.clear();
             $.post("/admin/index/clearcache");
             layer.close(index);
-            layer.msg("缓存清除成功！");
+            layer.msg("缓存清除成功！",{icon:1,time:1000});
         },500);
     });
 
@@ -179,17 +186,13 @@ layui.use(['bodyTab','form','element','layer'],function(){
             for (var i = 0; i < menu.length; i++) {
                 openTitle = '';
                 if (menu[i].icon) {
-                    if (menu[i].icon.split("-")[0] == 'icon') {
-                        openTitle += '<i class="seraph ' + menu[i].icon + '"></i>';
-                    } else {
-                        openTitle += '<i class="layui-icon">' + menu[i].icon + '</i>';
-                    }
+                    openTitle += '<i class="' + menu[i].icon + '"></i>';
                 }
                 openTitle += '<cite>' + menu[i].title + '</cite>';
                 openTitle += '<i class="layui-icon layui-unselect layui-tab-close" data-id="' + menu[i].layId + '">&#x1006;</i>';
                 element.tabAdd("bodyTab", {
                     title: openTitle,
-                    content: "<iframe src='" + menu[i].href + "' data-id='" + menu[i].layId + "'></frame>",
+                    content: "<iframe src='" + menu[i].href + "' data-id='" + menu[i].layId + "'></iframe>",
                     id: menu[i].layId
                 });
                 //定位到刷新前的窗口
@@ -226,3 +229,36 @@ function showImg(){
         });
     });
 }
+let full = function(){
+    let docElm = document.documentElement;
+    //W3C
+    if (docElm.requestFullscreen) {
+        docElm.requestFullscreen();
+    }
+    //FireFox
+    else if (docElm.mozRequestFullScreen) {
+        docElm.mozRequestFullScreen();
+    }
+    //Chrome等
+    else if (docElm.webkitRequestFullScreen) {
+        docElm.webkitRequestFullScreen();
+    }
+    //IE11
+    else if (docElm.msRequestFullscreen) {
+        docElm.msRequestFullscreen();
+    }
+};
+let exitfull = function(){
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+    else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    }
+    else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+    }
+    else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+};

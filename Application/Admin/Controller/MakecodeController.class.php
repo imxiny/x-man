@@ -77,6 +77,11 @@ class MakecodeController extends AdminBaseController
     protected $editorField = ['content', 'description'];
 
     /**
+     * 识别为color类型
+     */
+    protected $colorField = ['color'];
+
+    /**
      * 识别为文件字段
      */
     protected $fileField = ['file', 'files'];
@@ -526,7 +531,7 @@ EOF;
                 $cinfo = $this->getListByComment($v['column_name'], $v['column_comment']);
                 $if = '';
                 foreach ($cinfo['list'] as $k => $item) {
-                    $if .= "if(d.{$v['column_name']} == '{$k}') return '{$item}';" . PHP_EOL;
+                    $if .= "if(d.{$v['column_name']} === '{$k}') return '{$item}';" . PHP_EOL;
                 }
                 $fileds = "{field:'{$v['column_name']}',title:'{$cinfo['field']}',align:'center',templet:function(d){
                 {$if}
@@ -562,6 +567,11 @@ EOF;
                 ';
                 $fileds = "{field:'{$v['column_name']}',title:'{$cinfo['field']}',align:'center',templet:function(d){
                 {$if}
+            }},";
+                break;
+            case 'color':
+                $fileds = "{field:'{$v['column_name']}',title:'{$v['column_comment']}',align:'center',templet:function(d){
+                return '<div><input disabled type=\"color\" value=\"'+d.{$v['column_name']}+'\"></div>';
             }},";
                 break;
             default:
@@ -711,6 +721,10 @@ class {$cname}Controller extends AdminBaseController
         if ($this->isMatchSuffix($fieldsName, $this->editorField) && in_array($v['data_type'], ['longtext','mediumtext','text','smalltext','tinytext'])) {
             $inputType = "editor";
         }
+        //指定后缀结尾 且类型为input系列的字段 为颜色选择器
+        if ($this->isMatchSuffix($fieldsName, $this->colorField) && (($v['data_type'] == 'varchar') || $v['data_type'] == 'char')) {
+            $inputType = "color";
+        }
         return $inputType;
     }
 
@@ -769,6 +783,32 @@ class {$cname}Controller extends AdminBaseController
                 break;
             case 'text':
                 $temp = $this->gettemp('text');
+                $replace_list['title'] = $col['column_comment'];
+                if (!empty($replace_list['required1'])) {
+                    $replace_list['required2'] = ' lay-verify="required" lay-verType="tips"  ';
+                }
+                $replace_list['attr'] = ' maxlength="'.
+                    $col['character_maximum_length'] . '" value="' .
+                    $col['column_default'] . '" ';
+                foreach ($replace_list as $k => $v) {
+                    $temp = str_replace("{%{{$k}}%}", $v, $temp);
+                }
+                break;
+            case 'color':
+                $temp = $this->gettemp('color');
+                $replace_list['title'] = $col['column_comment'];
+                if (!empty($replace_list['required1'])) {
+                    $replace_list['required2'] = ' lay-verify="required" lay-verType="tips"  ';
+                }
+                $replace_list['attr'] = ' maxlength="'.
+                    $col['character_maximum_length'] . '" value="' .
+                    $col['column_default'] . '" ';
+                foreach ($replace_list as $k => $v) {
+                    $temp = str_replace("{%{{$k}}%}", $v, $temp);
+                }
+                break;
+            case 'color':
+                $temp = $this->gettemp('color');
                 $replace_list['title'] = $col['column_comment'];
                 if (!empty($replace_list['required1'])) {
                     $replace_list['required2'] = ' lay-verify="required" lay-verType="tips"  ';

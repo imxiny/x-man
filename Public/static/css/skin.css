@@ -1,0 +1,46 @@
+/*顶部背景色*/
+.layui-layout-admin .layui-header{
+    background-color: #dd4444;
+}
+/*左侧背景色*/
+.layui-bg-black{
+    background-color: #0b90dd!important;
+}
+/*选中以后的颜色+左上角隐藏按钮*/
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before, .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+    background-color: #41edbe;
+}
+/*右侧导航栏选中样式*/
+.layui-tab-title .layui-this {
+    color: #41edbe;
+    border-bottom: 1px solid #41edbe;
+}
+/*左上边框颜色*/
+.layui-body {
+    border-top: 5px solid #41edbe;
+}
+
+/*除菜单外其他所有悬停*/
+.layui-nav .layui-nav-child a:hover,.ui-context-menu-item a:hover{
+    background-color: #bb57ba;
+}
+
+
+
+/*上边框选中的颜色*/
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after {
+    background-color: gold;
+}
+
+/*顶部菜单算选中背景色*/
+.topLevelMenus .layui-nav-item.layui-this a {
+    background-color: red;
+}
+/*三级菜单背景色*/
+.layui-nav-item.layui-nav-itemed{
+    background-color: #1E9FFF!important;
+}
+/*所有左侧菜单悬停颜色*/
+.layui-nav-tree .layui-nav-item a:hover{
+    background-color: #5f3f3f!important;
+}

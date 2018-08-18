@@ -17,7 +17,7 @@
         .vaptcha-init-main {
             display: table;
             width: 100%;
-            height: 100% background-color: #EEEEEE;
+            height: 100%; background-color: #EEEEEE;
         }
 
         .vaptcha-init-loading {
@@ -112,7 +112,7 @@
                     if(1 === data.status){
                         toast('登陆成功','Success',0);
                         setTimeout(function(){
-                            window.location.href = "{$Think.get.jumpLink|urldecode}" ? "{$Think.get.jumpLink|urldecode}" : "{$url}";
+                            window.location.href = "{$url}";
                         },1000);
                     }else{
                         $('input[name=token]').val('');

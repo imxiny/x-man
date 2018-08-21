@@ -9,13 +9,13 @@
 return array(
 	'HTTP_HOST' => '127.0.0.24', //必须配置 否则验证码失效
 	'SEKEY' => 'x-man', //验证码干扰值
-	'UPLOAD_TYPE' => 'oss', //oss或local 配置oss 下面的ALIOSSCONF一定要配置正确
+	'UPLOAD_TYPE' => 'local', //oss或local 配置oss 下面的ALIOSSCONF一定要配置正确
 	//阿里云存储设置
 	'ALIOSSCONF' => array(
-		'KEY' => 'LTAIsCN1DPt0sWgo',
-		'SECRET' => 'u0rOm2j7DL89qlAUM36lu5posyJhA1',
-		'ENDPOINT' => 'oss-cn-beijing.aliyuncs.com',
-		'BUCKET' => 'testyao',
+		'KEY' => '',
+		'SECRET' => '',
+		'ENDPOINT' => '',
+		'BUCKET' => '',
 	),
 	//后台操作日志是否记录程序运行时间及其所用内存
 	'SCS_TIME_MEM' => true,

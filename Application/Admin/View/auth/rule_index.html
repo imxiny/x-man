@@ -11,6 +11,9 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all"/>
     <link rel="stylesheet" href="/Public/static/css/public.css" media="all"/>
+    <style>
+        body{overflow-y: scroll;}
+    </style>
 </head>
 <body class="childrenBody">
     <blockquote class="layui-elem-quote quoteBox">
@@ -62,6 +65,14 @@
                     <a class="layui-btn layui-btn-sm" title="刷新当前页" href="javascript:void(0);"
                             onclick="layer.load(1);window.location.reload(true);"><i class="layui-icon">&#xe669;</i></a>
                 </div>
+                <div class="layui-btn-group">
+                    <a class="layui-btn layui-btn-green layui-btn-sm showAll" title="展开">
+                        展开
+                    </a>
+                    <a class="layui-btn layui-btn-normal layui-btn-sm hideAll" title="折叠">
+                        折叠
+                    </a>
+                </div>
             </div>
         </form>
     </blockquote>
@@ -95,34 +106,52 @@
 <script type="text/javascript" src="/Public/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Public/static/layui/layui.js"></script>
 <script type="text/javascript">
-    var tablist = '';
-    layui.use(['form', 'layer', 'laydate', 'table', 'laytpl'], function () {
+    layui.config({
+        base: '/Public/static/layui/lay/modules/'
+    }).extend({
+        treetable: 'treetable-lay/treetable'
+    });
+    var tablist = {};
+    layui.use(['form', 'layer', 'laydate', 'table', 'laytpl','treetable'], function () {
         var form = layui.form,
             layer = parent.layer === undefined ? layui.layer : top.layer,
             $ = layui.jquery,
-            laydate = layui.laydate,
-            laytpl = layui.laytpl,
+            treetable = layui.treetable,
             table = layui.table;
-        //规则列表
-        tablist = table.render({
-            elem: '#table',
-            url: '/admin/auth/rule',
-            method: 'post',
-            cellMinWidth: 95,
-            height: "full-85",
-            id: "table",
-            cols: [[
-                {type: "checkbox", fixed: "left", width: 50},
-                {field: 'id', title: 'ID', width: 60, align: "center"},
-                {field: '_name', title: '规则名',width:240},
-                {field: 'name', title: '规则值'},
-                {field: 'type',unresize:true,width:100, title: '支持表达式', align: 'center', templet: "#type"},
-                {field: 'is_url', width:80, title: '链接', align: 'center', templet: "#is_url",unresize:true},
-                {field: 'status',unresize:true,width:95, title: '状态', align: 'center', templet: "#status"},
-                {field: 'condition', title: '表达式'},
-                {title: '操作', width: 140, templet: '#tool', fixed: "right", align: "center"}
-            ]]
-        });
+        //
+        tablist.reload = function(where){
+            let load = layer.msg('数据加载中',{icon:16,time:false});
+            treetable.render({
+                treeColIndex: 2,          // 显示在第几列
+                treeSpid: 0,             // 顶级pid
+                treeIdName: 'id',       // id
+                treePidName: 'pid',     // pid
+                treeDefaultClose: true,   // 不全部展开
+                treeLinkage: true,        //  父级展开时是否自动展开所有子级
+                elem: '#table',
+                where: where,
+                url: '/admin/auth/rule',
+                method: 'get',
+                cellMinWidth: 95,
+                height: "full - 10",
+                id: "table",
+                cols: [[
+                    {type: "checkbox", fixed: "left", width: 50},
+                    {field: 'id', title: 'ID', width: 60, align: "center"},
+                    {field: 'title', title: '规则名',width:240},
+                    {field: 'name', title: '规则值'},
+                    {field: 'type',unresize:true,width:100, title: '支持表达式', align: 'center', templet: "#type"},
+                    {field: 'is_url', width:80, title: '链接', align: 'center', templet: "#is_url",unresize:true},
+                    {field: 'status',unresize:true,width:95, title: '状态', align: 'center', templet: "#status"},
+                    {field: 'condition', title: '表达式'},
+                    {title: '操作', width: 140, templet: '#tool', fixed: "right", align: "center"}
+                ]],
+                done:function(){
+                    layer.close(load);
+                }
+            });
+        };
+        tablist.reload();
         //检测更改支持表达式
         form.on('switch(type)', function (obj) {
             var _this = $(obj.elem);
@@ -190,34 +219,36 @@
         //搜索+刷新
         function search(){
             tablist.reload({
-                where:{
                     keyword:$("input[name=keyword]").val()
                     ,type:$('select[name=type]').val()
                     ,status:$('select[name=status]').val()
                     ,is_url:$('select[name=is_url]').val()
                     ,pid:$('select[name=pid]').val()
-                }
             });
         }
 
         //添加文章
         function addoredit(url,name) {
-            var index = layui.layer.open({
+            let index = layui.layer.open({
                 title: name,
                 type: 2,
                 content: url,
                 maxmin:true,
                 area:['60%','98%']
             });
-            //layui.layer.full(index);
-            //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
-            $(window).on("resize", function () {
-                layer.full(index);
-            })
         }
 
         $(".add_btn").on('click',function () {
             addoredit('/admin/auth/add_rule','添加规则');
+        });
+
+        //展开
+        $(".showAll").on('click',function(){
+            treetable.expandAll('#table');
+        });
+        //收起
+        $(".hideAll").on('click',function(){
+            treetable.foldAll('#table');
         });
 
         //批量删除

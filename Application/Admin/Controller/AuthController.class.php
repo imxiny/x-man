@@ -43,7 +43,7 @@ class AuthController extends AdminBaseController
     {
         if (IS_AJAX) {
             $where = " 1 ";
-            $data = I('post.');
+            $data = I('get.');
 
             $keyword = $data['keyword'];
             unset($data['keyword']);
@@ -58,7 +58,6 @@ class AuthController extends AdminBaseController
             if (isset($data['pid']) && $data['pid'] !== '') {
                 $ids = implode($this->get_children_str($data['pid']), ',');
                 $where .= " and pid in ({$ids}) ";
-                $pid = $data['pid'];
             }
             unset($data['pid']);//防止条件组装上pid
             foreach ($data as $k => $v) {
@@ -67,23 +66,21 @@ class AuthController extends AdminBaseController
                 }
             }
 
-            extract(I('post.'));
+            extract(I('get.'));
             $list = M('auth_rule')
                 ->where($where)
                 ->select();
-            //当不是顶级 且pid 不为空的时候，人为为数组添加一个顶级pid=0
-            if (isset($pid) && $pid != '0' && $pid != '') {
-                $t = M('auth_rule')->find($pid);
-                $t['pid'] = 0;
-                $list[] = $t;
+            $ids = array_column($list, 'id');
+
+            //treetable需要id为0的父级
+            foreach ($list as &$v) {
+                if (!in_array($v['pid'], $ids)) {
+                    $v['pid'] = 0;
+                }
             }
+            /**/
             $count = M('auth_rule')->where($where)->count();
-            $list = Data::tree($list, 'title', 'id', 'pid');
             $list = array_values($list);
-            if (isset($pid) && $pid != '0') {
-                //添加后要删除顶级pid
-                array_shift($list);
-            }
             $res = array(
                 'code' => 0
             , 'count' => $count
@@ -517,12 +514,12 @@ class AuthController extends AdminBaseController
      */
     public function menus()
     {
-        if (IS_GET) {
+        if (!IS_AJAX && IS_GET) {
             $this->display("auth/menus");
         } elseif (IS_AJAX) {
             $list = M('auth_menus a')->field('a.*,r.name as link')->join(C('DB_PREFIX') . "auth_rule as r on r.id=a.rule_id", 'left')->select();
-            $list = Data::tree($list, 'name', 'id', 'pid');
-            $list = array_values($list);
+           /* $list = Data::tree($list, 'name', 'id', 'pid');*/
+            /*$list = array_values($list);*/
             $res = array(
                 'code' => 0
             , 'count' => count($list)

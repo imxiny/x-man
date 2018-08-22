@@ -79,14 +79,16 @@
     };
     // Hide method from for-in loops
     Object.defineProperty(Array.prototype, "equals", {enumerable: false});
-    var tablist = '';
-    layui.use(['form', 'layer', 'laydate', 'table', 'laytpl'], function () {
-        var form = layui.form,
-            layer = parent.layer === undefined ? layui.layer : top.layer,
-            $ = layui.jquery,
-            laydate = layui.laydate,
-            laytpl = layui.laytpl,
-            table = layui.table;
+    layui.config({
+        base: '/Public/static/layui/lay/modules/'
+    }).extend({
+        treetable: 'treetable-lay/treetable'
+    });
+    var tablist = {};
+    layui.use(['form', 'layer', 'table', 'treetable'], function () {
+        var layer = parent.layer === undefined ? layui.layer : top.layer,
+            table = layui.table,
+            treetable = layui.treetable;
 
         //提示排序功能帮助信息
         $('.sorthelp').on('click',function(){
@@ -100,38 +102,49 @@
             $(this).hide();
         });
         //数据表格渲染
-        tablist = table.render({
-            elem: '#table',
-            url: '/admin/auth/menus',
-            method: 'post',
-            cellMinWidth: 95,
-            id: "table",
-            cols: [[
-                {field: 'id', title: 'ID', width: 60, align: "center"},
-                {field: '_name', title: '菜单名',width:200,templet:function(d){
-                    return '<div data-pid="' + d.pid + '">' + d._name + '</div>';
-                    }},
-                {field: 'link', title: '链接', align: 'center',templet:function(d){
-                    if(d.link === null){
-                        return 'no';
-                    }else{
-                        return "<div class='layui-blue'><span>"+d.link+"</span></div>";
-                    }
-                    }},
-                {field: 'icon', title: '图标', align: 'center',templet:function(d){
-                    return "<div><i class='"+ d.icon +"'></i></div>";
-                    },width:90},
-                {title: '操作', width: 180, templet: '#tool',  align: "center"}
-            ]]
-            ,done:function(){
-                $("tbody tr[data-index]").each(function(index,e){
-                    var pid = $(e).find("div[data-pid]").data('pid');
-                    var id = $(e).find("div:first").html();
-                    $(e).attr('data-pid',pid);
-                    $(e).attr('data-id',id);
-                });
-            }
-        });
+        tablist.reload = function(){
+            let load = layer.msg('数据加载中',{icon:16,time:false});
+            treetable.render({
+                treeColIndex: 1,          // 显示在第几列
+                treeSpid: 0,             // 顶级pid
+                treeIdName: 'id',       // id
+                treePidName: 'pid',     // pid
+                treeDefaultClose: true,   // 不全部展开
+                treeLinkage: false,        //  父级展开时是否自动展开所有子级
+                elem: '#table',
+                url: '/admin/auth/menus',
+                method: 'post',
+                cellMinWidth: 95,
+                id: "table",
+                cols: [[
+                    {field: 'id', title: 'ID', width: 60, align: "center"},
+                    {field: 'name', title: '菜单名',width:200,templet:function(d){
+                            return '<div data-pid="' + d.pid + '">' + d._name + '</div>';
+                        }},
+                    {field: 'link', title: '链接', align: 'center',templet:function(d){
+                            if(d.link === null){
+                                return '<div data-pid="' + d.pid + '">no</div>';
+                            }else{
+                                return "<div data-pid='"+d.pid+"' class='layui-blue'><span>"+d.link+"</span></div>";
+                            }
+                        }},
+                    {field: 'icon', title: '图标', align: 'center',templet:function(d){
+                            return "<div><i class='"+ d.icon +"'></i></div>";
+                        },width:90},
+                    {title: '操作', width: 180, templet: '#tool',  align: "center"}
+                ]]
+                ,done:function(){
+                    $("tbody tr[data-index]").each(function(index,e){
+                        var pid = $(e).find("div[data-pid]").data('pid');
+                        var id = $(e).find("div:first").html();
+                        $(e).attr('data-pid',pid);
+                        $(e).attr('data-id',id);
+                    });
+                    layer.close(load);
+                }
+            });
+        };
+        tablist.reload();
         //编辑/添加函数
         function addoredit(url,name) {
             var index = layui.layer.open({

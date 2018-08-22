@@ -19,14 +19,19 @@
     </style>
 </head>
 <body class="childrenBody">
-        <blockquote class="layui-elem-quote layui-quote-nm"><a class="layui-btn  layui-btn-green layui-btn-sm add_btn layui-btn-radius" title="添加">
-            <i class="layui-icon   layui-icon-add-circle"></i>添加菜单项
+        <blockquote class="layui-elem-quote layui-quote-nm">
+            <a class="layui-btn  layui-btn-green layui-btn-sm add_btn " title="添加">
+            <i class="layui-icon   layui-icon-add-circle"></i>添加
         </a>
-            <a class="layui-btn layui-btn-sm layui-btn-radius tttt" title="刷新当前页" href="javascript:void(0);"
-                    onclick="layer.load(1);window.location.reload(true);"><i class="layui-icon">&#xe669;</i>刷新当前页</a>
-            <a class="layui-btn layui-btn-sm layui-btn-radius layui-btn-normal sorthelp" title="排序功能提示" href="javascript:void(0);"
-            ><i class="layui-icon layui-icon-help"></i>排序功能</a>
-            <a class="layui-btn layui-btn-sm layui-btn-radius  cancelsort " style="display: none;background-color:#ee0000" title="取消排序" href="javascript:void(0);"
+            <a class="layui-btn layui-btn-sm  tttt" title="刷新当前页" href="javascript:void(0);"
+                    onclick="layer.load(1);window.location.reload(true);"><i class="layui-icon">&#xe669;</i>刷新</a>
+            <a class="layui-btn  layui-btn-primary layui-btn-sm showAll " title="展开">
+                <i class="layui-icon layui-icon-triangle-r"></i>
+                展开
+            </a>
+            <a class="layui-btn layui-btn-sm  layui-btn-normal sorthelp" title="排序功能提示" href="javascript:void(0);"
+            ><i class="layui-icon layui-icon-help"></i>排序</a>
+            <a class="layui-btn layui-btn-sm   cancelsort " style="display: none;background-color:#ee0000" title="取消排序" href="javascript:void(0);"
             ><i class="iconfont icon-chushaixuanxiang"></i>取消排序</a>
         </blockquote>
     <table id="table" lay-filter="table"></table>
@@ -47,7 +52,7 @@
             </a>
         </div>
     </script>
-<script type="text/javascript" src="/Public/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="/Public/static/js/jquery.min.js"></script>
         <script type="text/javascript" src="/Public/static/js/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/Public/static/layui/layui.js"></script>
 <script type="text/javascript">
@@ -220,6 +225,14 @@
                 });
                 $('.cancelsort').show();
             }
+        });
+        //展开
+        $(".showAll").toggle(function(){
+            $(this).html('<i class="layui-icon layui-icon-triangle-d"></i>收起');
+            treetable.expandAll('#table');
+        },function(){
+            $(this).html('<i class="layui-icon layui-icon-triangle-r"></i>展开');
+            treetable.foldAll('#table');
         });
     });
 </script>

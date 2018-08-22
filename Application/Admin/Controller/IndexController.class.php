@@ -61,7 +61,12 @@ class IndexController extends AdminBaseController
             }
             $list[$k]['title'] = $v['name'];
             $list[$k]['icon'] = $v['icon'];
-            $list[$k]['href'] = '/' . ltrim($v['href'], '/');
+            $url = ltrim($v['href'], '/');
+            if (filter_var($url,FILTER_VALIDATE_URL)) {
+                $list[$k]['href'] = $url;
+            } else {
+                $list[$k]['href'] = '/'.$url;
+            }
             $list[$k]['spread'] = false;
             if ($v['target'] === '_blank') {
                 $list[$k]['target'] = '_blank';

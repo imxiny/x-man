@@ -66,11 +66,8 @@
                             onclick="layer.load(1);window.location.reload(true);"><i class="layui-icon">&#xe669;</i></a>
                 </div>
                 <div class="layui-btn-group">
-                    <a class="layui-btn layui-btn-green layui-btn-sm showAll" title="展开">
+                    <a class="layui-btn layui-btn-primary layui-btn-sm showAll" title="展开"><i class="layui-icon layui-icon-triangle-r"></i>
                         展开
-                    </a>
-                    <a class="layui-btn layui-btn-normal layui-btn-sm hideAll" title="折叠">
-                        折叠
                     </a>
                 </div>
             </div>
@@ -243,14 +240,13 @@
         });
 
         //展开
-        $(".showAll").on('click',function(){
+        $(".showAll").toggle(function(){
+            $(this).html('<i class="layui-icon layui-icon-triangle-d"></i>收起');
             treetable.expandAll('#table');
-        });
-        //收起
-        $(".hideAll").on('click',function(){
+        },function(){
+            $(this).html('<i class="layui-icon layui-icon-triangle-r"></i>展开');
             treetable.foldAll('#table');
         });
-
         //批量删除
         $(".delAll_btn").on('click',function () {
             var checkStatus = table.checkStatus('table'),

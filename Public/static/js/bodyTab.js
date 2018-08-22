@@ -72,7 +72,11 @@ layui.define(["element","jquery"],function(exports){
 	//是否点击窗口切换刷新页面
 	Tab.prototype.changeRegresh = function(index){
         if(changeRefreshStr === "true"){
-            $(".clildFrame .layui-tab-item").eq(index).find("iframe")[0].contentWindow.location.reload();
+        	let iframe = $($(".clildFrame .layui-tab-item").eq(index).find("iframe")[0]);
+            iframe.attr('src',iframe.attr('src'));
+
+        	//旧版方法 同源限制 不可刷新不同源网页
+            /*$(".clildFrame .layui-tab-item").eq(index).find("iframe")[0].contentWindow.location.reload();*/
         }
 	};
 
@@ -307,14 +311,17 @@ layui.define(["element","jquery"],function(exports){
 	$(".refresh").on("click",function(){  //此处添加禁止连续点击刷新一是为了降低服务器压力，另外一个就是为了防止超快点击造成chrome本身的一些js文件的报错(不过貌似这个问题还是存在，不过概率小了很多)
 		if($(this).hasClass("refreshThis")){
 			$(this).removeClass("refreshThis");
-			$(".clildFrame .layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
+            let iframe = $($(".clildFrame .layui-tab-item.layui-show").find("iframe")[0]);
+            iframe.attr('src',iframe.attr('src'));
+            //以下方法同源限制
+			/*$(".clildFrame .layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();*/
 			setTimeout(function(){
 				$(".refresh").addClass("refreshThis");
 			},2000)
 		}else{
 			layer.msg("点击次数过多，请稍后");
 		}
-	})
+	});
 
 	//关闭其他
 	$(".closePageOther").on("click",function(){

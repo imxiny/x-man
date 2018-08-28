@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2018-07-25 09:24:32
+Date: 2018-08-28 13:52:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,8 +39,8 @@ CREATE TABLE `xman_admin_user` (
 -- ----------------------------
 -- Records of xman_admin_user
 -- ----------------------------
-INSERT INTO `xman_admin_user` VALUES ('2', 'admin11', '$2y$10$BkNMYNYLaaF.i509BnjXEeMSJ8ltv59EZ8A.DqsQNzArx0qS33CqS', '176124388881', '123@qq.com1', 'Admin', '1990-10-10 00:00:00', '0', '1990-10-16', '1', '0', '1');
-INSERT INTO `xman_admin_user` VALUES ('16', 'testdemo1', '$2y$10$4N6V9FpbLdd0kQseIj.B0eD/jcviniUcrOUjGNAsUEsZ4M9Q8eOpS', '17612312', '123123', '测试账号', '1990-10-10 00:00:00', '0', '2018-06-11', '1', '0', '1');
+INSERT INTO `xman_admin_user` VALUES ('2', 'admin11', '$2y$10$/keh96G2clMxlNIOvPKaFOHxRSOORu8kEw.Tb81sld6oZtAlXDhvG', '176124388881', '123@qq.com1', 'Admin', '1990-10-10 00:00:00', '0', '1990-10-16', '1', '0', '1');
+INSERT INTO `xman_admin_user` VALUES ('16', 'testdemo1', '$2y$10$/keh96G2clMxlNIOvPKaFOHxRSOORu8kEw.Tb81sld6oZtAlXDhvG', '17612312', '123123', '测试账号', '1990-10-10 00:00:00', '0', '2018-06-11', '1', '0', '1');
 INSERT INTO `xman_admin_user` VALUES ('17', 'testdemo', '$2y$10$/keh96G2clMxlNIOvPKaFOHxRSOORu8kEw.Tb81sld6oZtAlXDhvG', '18812345678', 'i@xiny9.com', 'TestUser', '1990-10-10 00:00:00', '0', '2018-07-10', '1', '0', '1');
 
 -- ----------------------------
@@ -58,12 +58,13 @@ CREATE TABLE `xman_article` (
   `category` enum('0','1','2','3','4','5') NOT NULL DEFAULT '0' COMMENT '分类:0=娱乐,1=政治,2=新闻,3=历史,4=野史,5=杂谈',
   `description` text NOT NULL COMMENT '描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xman_article
 -- ----------------------------
 INSERT INTO `xman_article` VALUES ('5', '测试文章', 'Xiny', '&lt;p&gt;&lt;img src=&quot;http://127.0.0.24/Public/static/layui/images/face/12.gif&quot; alt=&quot;[泪]&quot;&gt;&lt;img src=&quot;http://127.0.0.24/Public/static/layui/images/face/1.gif&quot; alt=&quot;[嘻嘻]&quot;&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;sadfsafsadfsdaf&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;&lt;u&gt;asdfasfsasdf&lt;/u&gt;&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;&lt;u&gt;&lt;strike&gt;asdfsadfsad&lt;/strike&gt;&lt;/u&gt;&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.baidu.com&quot; style=&quot;&quot;&gt;http://www.baidu.com&lt;/a&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;asfsadfdsafdsd&lt;img src=&quot;/Public/Uploads/img/20180724/5b573b6f42ea9.jpg&quot; alt=&quot;sss.jpg&quot;&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;&lt;u&gt;&lt;strike&gt;&lt;br&gt;&lt;/strike&gt;&lt;/u&gt;&lt;/i&gt;&lt;/p&gt;', '2018-07-24 22:45:10', '1', '123123', '0', '12');
+INSERT INTO `xman_article` VALUES ('6', '12312', '123123', '123123', '2018-07-21 00:00:00', '1', '123', '2', '12312313');
 
 -- ----------------------------
 -- Table structure for xman_auth_group
@@ -81,7 +82,7 @@ CREATE TABLE `xman_auth_group` (
 -- ----------------------------
 -- Records of xman_auth_group
 -- ----------------------------
-INSERT INTO `xman_auth_group` VALUES ('1', '超级管理员', '拥有所有权限', '1', '27,16,31,20,21,28,22,23,29,11,12,63,64,65,66,67,68,13,14,17,1,2,5,6,10,18,41,42,43,32,37,38,39,40,19,44,45,46,47,48,50,30,24,25,26,79,80,81,82,112,113,114,115');
+INSERT INTO `xman_auth_group` VALUES ('1', '超级管理员', '拥有所有权限', '1', '16,29,11,12,63,64,65,66,67,68,17,1,2,5,6,10,18,41,42,43,32,37,38,39,40,19,44,45,46,47,48,50,31,20,21,124,125,126,127,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151');
 INSERT INTO `xman_auth_group` VALUES ('4', '测试用组', '测试组织', '1', '27,15,16,31,20,21,28,22,23,29,11,12,13,14');
 INSERT INTO `xman_auth_group` VALUES ('5', 'testdemo', '展示所用角色组', '1', '27,16,31,20,21,28,22,23,29,11,12,63,64,65,66,67,68,13,14,17,1,18,32,19,47,48,30,24,25,26,79,80,81,82,87,88,89,90');
 
@@ -120,30 +121,36 @@ CREATE TABLE `xman_auth_menus` (
   `icon` varchar(255) NOT NULL DEFAULT 'iconfont icon-menu1' COMMENT '菜单图标',
   `target` varchar(255) NOT NULL DEFAULT '' COMMENT '打开位置',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xman_auth_menus
 -- ----------------------------
-INSERT INTO `xman_auth_menus` VALUES ('1', '内容管理', '0', '27', 'iconfont icon-wenzhang-copy', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('3', '系统设置', '0', '29', 'iconfont icon-bianji', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('5', '系统基本参数', '3', '11', 'iconfont icon-guanli', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('6', '规则管理', '19', '1', 'iconfont icon-createtask', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('1', '系统设置', '0', '29', 'iconfont xman-setting', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('3', '内容管理', '0', '27', 'iconfont xman-menu', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('5', '系统基本参数', '1', '11', 'iconfont xman-setting-fill', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('6', '规则管理', '19', '1', 'layui-icon layui-icon-align-center', 'default');
 INSERT INTO `xman_auth_menus` VALUES ('7', '角色组管理', '19', '32', 'layui-icon layui-icon-user', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('8', '用户管理', '19', '18', 'iconfont icon-addressbook_fill', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('9', '文章列表', '1', '112', 'iconfont icon-wenzhang4', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('10', '图片管理', '1', '16', 'iconfont icon-tupian2', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('11', '其他页面', '1', '31', 'iconfont icon-menu1', '_blank');
-INSERT INTO `xman_auth_menus` VALUES ('12', '登录', '11', '21', 'iconfont icon-houtai4', '_blank');
-INSERT INTO `xman_auth_menus` VALUES ('13', '404页面', '11', '20', 'layui-icon layui-icon-404', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('18', '菜单管理', '3', '19', 'iconfont icon-menu1', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('19', '权限管理', '3', '32', 'iconfont icon-addressbook', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('20', '系统日志', '3', '12', 'layui-icon layui-icon-tabs', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('28', '代码生成器', '3', '48', 'iconfont icon-xiaolvdashiicon02', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('29', '测试控制器', '3', '79', 'iconfont icon-activity', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('8', '后台用户管理', '19', '18', 'layui-icon layui-icon-username', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('9', '文章列表', '3', '124', 'iconfont xman-file-text', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('10', '图片管理', '3', '16', 'iconfont xman-image-fill', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('11', '用户管理', '3', '132', 'iconfont xman-user', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('12', '登录', '33', '21', 'iconfont xman-login', '_blank');
+INSERT INTO `xman_auth_menus` VALUES ('13', '404页面', '33', '20', 'layui-icon layui-icon-404', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('18', '菜单管理', '1', '19', 'iconfont xman-menu', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('19', '权限管理', '1', '32', 'layui-icon layui-icon-password', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('20', '系统日志', '1', '12', 'layui-icon layui-icon-tabs', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('28', '测试控制器', '1', '140', 'iconfont xman-menu', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('29', '代码生成器', '1', '48', 'iconfont xman-android', 'default');
 INSERT INTO `xman_auth_menus` VALUES ('30', '错误日志', '20', '63', 'layui-icon layui-icon-tabs', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('31', '登录日志', '20', '65', 'iconfont icon-clock_fill', 'default');
-INSERT INTO `xman_auth_menus` VALUES ('32', '操作日志', '20', '67', 'iconfont icon-guanli', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('31', '登录日志', '20', '65', 'layui-icon layui-icon-log', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('32', '操作日志', '20', '67', 'iconfont xman-folder-open', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('33', '其他页面', '3', '31', 'layui-icon layui-icon-template-1', '_blank');
+INSERT INTO `xman_auth_menus` VALUES ('34', '更新日志', '1', '136', 'iconfont xman-menu', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('35', '皮肤管理', '1', '144', 'iconfont xman-skin', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('36', '分类管理', '1', '148', 'layui-icon layui-icon-camera', 'default');
+INSERT INTO `xman_auth_menus` VALUES ('37', '点赞', '1', '151', 'iconfont xman-like', '_blank');
+INSERT INTO `xman_auth_menus` VALUES ('38', '点赞', '3', '151', 'iconfont xman-like-fill', 'default');
 
 -- ----------------------------
 -- Table structure for xman_auth_rule
@@ -160,7 +167,7 @@ CREATE TABLE `xman_auth_rule` (
   `pid` int(11) NOT NULL DEFAULT '0' COMMENT '父级权限',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of xman_auth_rule
@@ -201,14 +208,48 @@ INSERT INTO `xman_auth_rule` VALUES ('65', 'admin/systemloginlog/index', '登录
 INSERT INTO `xman_auth_rule` VALUES ('66', 'admin/systemloginlog/delete', '删除登录日志', '1', '1', '', '0', '65');
 INSERT INTO `xman_auth_rule` VALUES ('67', 'admin/systemoperationlog/index', '操作日志', '1', '1', '', '1', '12');
 INSERT INTO `xman_auth_rule` VALUES ('68', 'admin/systemoperationlog/delete', '删除操作日志', '1', '1', '', '0', '67');
-INSERT INTO `xman_auth_rule` VALUES ('79', 'admin/test/index', 'Test/index', '1', '1', '', '1', '0');
-INSERT INTO `xman_auth_rule` VALUES ('80', 'admin/test/add', 'Test/add', '1', '1', '', '0', '79');
-INSERT INTO `xman_auth_rule` VALUES ('81', 'admin/test/edit', 'Test/edit', '1', '1', '', '0', '79');
-INSERT INTO `xman_auth_rule` VALUES ('82', 'admin/test/delete', 'Test/delete', '1', '1', '', '0', '79');
-INSERT INTO `xman_auth_rule` VALUES ('112', 'admin/article/index', 'Article/index', '1', '1', '', '1', '0');
-INSERT INTO `xman_auth_rule` VALUES ('113', 'admin/article/add', 'Article/add', '1', '1', '', '0', '112');
-INSERT INTO `xman_auth_rule` VALUES ('114', 'admin/article/edit', 'Article/edit', '1', '1', '', '0', '112');
-INSERT INTO `xman_auth_rule` VALUES ('115', 'admin/article/delete', 'Article/delete', '1', '1', '', '0', '112');
+INSERT INTO `xman_auth_rule` VALUES ('124', 'admin/article/index', 'Article/index', '1', '1', '', '0', '0');
+INSERT INTO `xman_auth_rule` VALUES ('125', 'admin/article/add', 'Article/add', '1', '1', '', '0', '124');
+INSERT INTO `xman_auth_rule` VALUES ('126', 'admin/article/edit', 'Article/edit', '1', '1', '', '0', '124');
+INSERT INTO `xman_auth_rule` VALUES ('127', 'admin/article/delete', 'Article/delete', '1', '1', '', '0', '124');
+INSERT INTO `xman_auth_rule` VALUES ('132', 'admin/user/index', 'User/index', '1', '1', '', '1', '0');
+INSERT INTO `xman_auth_rule` VALUES ('133', 'admin/user/add', 'User/add', '1', '1', '', '0', '132');
+INSERT INTO `xman_auth_rule` VALUES ('134', 'admin/user/edit', 'User/edit', '1', '1', '', '0', '132');
+INSERT INTO `xman_auth_rule` VALUES ('135', 'admin/user/delete', 'User/delete', '1', '1', '', '0', '132');
+INSERT INTO `xman_auth_rule` VALUES ('136', 'admin/updatelog/index', 'Updatelog/index', '1', '1', '', '1', '0');
+INSERT INTO `xman_auth_rule` VALUES ('137', 'admin/updatelog/add', 'Updatelog/add', '1', '1', '', '0', '136');
+INSERT INTO `xman_auth_rule` VALUES ('138', 'admin/updatelog/edit', 'Updatelog/edit', '1', '1', '', '0', '136');
+INSERT INTO `xman_auth_rule` VALUES ('139', 'admin/updatelog/delete', 'Updatelog/delete', '1', '1', '', '0', '136');
+INSERT INTO `xman_auth_rule` VALUES ('140', 'admin/test/index', 'Test/index', '1', '1', '', '1', '0');
+INSERT INTO `xman_auth_rule` VALUES ('141', 'admin/test/add', 'Test/add', '1', '1', '', '0', '140');
+INSERT INTO `xman_auth_rule` VALUES ('142', 'admin/test/edit', 'Test/edit', '1', '1', '', '0', '140');
+INSERT INTO `xman_auth_rule` VALUES ('143', 'admin/test/delete', 'Test/delete', '1', '1', '', '0', '140');
+INSERT INTO `xman_auth_rule` VALUES ('144', 'admin/systemskin/index', 'Systemskin/index', '1', '1', '', '1', '0');
+INSERT INTO `xman_auth_rule` VALUES ('145', 'admin/systemskin/add', 'Systemskin/add', '1', '1', '', '0', '144');
+INSERT INTO `xman_auth_rule` VALUES ('146', 'admin/systemskin/edit', 'Systemskin/edit', '1', '1', '', '0', '144');
+INSERT INTO `xman_auth_rule` VALUES ('147', 'admin/systemskin/delete', 'Systemskin/delete', '1', '1', '', '0', '144');
+INSERT INTO `xman_auth_rule` VALUES ('148', 'admin/catetest/index', 'Catetest/index', '1', '1', '', '1', '0');
+INSERT INTO `xman_auth_rule` VALUES ('149', 'admin/catetest/add', 'Catetest/add', '1', '1', '', '0', '148');
+INSERT INTO `xman_auth_rule` VALUES ('150', 'admin/catetest/edit', 'Catetest/edit1', '1', '1', '', '0', '148');
+INSERT INTO `xman_auth_rule` VALUES ('151', 'https://fly.layui.com/case/u/8917272', '点赞', '1', '1', '', '1', '0');
+
+-- ----------------------------
+-- Table structure for xman_catetest
+-- ----------------------------
+DROP TABLE IF EXISTS `xman_catetest`;
+CREATE TABLE `xman_catetest` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(255) NOT NULL COMMENT '分类名字',
+  `image` varchar(255) NOT NULL COMMENT '图片',
+  `content` text NOT NULL COMMENT '描述',
+  `state` enum('0','1') DEFAULT '0' COMMENT '状态:0=停用,1=可用',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of xman_catetest
+-- ----------------------------
+INSERT INTO `xman_catetest` VALUES ('1', '123', 'https://testyao.oss-cn-beijing.aliyuncs.com/images/20180820/5b7a2bfb13baa.jpg', '123123', '1');
 
 -- ----------------------------
 -- Table structure for xman_system_error_log
@@ -249,7 +290,7 @@ CREATE TABLE `xman_system_login_log` (
   `browser` varchar(255) NOT NULL COMMENT '浏览器型号',
   `logtime` datetime NOT NULL COMMENT '登录时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xman_system_login_log
@@ -266,6 +307,27 @@ INSERT INTO `xman_system_login_log` VALUES ('9', '2', '127.0.0.1', 'Windows NT 1
 INSERT INTO `xman_system_login_log` VALUES ('10', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/67.0.3396.99', '2018-07-24 18:33:21');
 INSERT INTO `xman_system_login_log` VALUES ('11', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/67.0.3396.99', '2018-07-24 20:21:58');
 INSERT INTO `xman_system_login_log` VALUES ('12', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/67.0.3396.99', '2018-07-25 09:09:22');
+INSERT INTO `xman_system_login_log` VALUES ('13', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/67.0.3396.99', '2018-07-25 20:47:05');
+INSERT INTO `xman_system_login_log` VALUES ('14', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/67.0.3396.99', '2018-07-25 21:03:07');
+INSERT INTO `xman_system_login_log` VALUES ('15', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/67.0.3396.99', '2018-07-25 22:41:56');
+INSERT INTO `xman_system_login_log` VALUES ('16', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/67.0.3396.99', '2018-07-25 22:43:51');
+INSERT INTO `xman_system_login_log` VALUES ('17', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/67.0.3396.99', '2018-07-26 12:28:43');
+INSERT INTO `xman_system_login_log` VALUES ('18', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-15 20:45:27');
+INSERT INTO `xman_system_login_log` VALUES ('19', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-16 15:47:29');
+INSERT INTO `xman_system_login_log` VALUES ('20', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-17 08:59:21');
+INSERT INTO `xman_system_login_log` VALUES ('21', '17', '127.0.0.1', 'Windows NT 10.0', 'Firefox/62.0', '2018-08-17 13:21:51');
+INSERT INTO `xman_system_login_log` VALUES ('22', '17', '127.0.0.1', 'Windows NT 10.0', 'MSIE 7.0', '2018-08-17 13:33:32');
+INSERT INTO `xman_system_login_log` VALUES ('23', '17', '127.0.0.1', 'Windows NT 10.0', 'Firefox/62.0', '2018-08-17 13:42:32');
+INSERT INTO `xman_system_login_log` VALUES ('24', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-17 21:25:34');
+INSERT INTO `xman_system_login_log` VALUES ('25', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-18 09:38:13');
+INSERT INTO `xman_system_login_log` VALUES ('26', '2', '127.0.0.1', 'Windows NT 10.0', 'Firefox/62.0', '2018-08-18 12:39:08');
+INSERT INTO `xman_system_login_log` VALUES ('27', '2', '127.0.0.1', 'Windows NT 10.0', 'MSIE 7.0', '2018-08-18 13:33:59');
+INSERT INTO `xman_system_login_log` VALUES ('28', '17', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-18 16:23:53');
+INSERT INTO `xman_system_login_log` VALUES ('29', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-20 10:47:03');
+INSERT INTO `xman_system_login_log` VALUES ('30', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-21 13:23:27');
+INSERT INTO `xman_system_login_log` VALUES ('31', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-22 10:34:04');
+INSERT INTO `xman_system_login_log` VALUES ('32', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-22 14:52:40');
+INSERT INTO `xman_system_login_log` VALUES ('33', '2', '127.0.0.1', 'Windows NT 10.0', 'Chrome/68.0.3440.106', '2018-08-23 10:23:01');
 
 -- ----------------------------
 -- Table structure for xman_system_operation_log
@@ -283,7 +345,7 @@ CREATE TABLE `xman_system_operation_log` (
   `admin_user_id` int(11) NOT NULL COMMENT '管理员',
   `createtime` datetime NOT NULL COMMENT '操作时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=174 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=294 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xman_system_operation_log
@@ -392,6 +454,154 @@ INSERT INTO `xman_system_operation_log` VALUES ('170', '删除规则', 'http://1
 INSERT INTO `xman_system_operation_log` VALUES ('171', '删除菜单', 'http://127.0.0.24/admin/auth/del_menu', '1', '0.009568', '3.000000', '1', '删除成功', '2', '2018-07-25 09:21:30');
 INSERT INTO `xman_system_operation_log` VALUES ('172', '删除菜单', 'http://127.0.0.24/admin/auth/del_menu', '1', '0.007633', '3.000000', '1', '删除成功', '2', '2018-07-25 09:21:35');
 INSERT INTO `xman_system_operation_log` VALUES ('173', '删除规则', 'http://127.0.0.24/admin/auth/del_rule', '1', '0.010449', '4.000000', '1', '删除成功', '2', '2018-07-25 09:21:47');
+INSERT INTO `xman_system_operation_log` VALUES ('174', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.070243', '30.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/Controller/ArticleController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/index.html <br>规则：<br>admin/article/index<br>admin/article/add<br>admin/article/edit<br>admin/article/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-07-26 12:29:08');
+INSERT INTO `xman_system_operation_log` VALUES ('175', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.014794', '5.000000', '1', '操作成功', '2', '2018-07-26 12:29:18');
+INSERT INTO `xman_system_operation_log` VALUES ('176', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.007611', '5.000000', '1', '操作成功', '2', '2018-07-26 12:29:48');
+INSERT INTO `xman_system_operation_log` VALUES ('177', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.059270', '30.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/Controller/ArticleController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/index.html <br>规则：<br>admin/article/index<br>admin/article/add<br>admin/article/edit<br>admin/article/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-07-26 12:35:48');
+INSERT INTO `xman_system_operation_log` VALUES ('178', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.008083', '5.000000', '1', '操作成功', '2', '2018-07-26 12:35:56');
+INSERT INTO `xman_system_operation_log` VALUES ('179', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.010392', '5.000000', '1', '操作成功', '2', '2018-07-26 12:36:07');
+INSERT INTO `xman_system_operation_log` VALUES ('180', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.064529', '30.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/Controller/ArticleController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/Article/index.html <br>规则：<br>admin/article/index<br>admin/article/add<br>admin/article/edit<br>admin/article/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-07-26 12:36:48');
+INSERT INTO `xman_system_operation_log` VALUES ('181', 'Article/index', 'http://127.0.0.24/admin/article/index', '0', '1.000000', '1.000000', '0', '权限不足', '2', '2018-07-26 12:37:13');
+INSERT INTO `xman_system_operation_log` VALUES ('182', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.012025', '5.000000', '1', '操作成功', '2', '2018-07-26 12:37:26');
+INSERT INTO `xman_system_operation_log` VALUES ('183', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.007492', '5.000000', '1', '操作成功', '2', '2018-07-26 12:37:38');
+INSERT INTO `xman_system_operation_log` VALUES ('184', 'Article/add', 'http://127.0.0.24/admin/Article/add', '1', '0.007093', '7.000000', '1', '添加成功', '2', '2018-07-26 12:38:14');
+INSERT INTO `xman_system_operation_log` VALUES ('185', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.064982', '23.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/Controller/UserController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/User/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/User/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/User/index.html <br>规则：<br>admin/user/index<br>admin/user/add<br>admin/user/edit<br>admin/user/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-07-26 12:38:44');
+INSERT INTO `xman_system_operation_log` VALUES ('186', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.010185', '5.000000', '1', '操作成功', '2', '2018-07-26 12:38:52');
+INSERT INTO `xman_system_operation_log` VALUES ('187', '添加菜单', 'http://127.0.0.24/admin/auth/add_menu', '1', '0.028902', '5.000000', '1', '操作成功', '2', '2018-07-26 12:39:19');
+INSERT INTO `xman_system_operation_log` VALUES ('188', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.105490', '22.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/Controller/UserController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/User/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/User/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/xinyadmin/Application/Admin/View/User/index.html <br>规则：<br>admin/user/index<br>admin/user/add<br>admin/user/edit<br>admin/user/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-07-26 12:41:35');
+INSERT INTO `xman_system_operation_log` VALUES ('189', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.007743', '5.000000', '1', '操作成功', '2', '2018-07-26 12:41:42');
+INSERT INTO `xman_system_operation_log` VALUES ('190', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.007314', '5.000000', '1', '操作成功', '2', '2018-07-26 12:41:53');
+INSERT INTO `xman_system_operation_log` VALUES ('191', 'User/edit', 'http://127.0.0.24/admin/User/edit', '1', '0.012508', '5.000000', '1', '操作成功', '2', '2018-07-26 12:42:25');
+INSERT INTO `xman_system_operation_log` VALUES ('192', 'User/edit', 'http://127.0.0.24/admin/User/edit', '1', '0.013765', '5.000000', '1', '操作成功', '2', '2018-07-26 12:42:51');
+INSERT INTO `xman_system_operation_log` VALUES ('193', '添加菜单', 'http://127.0.0.24/admin/auth/add_menu', '1', '0.011966', '4.000000', '1', '操作成功', '2', '2018-08-15 21:15:47');
+INSERT INTO `xman_system_operation_log` VALUES ('194', '删除菜单', 'http://127.0.0.24/admin/auth/del_menu', '1', '0.013744', '3.000000', '1', '删除成功', '2', '2018-08-15 21:15:57');
+INSERT INTO `xman_system_operation_log` VALUES ('195', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.012879', '5.000000', '1', '操作成功', '2', '2018-08-15 21:34:50');
+INSERT INTO `xman_system_operation_log` VALUES ('196', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.008066', '5.000000', '1', '操作成功', '2', '2018-08-15 21:35:10');
+INSERT INTO `xman_system_operation_log` VALUES ('197', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.042844', '17.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/Controller/UpdatelogController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Updatelog/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Updatelog/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Updatelog/index.html <br>规则：<br>admin/updatelog/index<br>admin/updatelog/add<br>admin/updatelog/edit<br>admin/updatelog/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-16 15:51:26');
+INSERT INTO `xman_system_operation_log` VALUES ('198', '添加菜单', 'http://127.0.0.24/admin/auth/add_menu', '1', '0.009067', '4.000000', '1', '操作成功', '2', '2018-08-16 15:52:22');
+INSERT INTO `xman_system_operation_log` VALUES ('199', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.012637', '5.000000', '1', '操作成功', '2', '2018-08-16 15:52:35');
+INSERT INTO `xman_system_operation_log` VALUES ('200', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.009261', '4.000000', '1', '操作成功', '2', '2018-08-16 15:52:52');
+INSERT INTO `xman_system_operation_log` VALUES ('201', 'Updatelog/add', 'http://127.0.0.24/admin/Updatelog/add', '1', '0.009171', '3.000000', '1', '添加成功', '2', '2018-08-16 15:54:00');
+INSERT INTO `xman_system_operation_log` VALUES ('202', 'Updatelog/add', 'http://127.0.0.24/admin/Updatelog/add', '1', '0.007595', '3.000000', '1', '添加成功', '2', '2018-08-16 16:59:17');
+INSERT INTO `xman_system_operation_log` VALUES ('203', 'Updatelog/delete', 'http://127.0.0.24/admin/Updatelog/delete', '1', '0.007733', '2.000000', '1', '删除成功', '2', '2018-08-16 16:59:44');
+INSERT INTO `xman_system_operation_log` VALUES ('204', 'Updatelog/add', 'http://127.0.0.24/admin/Updatelog/add', '1', '0.010543', '3.000000', '1', '添加成功', '2', '2018-08-16 22:13:52');
+INSERT INTO `xman_system_operation_log` VALUES ('205', 'Updatelog/edit', 'http://127.0.0.24/admin/Updatelog/edit', '1', '0.012915', '4.000000', '1', '操作成功', '2', '2018-08-16 22:15:33');
+INSERT INTO `xman_system_operation_log` VALUES ('206', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.006970', '4.000000', '0', '数据无改动', '2', '2018-08-16 23:06:02');
+INSERT INTO `xman_system_operation_log` VALUES ('207', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.012962', '4.000000', '1', '操作成功', '2', '2018-08-16 23:07:06');
+INSERT INTO `xman_system_operation_log` VALUES ('208', 'Updatelog/add', 'http://127.0.0.24/admin/Updatelog/add', '1', '0.008629', '3.000000', '1', '添加成功', '2', '2018-08-16 23:10:42');
+INSERT INTO `xman_system_operation_log` VALUES ('209', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.081963', '48.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/Controller/TestController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Test/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Test/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Test/index.html <br>规则：<br>admin/test/index<br>admin/test/add<br>admin/test/edit<br>admin/test/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-17 21:39:49');
+INSERT INTO `xman_system_operation_log` VALUES ('210', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.014437', '5.000000', '1', '操作成功', '2', '2018-08-17 21:40:09');
+INSERT INTO `xman_system_operation_log` VALUES ('211', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.011621', '4.000000', '1', '操作成功', '2', '2018-08-17 21:40:26');
+INSERT INTO `xman_system_operation_log` VALUES ('212', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.012791', '4.000000', '1', '操作成功', '2', '2018-08-18 00:27:42');
+INSERT INTO `xman_system_operation_log` VALUES ('213', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.011066', '4.000000', '1', '操作成功', '2', '2018-08-18 00:28:41');
+INSERT INTO `xman_system_operation_log` VALUES ('214', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.014724', '4.000000', '1', '操作成功', '2', '2018-08-18 00:30:35');
+INSERT INTO `xman_system_operation_log` VALUES ('215', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.009980', '4.000000', '1', '操作成功', '2', '2018-08-18 00:30:47');
+INSERT INTO `xman_system_operation_log` VALUES ('216', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.009476', '4.000000', '1', '操作成功', '2', '2018-08-18 00:30:55');
+INSERT INTO `xman_system_operation_log` VALUES ('217', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.010576', '4.000000', '1', '操作成功', '2', '2018-08-18 00:31:12');
+INSERT INTO `xman_system_operation_log` VALUES ('218', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.008491', '4.000000', '1', '操作成功', '2', '2018-08-18 00:31:58');
+INSERT INTO `xman_system_operation_log` VALUES ('219', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.008297', '4.000000', '1', '操作成功', '2', '2018-08-18 00:32:14');
+INSERT INTO `xman_system_operation_log` VALUES ('220', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.010429', '4.000000', '1', '操作成功', '2', '2018-08-18 00:32:30');
+INSERT INTO `xman_system_operation_log` VALUES ('221', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.009330', '4.000000', '1', '操作成功', '2', '2018-08-18 00:32:39');
+INSERT INTO `xman_system_operation_log` VALUES ('222', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.006914', '4.000000', '1', '操作成功', '2', '2018-08-18 00:32:52');
+INSERT INTO `xman_system_operation_log` VALUES ('223', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.011850', '4.000000', '1', '操作成功', '2', '2018-08-18 00:33:04');
+INSERT INTO `xman_system_operation_log` VALUES ('224', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.009210', '4.000000', '1', '操作成功', '2', '2018-08-18 00:33:17');
+INSERT INTO `xman_system_operation_log` VALUES ('225', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.011438', '4.000000', '1', '操作成功', '2', '2018-08-18 00:33:36');
+INSERT INTO `xman_system_operation_log` VALUES ('226', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.008376', '4.000000', '1', '操作成功', '2', '2018-08-18 00:34:42');
+INSERT INTO `xman_system_operation_log` VALUES ('227', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.012049', '4.000000', '1', '操作成功', '2', '2018-08-18 00:35:00');
+INSERT INTO `xman_system_operation_log` VALUES ('228', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.009216', '4.000000', '1', '操作成功', '2', '2018-08-18 00:35:14');
+INSERT INTO `xman_system_operation_log` VALUES ('229', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.091837', '29.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/Controller/SystemskinController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Systemskin/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Systemskin/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Systemskin/index.html <br>规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:14:53');
+INSERT INTO `xman_system_operation_log` VALUES ('230', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.011579', '5.000000', '1', '操作成功', '2', '2018-08-18 13:15:02');
+INSERT INTO `xman_system_operation_log` VALUES ('231', '添加菜单', 'http://127.0.0.24/admin/auth/add_menu', '1', '0.009602', '4.000000', '1', '操作成功', '2', '2018-08-18 13:15:36');
+INSERT INTO `xman_system_operation_log` VALUES ('232', 'Systemskin/add', 'http://127.0.0.24/admin/Systemskin/add', '1', '0.010013', '5.000000', '1', '添加成功', '2', '2018-08-18 13:16:03');
+INSERT INTO `xman_system_operation_log` VALUES ('233', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.011693', '6.000000', '1', '操作成功', '2', '2018-08-18 13:19:18');
+INSERT INTO `xman_system_operation_log` VALUES ('234', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.040065', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:31:44');
+INSERT INTO `xman_system_operation_log` VALUES ('235', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.036402', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:33:09');
+INSERT INTO `xman_system_operation_log` VALUES ('236', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.041366', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:35:55');
+INSERT INTO `xman_system_operation_log` VALUES ('237', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.010238', '6.000000', '1', '操作成功', '2', '2018-08-18 13:36:09');
+INSERT INTO `xman_system_operation_log` VALUES ('238', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.008511', '6.000000', '1', '操作成功', '2', '2018-08-18 13:36:18');
+INSERT INTO `xman_system_operation_log` VALUES ('239', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.045261', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:39:23');
+INSERT INTO `xman_system_operation_log` VALUES ('240', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.040981', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:40:38');
+INSERT INTO `xman_system_operation_log` VALUES ('241', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.036266', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:41:23');
+INSERT INTO `xman_system_operation_log` VALUES ('242', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.037701', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:41:49');
+INSERT INTO `xman_system_operation_log` VALUES ('243', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.008662', '6.000000', '1', '操作成功', '2', '2018-08-18 13:42:56');
+INSERT INTO `xman_system_operation_log` VALUES ('244', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.034392', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:43:57');
+INSERT INTO `xman_system_operation_log` VALUES ('245', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.038858', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 13:44:56');
+INSERT INTO `xman_system_operation_log` VALUES ('246', 'Systemskin/add', 'http://127.0.0.24/admin/Systemskin/add', '1', '0.007823', '5.000000', '1', '添加成功', '2', '2018-08-18 14:33:36');
+INSERT INTO `xman_system_operation_log` VALUES ('247', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.046711', '23.000000', '1', '规则：<br>admin/systemskin/index<br>admin/systemskin/add<br>admin/systemskin/edit<br>admin/systemskin/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-18 15:10:22');
+INSERT INTO `xman_system_operation_log` VALUES ('248', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.010151', '6.000000', '1', '操作成功', '2', '2018-08-18 15:10:41');
+INSERT INTO `xman_system_operation_log` VALUES ('249', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.010825', '6.000000', '1', '操作成功', '2', '2018-08-18 15:11:19');
+INSERT INTO `xman_system_operation_log` VALUES ('250', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.007613', '6.000000', '1', '操作成功', '2', '2018-08-18 15:17:18');
+INSERT INTO `xman_system_operation_log` VALUES ('251', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.008286', '6.000000', '1', '操作成功', '2', '2018-08-18 15:19:32');
+INSERT INTO `xman_system_operation_log` VALUES ('252', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.010124', '6.000000', '1', '操作成功', '2', '2018-08-18 15:19:41');
+INSERT INTO `xman_system_operation_log` VALUES ('253', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.012432', '6.000000', '1', '操作成功', '2', '2018-08-18 15:28:29');
+INSERT INTO `xman_system_operation_log` VALUES ('254', 'Systemskin/add', 'http://127.0.0.24/admin/Systemskin/add', '1', '0.009615', '5.000000', '1', '添加成功', '2', '2018-08-18 15:30:14');
+INSERT INTO `xman_system_operation_log` VALUES ('255', 'Systemskin/delete', 'http://127.0.0.24/admin/Systemskin/delete', '1', '0.011472', '3.000000', '1', '删除成功', '2', '2018-08-18 15:32:37');
+INSERT INTO `xman_system_operation_log` VALUES ('256', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.008406', '6.000000', '1', '操作成功', '2', '2018-08-18 15:32:49');
+INSERT INTO `xman_system_operation_log` VALUES ('257', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.010059', '6.000000', '1', '操作成功', '2', '2018-08-18 15:33:11');
+INSERT INTO `xman_system_operation_log` VALUES ('258', 'Systemskin/edit', 'http://127.0.0.24/admin/Systemskin/edit', '1', '0.009593', '6.000000', '1', '操作成功', '2', '2018-08-18 15:33:48');
+INSERT INTO `xman_system_operation_log` VALUES ('259', 'Systemskin/delete', 'http://127.0.0.24/admin/Systemskin/delete', '1', '0.013536', '3.000000', '1', '删除成功', '2', '2018-08-18 15:34:07');
+INSERT INTO `xman_system_operation_log` VALUES ('260', 'Article/index', 'http://127.0.0.24/admin/article/index', '0', '1.000000', '1.000000', '0', '权限不足', '17', '2018-08-18 16:23:55');
+INSERT INTO `xman_system_operation_log` VALUES ('261', 'Systemskin/index', 'http://127.0.0.24/admin/systemskin/index', '0', '1.000000', '1.000000', '0', '权限不足', '17', '2018-08-18 16:23:55');
+INSERT INTO `xman_system_operation_log` VALUES ('262', 'User/index', 'http://127.0.0.24/admin/user/index', '0', '1.000000', '1.000000', '0', '权限不足', '17', '2018-08-18 16:24:02');
+INSERT INTO `xman_system_operation_log` VALUES ('263', '生成代码', 'http://127.0.0.24/admin/Makecode/make', '1', '0.049089', '19.000000', '1', '<span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/Controller/CatetestController.class.php <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Catetest/add.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Catetest/edit.html <br><span style=\'color:green\'>成功</span> C:/E/PHPIDE/VertrigoServ/www/x-man/Application/Admin/View/Catetest/index.html <br>规则：<br>admin/catetest/index<br>admin/catetest/add<br>admin/catetest/edit<br>admin/catetest/delete<br>规则创建<span class=\'layui-blue\'>成功</span><br>请自行创建菜单、绑定规则，以及角色组授权', '2', '2018-08-20 10:47:23');
+INSERT INTO `xman_system_operation_log` VALUES ('264', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.008063', '4.000000', '1', '操作成功', '2', '2018-08-20 10:47:31');
+INSERT INTO `xman_system_operation_log` VALUES ('265', '添加菜单', 'http://127.0.0.24/admin/auth/add_menu', '1', '0.008519', '3.000000', '1', '操作成功', '2', '2018-08-20 10:47:49');
+INSERT INTO `xman_system_operation_log` VALUES ('266', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.008058', '4.000000', '1', '操作成功', '2', '2018-08-20 10:48:10');
+INSERT INTO `xman_system_operation_log` VALUES ('267', 'Catetest/add', 'http://127.0.0.24/admin/Catetest/add', '1', '0.008720', '3.000000', '1', '添加成功', '2', '2018-08-20 10:48:35');
+INSERT INTO `xman_system_operation_log` VALUES ('268', '删除规则', 'http://127.0.0.24/admin/auth/del_rule', '1', '0.004640', '-3.000000', '0', '存在子权限，请删除子权限', '2', '2018-08-22 15:58:45');
+INSERT INTO `xman_system_operation_log` VALUES ('269', '修改规则', 'http://127.0.0.24/admin/auth/edit_rule', '1', '0.019924', '0.000000', '1', '操作成功', '2', '2018-08-22 16:01:58');
+INSERT INTO `xman_system_operation_log` VALUES ('270', '快速更改规则状态', 'http://127.0.0.24/admin/auth/fast_change_rule', '1', '0.012835', '-2.000000', '1', '', '2', '2018-08-22 16:38:55');
+INSERT INTO `xman_system_operation_log` VALUES ('271', '快速更改规则状态', 'http://127.0.0.24/admin/auth/fast_change_rule', '1', '0.006835', '-2.000000', '1', '', '2', '2018-08-22 16:39:03');
+INSERT INTO `xman_system_operation_log` VALUES ('272', '删除规则', 'http://127.0.0.24/admin/auth/del_rule', '1', '0.006818', '-3.000000', '0', '存在子权限，请删除子权限', '2', '2018-08-22 16:47:00');
+INSERT INTO `xman_system_operation_log` VALUES ('273', '删除规则', 'http://127.0.0.24/admin/auth/del_rule', '1', '0.013129', '3.000000', '1', '删除成功', '2', '2018-08-22 16:49:18');
+INSERT INTO `xman_system_operation_log` VALUES ('274', '修改规则', 'http://127.0.0.24/admin/auth/edit_rule', '1', '0.010562', '0.000000', '1', '操作成功', '2', '2018-08-22 16:49:28');
+INSERT INTO `xman_system_operation_log` VALUES ('275', '添加规则', 'http://127.0.0.24/admin/auth/add_rule', '1', '0.009748', '-1.000000', '1', '添加成功', '2', '2018-08-22 16:49:39');
+INSERT INTO `xman_system_operation_log` VALUES ('276', '删除规则', 'http://127.0.0.24/admin/auth/del_rule', '1', '0.008656', '3.000000', '1', '删除成功', '2', '2018-08-22 16:49:45');
+INSERT INTO `xman_system_operation_log` VALUES ('277', '菜单排序', 'http://127.0.0.24/admin/auth/change_menu_sort', '1', '0.015985', '8.000000', '1', '更新成功', '2', '2018-08-22 16:53:20');
+INSERT INTO `xman_system_operation_log` VALUES ('278', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.009588', '4.000000', '1', '操作成功', '2', '2018-08-22 17:04:46');
+INSERT INTO `xman_system_operation_log` VALUES ('279', '菜单排序', 'http://127.0.0.24/admin/auth/change_menu_sort', '1', '0.026604', '9.000000', '1', '更新成功', '2', '2018-08-22 17:15:49');
+INSERT INTO `xman_system_operation_log` VALUES ('280', '菜单排序', 'http://127.0.0.24/admin/auth/change_menu_sort', '1', '0.021628', '9.000000', '1', '更新成功', '2', '2018-08-22 17:18:39');
+INSERT INTO `xman_system_operation_log` VALUES ('281', '添加规则', 'http://127.0.0.24/admin/auth/add_rule', '1', '0.010059', '-1.000000', '1', '添加成功', '2', '2018-08-22 21:26:16');
+INSERT INTO `xman_system_operation_log` VALUES ('282', '添加菜单', 'http://127.0.0.24/admin/auth/add_menu', '1', '0.006808', '3.000000', '1', '操作成功', '2', '2018-08-22 21:27:00');
+INSERT INTO `xman_system_operation_log` VALUES ('283', '添加菜单', 'http://127.0.0.24/admin/auth/add_menu', '1', '0.009175', '3.000000', '1', '操作成功', '2', '2018-08-22 21:27:28');
+INSERT INTO `xman_system_operation_log` VALUES ('284', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.008161', '4.000000', '1', '操作成功', '2', '2018-08-22 23:07:02');
+INSERT INTO `xman_system_operation_log` VALUES ('285', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.011153', '4.000000', '1', '操作成功', '2', '2018-08-22 23:07:09');
+INSERT INTO `xman_system_operation_log` VALUES ('286', '修改菜单', 'http://127.0.0.24/admin/auth/edit_menu', '1', '0.010616', '4.000000', '1', '操作成功', '2', '2018-08-22 23:10:46');
+INSERT INTO `xman_system_operation_log` VALUES ('287', '快速更改规则状态', 'http://127.0.0.24/admin/auth/fast_change_rule', '1', '0.013473', '-2.000000', '1', '', '2', '2018-08-23 11:23:40');
+INSERT INTO `xman_system_operation_log` VALUES ('288', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.013997', '4.000000', '1', '操作成功', '2', '2018-08-23 11:24:00');
+INSERT INTO `xman_system_operation_log` VALUES ('289', '快速更改规则状态', 'http://127.0.0.24/admin/auth/fast_change_rule', '1', '1.000000', '2.000000', '0', '权限不足', '2', '2018-08-23 11:24:05');
+INSERT INTO `xman_system_operation_log` VALUES ('290', '快速更改规则状态', 'http://127.0.0.24/admin/auth/fast_change_rule', '1', '1.000000', '2.000000', '0', '权限不足', '2', '2018-08-23 11:24:08');
+INSERT INTO `xman_system_operation_log` VALUES ('291', '快速更改规则状态', 'http://127.0.0.24/admin/auth/fast_change_rule', '1', '1.000000', '2.000000', '0', '权限不足', '2', '2018-08-23 11:24:47');
+INSERT INTO `xman_system_operation_log` VALUES ('292', '修改角色组', 'http://127.0.0.24/admin/auth/edit_group', '1', '0.010229', '4.000000', '1', '操作成功', '2', '2018-08-23 11:25:07');
+INSERT INTO `xman_system_operation_log` VALUES ('293', '快速更改规则状态', 'http://127.0.0.24/admin/auth/fast_change_rule', '1', '0.007051', '-2.000000', '1', '', '2', '2018-08-23 11:25:12');
+
+-- ----------------------------
+-- Table structure for xman_system_skin
+-- ----------------------------
+DROP TABLE IF EXISTS `xman_system_skin`;
+CREATE TABLE `xman_system_skin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `framecolor` varchar(255) NOT NULL DEFAULT '' COMMENT '框架颜色',
+  `topcolor` varchar(255) NOT NULL COMMENT '顶部背景',
+  `leftcolor` varchar(255) NOT NULL COMMENT '左侧背景',
+  `topbottomcolor` varchar(255) NOT NULL COMMENT '顶部底边',
+  `menucolor` varchar(255) NOT NULL COMMENT '三级菜单',
+  `user_id` int(11) DEFAULT '0' COMMENT '用户ID',
+  `state` enum('1','2') NOT NULL DEFAULT '2' COMMENT '皮肤类型:1=系统主题,2=用户主题',
+  `name` varchar(255) NOT NULL DEFAULT '' COMMENT '皮肤名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of xman_system_skin
+-- ----------------------------
+INSERT INTO `xman_system_skin` VALUES ('7', '#019688', '#23262e', '#393d49', '#5fb878', '#2b2e37', '0', '1', 'layui风格');
+INSERT INTO `xman_system_skin` VALUES ('10', '#409eff', '#23262e', '#393d49', '#c9c9c9', '#2b2e37', '0', '1', 'element风格');
+INSERT INTO `xman_system_skin` VALUES ('12', '#d25757', '#23262e', '#393d49', '#f79b40', '#2b2e37', '0', '1', '活力少女');
+INSERT INTO `xman_system_skin` VALUES ('16', '#cc3366', '#23262e', '#393d49', '#e36467', '#2b2e37', '0', '1', '玫红');
+INSERT INTO `xman_system_skin` VALUES ('20', '#eeca00', '#23262e', '#393d49', '#505050', '#2b2e37', '0', '1', '土豪金');
+INSERT INTO `xman_system_skin` VALUES ('25', '#d25757', '#23262e', '#393d49', '#f79b40', '#2b2e37', '17', '2', '');
+INSERT INTO `xman_system_skin` VALUES ('27', '#019688', '#23262e', '#393d49', '#5fb878', '#2b2e37', '2', '2', '');
 
 -- ----------------------------
 -- Table structure for xman_test
@@ -430,6 +640,25 @@ INSERT INTO `xman_test` VALUES ('32', 'monday', 'male', '1234214', '/Public/Uplo
 INSERT INTO `xman_test` VALUES ('33', 'monday', 'male', '123123', 'https://testyao.oss-cn-beijing.aliyuncs.com/images/20180724/5b57413ec6844.jpg', 'https://testyao.oss-cn-beijing.aliyuncs.com/images/20180724/5b57414e7ca4b.jpg', '123213', '0.00', '2018-07-24', '2018-07-24 23:10:11', '2018', '23:10:14', '1', '0', '1', '2', '&lt;img src=&quot;https://testyao.oss-cn-beijing.aliyuncs.com/images/20180724/5b574145c458e.jpg&quot; alt=&quot;xph.jpg&quot;&gt;');
 
 -- ----------------------------
+-- Table structure for xman_update_log
+-- ----------------------------
+DROP TABLE IF EXISTS `xman_update_log`;
+CREATE TABLE `xman_update_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(1024) NOT NULL COMMENT '更新内容',
+  `image` varchar(255) NOT NULL COMMENT '图片',
+  `addtime` datetime NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of xman_update_log
+-- ----------------------------
+INSERT INTO `xman_update_log` VALUES ('1', '修改菜单管理图标选择样式', 'https://testyao.oss-cn-beijing.aliyuncs.com/images/20180816/5b752d8ac9f48.png', '2018-08-15 19:04:04');
+INSERT INTO `xman_update_log` VALUES ('3', '顶部标签栏添加右键菜单包含刷新、关闭等功能', 'https://testyao.oss-cn-beijing.aliyuncs.com/images/20180816/5b7587027d35e.png', '2018-08-16 22:13:51');
+INSERT INTO `xman_update_log` VALUES ('4', '左侧导航栏 搜索功能', 'https://testyao.oss-cn-beijing.aliyuncs.com/images/20180816/5b7593efc4fd3.png', '2018-08-16 23:10:41');
+
+-- ----------------------------
 -- Table structure for xman_user
 -- ----------------------------
 DROP TABLE IF EXISTS `xman_user`;
@@ -446,7 +675,7 @@ CREATE TABLE `xman_user` (
 -- ----------------------------
 -- Records of xman_user
 -- ----------------------------
-INSERT INTO `xman_user` VALUES ('1', '测试用户1', '18812345678', '2018-07-18', '/Public/Uploads/img/20180718/5b4eeec4799e5.jpg', '1');
-INSERT INTO `xman_user` VALUES ('2', 'www', '18812345678', '2018-07-22', '/Public/Uploads/img/20180722/5b549ac4496d4.jpg', '0');
+INSERT INTO `xman_user` VALUES ('1', '测试用户1', '18812345678', '2018-07-18', 'https://testyao.oss-cn-beijing.aliyuncs.com/images/20180726/5b59512f2e229.jpg', '1');
+INSERT INTO `xman_user` VALUES ('2', 'www', '18812345678', '2018-07-22', 'https://testyao.oss-cn-beijing.aliyuncs.com/images/20180726/5b59514a3ffe9.jpg', '0');
 INSERT INTO `xman_user` VALUES ('3', 'tttttt', '11234214', '2018-07-22', '/Public/Uploads/img/20180722/5b549afbb143e.jpg', '1');
 INSERT INTO `xman_user` VALUES ('4', 'tttt', 'tttt', '2018-07-05', '/Public/Uploads/img/20180723/5b555b67ef59c.jpg', '1');

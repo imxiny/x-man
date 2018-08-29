@@ -31,7 +31,7 @@
             <!-- 顶级菜单 -->
             <ul class="layui-nav mobileTopLevelMenus" mobile>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="iconfont xman-menu"></i><cite>X-Man</cite></a>
+                    <a href="javascript:;"><i class="iconfont xman-menu"></i><cite>菜单</cite></a>
                     <dl class="layui-nav-child">
                         <volist name="list" id="v" key="k">
                             <if condition="$k == 1">
@@ -189,35 +189,68 @@
         <div class="layui-col-md12">
             <form action="" lay-filter="form1" class="layui-form" style="width: 90%;padding: 5%;">
                 <div class="layui-form-item">
+                    <div class="layui-inline">
                     <label class="layui-form-label">
                         框架颜色
                     </label>
                     <div class="layui-input-block">
-                        <input type="color" name="framecolor" title="" value="#01AAED" data-class=".layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before, .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this" data-imp="" data-other="1" class="layui-input">
+                        <div class="layui-input-inline" style="width: 140px;">
+                            <input type="text"  placeholder="请选择颜色" class="layui-input color" id="framecolor" name="framecolor" title="" value="#01AAED" data-class=".layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before, .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this" data-imp="" data-other="1">
+                        </div>
+                        <div class="layui-inline" style="left: -11px;">
+                            <div id="framecolor_show" class="layui-inline">
+                            </div>
+                        </div>
+                        <!--<input type="color" name="framecolor" title="" value="#01AAED" data-class=".layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before, .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this" data-imp="" data-other="1" class="layui-input">-->
+                    </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">
+                            顶部背景
+                        </label>
+                        <div class="layui-input-block">
+                            <!--<input type="color" name="topcolor" >-->
+                            <div class="layui-input-inline" style="width: 140px;">
+                                <input type="text"  placeholder="请选择颜色" class="layui-input color" id="topcolor" name="topcolor" title="" data-class=".layui-layout-admin .layui-header" data-imp="" value="#23262E">
+                            </div>
+                            <div class="layui-inline" style="left: -11px;">
+                                <div id="topcolor_show" class="layui-inline">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        顶部背景
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="color" name="topcolor" title="" data-class=".layui-layout-admin .layui-header" data-imp="" value="#23262E" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
+                    <div class="layui-inline">
                     <label class="layui-form-label">
                         左侧背景
                     </label>
                     <div class="layui-input-block">
-                        <input type="color" name="leftcolor" title="" value="#393D49" data-class=".layui-bg-black" data-imp="1" class="layui-input">
+                        <div class="layui-input-inline" style="width: 140px;">
+                            <input type="text"  placeholder="请选择颜色" class="layui-input color" id="leftcolor" name="leftcolor" title="" data-class=".layui-bg-black" data-imp="1"  value="#393D49">
+                        </div>
+                        <div class="layui-inline" style="left: -11px;">
+                            <div id="leftcolor_show" class="layui-inline">
+                            </div>
+                        </div>
+                        <!--<input type="color" name="leftcolor" title="" value="#393D49" data-class=".layui-bg-black" data-imp="1" class="layui-input">-->
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        底边选中
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="color" name="topbottomcolor" title="" value="#FFD700" data-class=".layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after" data-imp="" class="layui-input">
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">
+                            底边选中
+                        </label>
+                        <div class="layui-input-block">
+                            <!--<input type="color" name="topbottomcolor" title="" value="#FFD700" data-class=".layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after" data-imp="" class="layui-input">-->
+                            <div class="layui-input-inline" style="width: 140px;">
+                                <input type="text"  placeholder="请选择颜色" class="layui-input color" id="topbottomcolor" name="topbottomcolor" title="" data-class=".layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after" data-imp=""  value="#FFd700">
+                            </div>
+                            <div class="layui-inline" style="left: -11px;">
+                                <div id="topbottomcolor_show" class="layui-inline">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -225,7 +258,14 @@
                         三级菜单
                     </label>
                     <div class="layui-input-block">
-                        <input type="color" name="menucolor" title="" value="#2B2E37" data-class=".layui-nav-item.layui-nav-itemed" data-imp="1" class="layui-input">
+                        <div class="layui-input-inline" style="width: 140px;">
+                            <input type="text"  placeholder="请选择颜色" class="layui-input color" id="menucolor" name="menucolor" title="" data-class=".layui-nav-item.layui-nav-itemed" data-imp="1"  value="#2b2e37">
+                        </div>
+                        <div class="layui-inline" style="left: -11px;">
+                            <div id="menucolor_show" class="layui-inline">
+                            </div>
+                        </div>
+                        <!--<input type="color" name="menucolor" title="" value="#2B2E37" data-class=".layui-nav-item.layui-nav-itemed" data-imp="1" class="layui-input">-->
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -239,7 +279,7 @@
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <a class="layui-btn makeSkin">制作专属皮肤</a>
-                        <a class="layui-btn layui-btn-primary defaultSkin">默认皮肤</a>
+                        <a class="layui-btn layui-btn-primary defaultSkin">清除皮肤</a>
                     </div>
                 </div>
                 <!--<div class="layui-form-item">
@@ -264,7 +304,6 @@
 <script type="text/javascript" src="/Public/static/js/index.js"></script>
 <script type="text/javascript" src="/Public/static/js/cache.js"></script>
 <script type="text/javascript">
-
     window.onload = function () {
         getData($('.layui-nav-item .layui-this').data('menu'));
         $(".fullscreen").toggle(function () {
@@ -275,9 +314,44 @@
             $(this).data('minfo','全屏').find('i').removeClass('xman-fullscreen-exit').addClass('xman-fullscreen');
         });
     };
-    $('.block-icon-list clearfix li span[mx-click="car*]').click();
-    layui.use(['layer'], function () {
+    layui.use(['layer','colorpicker'], function () {
         let layer = layui.layer;
+        let colorpicker = layui.colorpicker;
+
+
+        $(".color").on('change',function(){
+            let _this = $(this);
+            let id = _this.prop('id');
+            if (id) {
+                colorpicker.render({
+                    elem: '#' + id + '_show'
+                    ,color: _this.val()
+                    ,change: function(color){
+                        $('#' + id).val(color).change();
+                    }
+                    ,done: function(color){
+                        $('#' + id).val(color).change();
+                    }
+                });
+            }
+
+            let cssStr = '';
+            $(".color").each(function(index,n){
+                let dom = $(n);
+                cssStr += dom.data('class') + "{ background-color: "+dom.val();
+                if (dom.data('imp')) {
+                    cssStr += "!important;}" + "\n\r";
+                } else {
+                    cssStr += "}" + "\n\r";
+                }
+                if (dom.data('other')) {
+                    cssStr += ".layui-tab-title .layui-this {color: " + dom.val() + ";border-bottom: 1px solid " + dom.val() +";}\n\r.layui-body {border-top: 5px solid " + dom.val() + ";}\n\r.layui-nav .layui-nav-child a:hover,.ui-context-menu-item a:hover{background-color: "+ dom.val() +";}\n\r.layui-nav .layui-nav-child a:hover, .layui-nav .layui-nav-child dd.layui-this a:hover{background-color: "+ dom.val() +"}\n\r.topLevelMenus .layui-nav-item.layui-this a{background-color: "+ dom.val() +"}\n\r";
+                }
+            });
+            let head = $("head");
+            head.find('style').remove();
+            head.append("<style type='text/css'>" +cssStr+ "</style>");
+        });
         let intips = '';
         $("li[data-minfo]").hover(function () {
             intips = layer.tips($(this).data('minfo'), $(this), {tips: [3, '#424242']});

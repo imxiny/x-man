@@ -1,8 +1,9 @@
 var cacheStr = window.sessionStorage.getItem("cache"),
     oneLoginStr = window.sessionStorage.getItem("oneLogin");
-layui.use(['form', 'jquery', "layer"], function () {
+layui.use(['form', 'jquery', "layer","colorpicker"], function () {
     var form = layui.form,
         $ = layui.jquery,
+        colorpicker = layui.colorpicker,
         layer = parent.layer === undefined ? layui.layer : top.layer;
 
     //公告层
@@ -97,19 +98,24 @@ layui.use(['form', 'jquery', "layer"], function () {
         let old = '';
         layer.open({
             title: "更换皮肤",
-            area: ["50%", "80%"],
+            area: ["60%", "77%"],
             type: "1",
             content: $("#skinbox"),
             success: function (index, layero) {
                 $.post("/admin/index/getSkin",function(data){
                     if(data.has){
-                        form.val('form1',{
+                        for(let t in data){
+                            if (-1 !== t.indexOf('color')) {
+                                $("#" + t).val(data[t]).change();
+                            }
+                        }
+                        /*form.val('form1',{
                             'menucolor':data.menucolor,
                             'framecolor':data.framecolor,
                             'topcolor':data.topcolor,
                             'leftcolor':data.leftcolor,
                             'topbottomcolor':data.topbottomcolor
-                        });
+                        });*/
                     }
                 });
                 $.post("/admin/index/getSystemSkin",function(data){
@@ -131,14 +137,19 @@ layui.use(['form', 'jquery', "layer"], function () {
     $('#skinbox').on('click','a[data-skinid]',function(){
         let skid = $(this).data('skinid');
         $.post("/admin/index/getSkinById",{'id':skid},function(data){
-            form.val('form1',{
+            for(let t in data){
+                if (-1 !== t.indexOf('color')) {
+                    $("#" + t).val(data[t]).change();
+                }
+            }
+            /*form.val('form1',{
                 'menucolor':data.menucolor,
                 'framecolor':data.framecolor,
                 'topcolor':data.topcolor,
                 'leftcolor':data.leftcolor,
                 'topbottomcolor':data.topbottomcolor
             });
-            $("input[name=framecolor]").change();
+            $("input[name=framecolor]").change();*/
         });
     });
 });

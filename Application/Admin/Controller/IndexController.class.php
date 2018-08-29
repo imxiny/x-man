@@ -93,11 +93,14 @@ class IndexController extends AdminBaseController
         $res['style'] = false;
         $id = session('x_admin_id');
         $skin = M('system_skin')->where(['user_id' => $id])->find() ?: '';
+        if (empty($skin)) {
+            $skin = M('system_skin')->find(35);
+        }
         if ($skin) {
             $res['style'] =$this->makeCss($skin);
             $res['has'] =true;
+            $res = array_merge($res, $skin);
         }
-        $res = array_merge($res, $skin);
         $this->ajaxReturn($res);
     }
 

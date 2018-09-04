@@ -100,6 +100,7 @@ layui.use(['form', 'jquery', "layer","colorpicker"], function () {
             title: "更换皮肤",
             area: ["60%", "77%"],
             type: "1",
+            shade:false,
             content: $("#skinbox"),
             success: function (index, layero) {
                 $.post("/admin/index/getSkin",function(data){

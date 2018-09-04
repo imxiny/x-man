@@ -317,6 +317,17 @@
             exitfull();
             $(this).data('minfo','全屏').find('i').removeClass('xman-fullscreen-exit').addClass('xman-fullscreen');
         });
+        let timerSoll;
+        $('#navBar').on('mouseleave', function(){
+            let that=this;
+            /*clearTimeout(timerSoll);
+            timerSoll=setTimeout(function(){*/
+                $(that).css('width',220);
+            /*},3000);*/
+        }).on('mouseenter', function(){
+           /* clearTimeout(timerSoll);*/
+            $(this).css('width',210);
+        });
     };
     layui.use(['layer','colorpicker'], function () {
         let layer = layui.layer;

@@ -124,10 +124,20 @@ layui.define(["element","jquery"],function(exports){
             title += '<i class="'+_this.find("i").attr("data-icon")+'"></i>';
 			//已打开的窗口中不存在
 			if(that.hasTab(_this.find("cite").text()) == -1 && _this.siblings("dl.layui-nav-child").length == 0){
-				if($(".layui-tab-title.top_tab li").length == openTabNum){
-					layer.msg('只能同时打开'+openTabNum+'个选项卡');
-					return;
-				}
+
+                if($(".layui-tab-title.top_tab li").length == openTabNum){
+                    layer.msg('只能同时打开'+openTabNum+'个选项卡');
+                    return;
+                }
+
+                //加载进度条事件
+                NProgress.done();
+                NProgress.start();
+                setTimeout(function(){
+                    NProgress.done();
+                },Math.floor(Math.random() * (6000 - 2000) + 1000));
+
+
 				tabIdIndex++;
 				title += '<cite>'+_this.find("cite").text().replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g, "&quot;").replace(/'/g, "&#039;")+'</cite>';
 				title += '<i class="layui-icon layui-unselect layui-tab-close layui-icon-close" data-id="'+tabIdIndex+'" title="关闭此页面"></i>';
@@ -313,6 +323,13 @@ layui.define(["element","jquery"],function(exports){
 		if($(this).hasClass("refreshThis")){
 			$(this).removeClass("refreshThis");
             let iframe = $($(".clildFrame .layui-tab-item.layui-show").find("iframe")[0]);
+            if(NProgress){
+                NProgress.done();
+                NProgress.start();
+                setTimeout(function(){
+                    NProgress.done();
+                },5000)
+			}
             iframe.attr('src',iframe.attr('src'));
             //以下方法同源限制
 			/*$(".clildFrame .layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();*/

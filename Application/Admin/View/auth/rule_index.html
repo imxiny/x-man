@@ -288,6 +288,9 @@
                 addoredit('/admin/auth/add_rule/id/'+data.id,'为 <span class="layui-red"> '+data.title+' </span>添加子项');
             }
         });
+        if(window.parent.NProgress){
+            window.parent.NProgress.done();
+        }
     })
 </script>
 </body>

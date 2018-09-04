@@ -43,6 +43,7 @@ class LoginController extends BaseController
     public function index()
     {
         $this->assign('vid',$this->vid);
+        $this->assign('bg',mt_rand(1,15));
         $this->assign('url', '/admin/index/index');
         $this->display("login/index");
     }

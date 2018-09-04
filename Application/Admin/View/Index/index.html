@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/Public/static/css/index.css" media="all"/>
     <!--<link rel="stylesheet" href="//at.alicdn.com/t/font_495240_oxbe4zwl9tem6lxr.css" media="all"/>-->
     <link rel="stylesheet" href="//at.alicdn.com/t/font_798193_ew7wixsziw8.css" media="all"/>
+    <link rel="stylesheet" href="/Public/static/js/nprogress/nprogress.css" media="all"/>
+    <script type="text/javascript" src="/Public/static/js/nprogress/nprogress.js"></script>
     <link rel="stylesheet" href="/Public/static/css/custom.css" media="all"/>
     {$style}
 </head>
@@ -195,7 +197,7 @@
                     </label>
                     <div class="layui-input-block">
                         <div class="layui-input-inline" style="width: 140px;">
-                            <input type="text"  placeholder="请选择颜色" class="layui-input color" id="framecolor" name="framecolor" title="" value="#01AAED" data-class=".layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before, .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this" data-imp="" data-other="1">
+                            <input type="text"  placeholder="请选择颜色" class="layui-input color" id="framecolor" name="framecolor" title="" value="#01AAED" data-class=".layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before, .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this,#nprogress .bar" data-imp="" data-other="1">
                         </div>
                         <div class="layui-inline" style="left: -11px;">
                             <div id="framecolor_show" class="layui-inline">
@@ -304,7 +306,9 @@
 <script type="text/javascript" src="/Public/static/js/index.js"></script>
 <script type="text/javascript" src="/Public/static/js/cache.js"></script>
 <script type="text/javascript">
+    NProgress.start();
     window.onload = function () {
+        NProgress.done();
         getData($('.layui-nav-item .layui-this').data('menu'));
         $(".fullscreen").toggle(function () {
             full();
@@ -345,7 +349,7 @@
                     cssStr += "}" + "\n\r";
                 }
                 if (dom.data('other')) {
-                    cssStr += ".layui-tab-title .layui-this {color: " + dom.val() + ";border-bottom: 1px solid " + dom.val() +";}\n\r.layui-body {border-top: 5px solid " + dom.val() + ";}\n\r.layui-nav .layui-nav-child a:hover,.ui-context-menu-item a:hover{background-color: "+ dom.val() +";}\n\r.layui-nav .layui-nav-child a:hover, .layui-nav .layui-nav-child dd.layui-this a:hover{background-color: "+ dom.val() +"}\n\r.topLevelMenus .layui-nav-item.layui-this a{background-color: "+ dom.val() +"}\n\r";
+                    cssStr += ".layui-tab-title .layui-this {color: " + dom.val() + ";border-bottom: 1px solid " + dom.val() +";}\n\r.layui-body {border-top: 5px solid " + dom.val() + ";}\n\r.layui-nav .layui-nav-child a:hover,.ui-context-menu-item a:hover{background-color: "+ dom.val() +";}\n\r.layui-nav .layui-nav-child a:hover, .layui-nav .layui-nav-child dd.layui-this a:hover{background-color: "+ dom.val() +"}\n\r.topLevelMenus .layui-nav-item.layui-this a{background-color: "+ dom.val() +"}\n\r#nprogress .spinner-icon{border-left-color:"+ dom.val() +";border-top-color:"+ dom.val() +";}\n\r#nprogress .peg{box-shadow: 0 0 10px "+ dom.val() +", 0 0 5px "+ dom.val() +";}";
                 }
             });
             let head = $("head");

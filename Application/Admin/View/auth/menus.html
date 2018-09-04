@@ -236,6 +236,9 @@
             $(this).html('<i class="layui-icon layui-icon-triangle-r"></i>展开');
             treetable.foldAll('#table');
         });
+        if(window.parent.NProgress){
+            window.parent.NProgress.done();
+        }
     });
 </script>
 </body>

@@ -181,8 +181,17 @@ class IndexController extends AdminBaseController
     private function makeCss($arr)
     {
         $style = "<style type=\"text/css\">
-.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before, .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before, .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this,#nprogress .bar
 { background-color: {$arr['framecolor']}}
+
+#nprogress .spinner-icon{
+    border-left-color:{$arr['framecolor']};
+    border-top-color:{$arr['framecolor']};
+}
+#nprogress .peg{
+    box-shadow: 0 0 10px {$arr['framecolor']}, 0 0 5px {$arr['framecolor']};
+}
+
 
 .layui-tab-title .layui-this {color: {$arr['framecolor']};border-bottom: 1px solid {$arr['framecolor']};}
 

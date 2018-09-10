@@ -133,7 +133,7 @@
                 height: "full - 10",
                 id: "table",
                 cols: [[
-                    {type: "checkbox", fixed: "left", width: 50},
+                    {type: "checkbox", width: 50},
                     {field: 'id', title: 'ID', width: 60, align: "center"},
                     {field: 'title', title: '规则名',width:240},
                     {field: 'name', title: '规则值'},
@@ -141,7 +141,7 @@
                     {field: 'is_url', width:80, title: '链接', align: 'center', templet: "#is_url",unresize:true},
                     {field: 'status',unresize:true,width:95, title: '状态', align: 'center', templet: "#status"},
                     {field: 'condition', title: '表达式'},
-                    {title: '操作', width: 140, templet: '#tool', fixed: "right", align: "center"}
+                    {title: '操作', width: 140, templet: '#tool',align: "center"}
                 ]],
                 done:function(){
                     layer.close(load);

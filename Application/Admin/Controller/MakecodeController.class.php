@@ -98,18 +98,6 @@ class MakecodeController extends AdminBaseController
 
     public function index()
     {
-   $table = 'article';
-        /*$M = M();
-        $sql = "SELECT " . " * FROM `information_schema`.`columns` "
-            . "WHERE TABLE_SCHEMA = '" . C('DB_NAME') . "' AND table_name = '" .
-            C('DB_PREFIX') . $table . "' "
-            . "ORDER BY ORDINAL_POSITION";
-        $showTableCommentSql = "SELECT "."TABLE_COMMENT FROM information_schema.TABLES WHERE table_schema='" .C('DB_NAME'). "' and TABLE_NAME='" . C('DB_PREFIX') . $table . "'";
-        $tabinfo = $M->query($showTableCommentSql);
-        $sql = "show tables";
-        $list = M()->query($sql);
-        var_dump($tabinfo);die;
-        die;*/
         $sql = "show tables";
         $list = M()->query($sql);
         $list = array_column($list, 'tables_in_' . C('DB_NAME'));

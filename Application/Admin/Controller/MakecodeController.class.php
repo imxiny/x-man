@@ -123,7 +123,7 @@ class MakecodeController extends AdminBaseController
         $file = ROOT_PATH . trim(APP_PATH, './') . '/' .
             'Admin/View/' . $controller . '/' . $controller . '.lock';
         if (file_exists($file)) {
-            $this->error('该控制器以开启误触锁定，请手动删除以下文件:<br>' . '<span class="layui-blue">' . $file . '</span>');
+            $this->error('该控制器已开启误触锁定，请手动删除以下文件:<br>' . '<span class="layui-blue">' . $file . '</span>');
         }
         $table = strtolower(I('post.table'));
         $this->overwrite = I('post.over') === 'true' ? true : false;

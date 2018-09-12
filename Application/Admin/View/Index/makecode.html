@@ -819,6 +819,8 @@
                         <li>7.查询扩展功能需要功能选择中的查询被选中</li>
                         <li>8.查询条件默认为查询条件包括所有select,radio,switch的状态以及主键(建议使用ID)字段的输入框</li>
                         <li>9.选择表后查询拓展会加载字段，选择字段及是否模糊，可添加条件</li>
+                        <li>10.<span class="layui-red">新!</span>新增其他表主键作为数据列，注释格式如下 xx:外联表的主键:外联表的显示字段(一般为title,name等,可以是外联表中的任意字段)  eg: 文章表中的分类列，列名 <span class="layui-red">category_id</span> 注释 <span class="layui-red">所属分类:id:title</span>更多注意事项请查看<span class="layui-red"><a
+                                href="#selid" style="color: dodgerblue;">主键控件</a></span></li>
                     </ol>
                 </blockquote>
                 <table class="layui-table">
@@ -982,6 +984,23 @@
                         </td>
                         <td>
                             以 <span class="layui-red">color</span> 结尾的且数据类型为 <span style="color: orangered">varchar</span>,<span style="color: orangered">char</span>的字段
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="selid">
+                            <span class="layui-red">主键控件</span>
+                        </td>
+                        <td>
+                            以 <span class="layui-red">_id</span> 结尾的且数据类型为 <span style="color: orangered">int</span>系列的字段<br>
+                            其他要求:<br>
+                            1.字段名必须为 <span class="layui-red">表名_id</span> 无需表名前缀，表名以及字段名严格遵守thinkphp3.2.3规范，不可使用驼峰法命名。<br>
+                            2.注释格式    <strong><span style="color: #dd4444">字段名</span>:<span style="color: #000d4d">id</span>:<span style="color: #007400">xx</span></strong>
+                            <br>
+                            <span style="color: #dd4444">字段名</span>为该字段(表名_id)在表中的代表意义<br>
+                            <span style="color: #000d4d">id</span>为外联表的主键（不一定是id,但必须是主键）<br>
+                            <span style="color: #007400">xx</span>为外联表展示的字段(一般为name、title等)
+                            <br>
+                            3.该字段的not null 不仅决定该字段是否必填，还决定该外联表的join方式。如果必填则inner 非必填 left
                         </td>
                     </tr>
                     </tbody>

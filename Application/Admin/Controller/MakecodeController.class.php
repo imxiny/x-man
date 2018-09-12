@@ -91,8 +91,25 @@ class MakecodeController extends AdminBaseController
      */
     protected $reservedField = ['createtime', 'updatetime'];
 
+    /**
+     * 其他表主键
+     */
+    protected $otherTableId = ['_id'];
+
     public function index()
     {
+   $table = 'article';
+        /*$M = M();
+        $sql = "SELECT " . " * FROM `information_schema`.`columns` "
+            . "WHERE TABLE_SCHEMA = '" . C('DB_NAME') . "' AND table_name = '" .
+            C('DB_PREFIX') . $table . "' "
+            . "ORDER BY ORDINAL_POSITION";
+        $showTableCommentSql = "SELECT "."TABLE_COMMENT FROM information_schema.TABLES WHERE table_schema='" .C('DB_NAME'). "' and TABLE_NAME='" . C('DB_PREFIX') . $table . "'";
+        $tabinfo = $M->query($showTableCommentSql);
+        $sql = "show tables";
+        $list = M()->query($sql);
+        var_dump($tabinfo);die;
+        die;*/
         $sql = "show tables";
         $list = M()->query($sql);
         $list = array_column($list, 'tables_in_' . C('DB_NAME'));
@@ -125,7 +142,7 @@ class MakecodeController extends AdminBaseController
         $this->lock = I('post.lock') === 'true' ? true : false;
 
         $M = M();
-        $sql = $sql = "SELECT " . " * FROM `information_schema`.`columns` "
+        $sql = "SELECT " . " * FROM `information_schema`.`columns` "
             . "WHERE TABLE_SCHEMA = '" . C('DB_NAME') . "' AND table_name = '" .
             C('DB_PREFIX') . $table . "' "
             . "ORDER BY ORDINAL_POSITION";
@@ -136,13 +153,18 @@ class MakecodeController extends AdminBaseController
         }
         //先判断主键
         $pri = '';
+        $foreignKeyList = array();//外联表 list
         foreach ($tabinfo as $k => $v) {
             if ('PRI' == $v['column_key']) {
                 $pri = $v['column_name'];
             }
-            //判断是否有注释
-            if (empty($v['column_comment'])) {
-                $this->error("{$v['column_name']} 字段没有注释");
+            //判断注释是否有效
+            $type = $this->getFieldType($v);
+            if (!$this->judgeComment($type, $v['column_name'],$v['column_comment'],$errinfo)) {
+                $this->error('列：'.$v['column_name'].'注释无效 错误：' .$errinfo);
+            }
+            if ('id' === $type) {
+                $foreignKeyList[] = $v;
             }
         }
         if (empty($pri)) {
@@ -152,7 +174,7 @@ class MakecodeController extends AdminBaseController
         $ruleAlert = "规则：<br>admin/{$rule}/index<br>";
         try {
             //生成controller
-            $res[] = $this->makeController($controller, $table, $whereList);
+            $res[] = $this->makeController($controller, $table, $whereList, $foreignKeyList);
             if (in_array('add', $list)) {
                 //生成add
                 $res[] = $this->makeAdd($tabinfo, $controller);
@@ -170,14 +192,18 @@ class MakecodeController extends AdminBaseController
                 $ruleAlert .= "admin/{$rule}/delete<br>";
             }
 
+
            //插入规则表
             $ru = M('auth_rule');
             $ru->startTrans();
             $rules = 'admin/'.$rule.'/index';
             $ruRes[] = $ru->where(['name' => $rules])->delete();
+            //查询当前表的注释
+            $showTableCommentSql = "SELECT "."TABLE_COMMENT FROM information_schema.TABLES WHERE table_schema='" .C('DB_NAME'). "' and TABLE_NAME='" . C('DB_PREFIX') . $table . "'";
+            $tableComment = $ru->query($showTableCommentSql)[0]['table_comment'] ?: $controller;
             $data = array(
                 'name' => $rules,
-                'title' => $controller.'/index',
+                'title' => $tableComment.'管理',
                 'type' => '1',
                 'status' => '1',
                 'condition' => '',
@@ -191,9 +217,10 @@ class MakecodeController extends AdminBaseController
                 }
                 $rules = 'admin/'.$rule.'/'.$v;
                 $ruRes[] = $ru->where(['name' => $rules])->delete();
+                $opreations = ['add' => '添加','edit' => '修改','delete' =>'删除'];
                 $data = array(
                     'name' => $rules,
-                    'title' => $controller.'/'.$v,
+                    'title' => $tableComment.'/'.$opreations[$v],
                     'type' => '1',
                     'status' => '1',
                     'condition' => '',
@@ -218,6 +245,9 @@ class MakecodeController extends AdminBaseController
                $ru->commit();
                 $ruAlert = "规则创建<span class='layui-blue'>成功</span><br>";
             }
+            /*$info = '';
+            $ruAlert = '';*/
+
             $info .= $ruleAlert .$ruAlert.'请自行创建菜单、绑定规则，以及角色组授权';
             if ($this->lock) {
                 //创建锁定文件
@@ -459,6 +489,7 @@ EOF;
     }
 
     /**
+     * 组装index页面搜索控件
      * @param $type
      * @param $col
      * @param $where
@@ -499,6 +530,20 @@ EOF;
                 foreach ($cinfo['list'] as $k => $v) {
                     $options .= "<option value='{$k}' >{$v}</option>" . PHP_EOL;
                 }
+                $replace_list['attr'] = $options;
+                foreach ($replace_list as $k => $v) {
+                    $temp = str_replace("{%{{$k}}%}", $v, $temp);
+                }
+                break;
+            case 'id' :
+                $temp = $this->gettemp('where_select');
+                $replace_list['title'] = explode(':', $col['column_comment'])[0];
+                $info = $this->dealForeignKeyList([$col])[$col['column_name']];
+                $options = "
+                    <volist name='{$info['table']}List' id='v'>
+                    <option value='{\$v.{$info['pri']}}'>{\$v.{$info['show']}}</option>
+                    </volist>
+                ";
                 $replace_list['attr'] = $options;
                 foreach ($replace_list as $k => $v) {
                     $temp = str_replace("{%{{$k}}%}", $v, $temp);
@@ -574,10 +619,17 @@ EOF;
                 return '<div><input disabled type=\"color\" value=\"'+d.{$v['column_name']}+'\"></div>';
             }},";
                 break;
+            case 'id':
+                $title = explode(':', $v['column_comment'])[0];
+                $fileds = "{field:'{$v['column_name']}',title:'{$title}',align:'center',width:100},";
+                break;
             default:
                 $width = '';
                 if ('PRI' === $v['column_key']) {
                     $width = ",width:80";
+                }
+                if (('datetime' === $v['data_type']) && ('datetime' === $type)) {
+                    $width = ",width:160";
                 }
                 $fileds = "{field:'{$v['column_name']}',title:'{$v['column_comment']}',align:'center'{$width}},";
                 break;
@@ -589,29 +641,29 @@ EOF;
      * @param string $cname 控制器名
      * @param string $table 表名
      * @param array $wherelike 模糊搜索字段搜索
+     * @param array $foreignKeyList 外联键列表
      * @return array 执行结果 + 文件名
      * @throws Exception
      */
-    private function makeController($cname = 'Test', $table = 'test', $wherelike = array())
+    private function makeController($cname = 'Test', $table = 'test', $wherelike = array(), $foreignKeyList = [])
     {
         if (empty($table) || empty($cname)) {
             $this->error("请选择数据");
         }
-
+        $date = date('Y-m-d');
+        $time = date('H:i');
+        $name = ucfirst($cname) . 'Controller';
+        $filename = $name . '.class.php';
+        $file = ROOT_PATH . trim(APP_PATH, './') . '/' . 'Admin/Controller' . '/' . $filename;
         $whereStr = "[";
-
         foreach ($wherelike as $k => $v) {
             $whereStr .= "'{$k}' => '{$v}',";
         }
         $whereStr = trim($whereStr, ',');
         $whereStr .= ']';
-        $name = ucfirst($cname) . 'Controller';
-        $filename = $name . '.class.php';
-        $file = ROOT_PATH . trim(APP_PATH, './') . '/' . 'Admin/Controller' . '/' . $filename;
-
-        $date = date('Y-m-d');
-        $time = date('H:i');
-        $code = "<?php
+        //无外联表
+        if (empty($foreignKeyList)) {
+            $code = "<?php
 /**
  * Created by Makecode
  * User: Xiny https://xbug.top i@xiny9.com
@@ -640,8 +692,50 @@ class {$cname}Controller extends AdminBaseController
     }
 }
 ";
-        $code = str_replace('^', '$', $code);
-        return $this->writeFile($file, $code);
+            $code = str_replace('^', '$', $code);
+            return $this->writeFile($file, $code);
+        } else {
+
+            $fList = $this->dealForeignKeyList($foreignKeyList);
+            $indexAction = $this->makeIndexAction($fList);//生成外联版index
+            $addAction = $this->makeAddAction($fList);//生成外联版add
+            $editAction = $this->makeEditAction($fList);//生成外联版edit
+            //有外联表
+            $code = "<?php
+/**
+ * Created by Makecode
+ * User: Xiny https://xbug.top i@xiny9.com
+ * Coding Standard: PSR2
+ * Date: {$date}
+ * Time: {$time}
+ */
+
+namespace Admin\Controller;
+
+use Common\Controller\AdminBaseController;
+use Common\Controller\MakeController;
+
+class {$cname}Controller extends AdminBaseController
+{
+    use MakeController;
+
+    public function __construct()
+    {
+        parent::__construct();
+        ^this->table = '{$table}';
+        ^this->addTemplet = '{$cname}/add';
+        ^this->editTemplet = '{$cname}/edit';
+        ^this->indexTemplet = '{$cname}/index';
+        ^this->whereList = {$whereStr};
+    }
+    {$indexAction}
+    {$addAction}
+    {$editAction}
+}
+";
+            $code = str_replace('^', '$', $code);
+            return $this->writeFile($file, $code);
+        }
     }
 
 
@@ -725,6 +819,10 @@ class {$cname}Controller extends AdminBaseController
         if ($this->isMatchSuffix($fieldsName, $this->colorField) && (($v['data_type'] == 'varchar') || $v['data_type'] == 'char')) {
             $inputType = "color";
         }
+        //指定后缀结尾 且类型为number系列的字段 为其他表主键
+        if ($this->isMatchSuffix($fieldsName, $this->otherTableId) && (in_array($v['data_type'], ['tinyint','smallint','mediumint','int','bigint']))) {
+            $inputType = "id";
+        }
         return $inputType;
     }
 
@@ -800,21 +898,7 @@ class {$cname}Controller extends AdminBaseController
                 if (!empty($replace_list['required1'])) {
                     $replace_list['required2'] = ' lay-verify="required" lay-verType="tips"  ';
                 }
-                $replace_list['attr'] = ' maxlength="'.
-                    $col['character_maximum_length'] . '" value="' .
-                    $col['column_default'] . '" ';
-                foreach ($replace_list as $k => $v) {
-                    $temp = str_replace("{%{{$k}}%}", $v, $temp);
-                }
-                break;
-            case 'color':
-                $temp = $this->gettemp('color');
-                $replace_list['title'] = $col['column_comment'];
-                if (!empty($replace_list['required1'])) {
-                    $replace_list['required2'] = ' lay-verify="required" lay-verType="tips"  ';
-                }
-                $replace_list['attr'] = ' maxlength="'.
-                    $col['character_maximum_length'] . '" value="' .
+                $replace_list['attr'] = '" value="' .
                     $col['column_default'] . '" ';
                 foreach ($replace_list as $k => $v) {
                     $temp = str_replace("{%{{$k}}%}", $v, $temp);
@@ -949,6 +1033,22 @@ class {$cname}Controller extends AdminBaseController
                     $temp = str_replace("{%{{$k}}%}", $v, $temp);
                 }
                 break;
+            case 'id':
+                $temp = $this->gettemp('id');
+                $replace_list['title'] = explode(':',$col['column_comment'])[0];
+                if (!empty($replace_list['required1'])) {
+                    $replace_list['required2'] = ' lay-verify="required" lay-verType="tips"  ';
+                }
+                $info = $this->dealForeignKeyList([$col])[$col['column_name']];
+                $replace_list['attr'] = "
+                <volist name='{$info['table']}List' id='v'>
+                    <option value='{\$v.{$info['pri']}}'>{\$v.{$info['show']}}</option>
+                </volist>
+                ";
+                foreach ($replace_list as $k => $v) {
+                    $temp = str_replace("{%{{$k}}%}", $v, $temp);
+                }
+                break;
             default:
                 $temp = $this->gettemp('text');
                 $replace_list['title'] = $col['column_comment'];
@@ -991,7 +1091,7 @@ class {$cname}Controller extends AdminBaseController
             elem: "#' . $col['column_name'] . '"
             ,url: "/admin/FileUpload/upload"
             ,before:function(){
-                layer.msg("图片上传中",{icon:16});
+                layer.msg("图片上传中",{icon:16,time:false});
             }
             ,done: function(res){
                 let item = this.item;
@@ -1020,7 +1120,7 @@ class {$cname}Controller extends AdminBaseController
             ,url: "/admin/FileUpload/uploadfile"
             ,accept: "file"
             ,before:function(){
-                layer.msg("文件上传中",{icon:16});
+                layer.msg("文件上传中",{icon:16,time:false});
             }
             ,done: function(res){
                 let item = this.item;
@@ -1083,5 +1183,318 @@ class {$cname}Controller extends AdminBaseController
             }
         }
         return false;
+    }
+
+    /**
+     * 判断控件类型对应的注释是否有效
+     * @param $type
+     * @param $filed
+     * @param $comment
+     * @param $mess string 错误原因
+     * @return bool
+     */
+    protected function judgeComment($type, $filed = '', $comment = '', &$mess)
+    {
+        $res = true;
+        $mess = '';
+        switch ($type) {
+            case 'radio':
+            case 'checkbox':
+            case 'select':
+                $tmpArr = explode(':', $comment);
+                if (2 != count($tmpArr)) {
+                    $res = false;
+                    $mess = '注释格式有误';
+                }
+                $tmpArr1 = explode(',' ,trim($tmpArr[1], ','));
+                if (count($tmpArr1) < 2) {
+                    $res = false;
+                    $mess = '注释格式有误';
+                }
+                $key = array();
+                $val = array();
+                foreach ($tmpArr1 as $k => $v) {
+                    $tmpArr2 = explode('=', $v);
+                    if (2 != count($tmpArr2)) {
+                        $res = false;
+                        $mess .= '<br>键值对不匹配';
+                    }
+                    if (in_array($tmpArr2[0], $key)) {
+                        $res = false;
+                        $mess .= '<br> 键重复出现';
+                    } else {
+                        array_push($key, $tmpArr2[0]);
+                    }
+
+                    if (in_array($tmpArr2[1], $val)) {
+                        $res = false;
+                        $mess .= '<br> 值重复出现';
+                    } else {
+                        array_push($val, $tmpArr2[1]);
+                    }
+                }
+                break;
+            case 'switch':
+                $tmpArr = explode(':', $comment);
+                if (2 != count($tmpArr)) {
+                    $res = false;
+                    $mess = '注释格式有误';
+                }
+                $tmpArr1 = explode(',' ,$tmpArr[1]);
+                if (count($tmpArr1) != 2) {
+                    $res = false;
+                    $mess = '注释格式有误';
+                }
+                $key = array();
+                $val = array();
+                foreach ($tmpArr1 as $k => $v) {
+                    $tmpArr2 = explode('=', $v);
+                    if (2 != count($tmpArr2)) {
+                        $res = false;
+                        $mess .= '<br> 键值对不匹配';
+                    }
+                    if (in_array($tmpArr2[0], $key)) {
+                        $res = false;
+                        $mess .= '<br> 键重复出现';
+                    } else {
+                        array_push($key, $tmpArr2[0]);
+                    }
+
+                    if (in_array($tmpArr2[1], $val)) {
+                        $res = false;
+                        $mess .= '<br> 值重复出现';
+                    } else {
+                        array_push($val, $tmpArr2[1]);
+                    }
+
+                    if (!in_array($tmpArr2[0], ['0','1'])) {
+                        $res = false;
+                        $mess .= '<br> switch字段key只能为0或者1';
+                    }
+                }
+                break;
+            case 'id':
+                $tmpArr = explode('_', $filed);
+                array_pop($tmpArr);
+                $tName = implode('_',$tmpArr);
+
+                $M = M();
+                $sql = "SELECT " . " * FROM `information_schema`.`columns` "
+                    . "WHERE TABLE_SCHEMA = '" . C('DB_NAME') . "' AND table_name = '" . C('DB_PREFIX') . $tName . "' "
+                    . "ORDER BY ORDINAL_POSITION";
+                $tabinfo = $M->query($sql);
+
+                $tmpArr1 = explode(':', $comment);
+                if (count($tmpArr1) != 3) {
+                    $res = false;
+                    $mess = '注释格式有误';
+                }
+
+                if (empty($tabinfo)) {
+                    $res = false;
+                    $mess .= '<br>表'.$tName.'不存在';
+                }
+
+                $filedList = array_column($tabinfo, 'column_name');
+
+                //主键列
+                if (!in_array($tmpArr1[1],$filedList)) {
+                    $res = false;
+                    $mess .= '<br>列：'.$tmpArr1[1].'在表'. $tName.'中不存在';
+                } else {
+                    $k1 = array_search('id', $filedList);
+                    if ($tabinfo[$k1]['column_key'] !== 'PRI') {
+                        $res = false;
+                        $mess .= '<br>列：'.$tmpArr1[1].'在表'. $tName.'中必须是主键';
+                    }
+                }
+                if (!in_array($tmpArr1[2],$filedList)) {
+                    $res = false;
+                    $mess .= '<br>列：'.$tmpArr1[2].'在表'. $tName.'中不存在';
+                }
+                break;
+            default:
+                break;
+        }
+        if (empty($comment)) {
+            $res = false;
+            $mess = '注释不可为空';
+        }
+        $mess .= '<br>注释内容：<b style="color: #dd4444">' .$comment .'</b>';
+        return $res;
+    }
+
+    /**处理外联表数据
+     * @param $list
+     * @return array|string
+     */
+    private function dealForeignKeyList($list)
+    {
+        if (empty($list)) {
+            return '';
+        }
+        if (count($list) > 7) {
+            return '最多8表联查';
+        }
+        $res = array();
+        //最多八表联查
+        $alias = ['b','c','d','e','f','g','h'];
+        foreach ($list as $k => $v) {
+            $tmpArr = explode('_', $v['column_name']);
+            array_pop($tmpArr);
+            $tName = implode('_',$tmpArr);
+            $res[$v['column_name']]['table'] = $tName;
+            $res[$v['column_name']]['tableAlias'] = $alias[$k];
+
+            $tmpArr1 = explode(':', $v['column_comment']);
+            $res[$v['column_name']]['pri'] = $tmpArr1[1];
+            $res[$v['column_name']]['show'] = $tmpArr1[2];
+            $res[$v['column_name']]['required'] = $v['is_nullable'];
+            //外联字段的required 决定使用left 还是inner
+        }
+        return $res;
+    }
+
+
+    /**
+     *  有外联数据的表index方法
+     * @param $fList
+     * @return mixed|string
+     */
+    private function makeIndexAction($fList)
+    {
+        $fktList = '';
+        $filed = "->field('a.*";//数据列
+        $join = "";//join字符串
+        $joinType = 'inner';
+        foreach ($fList as $k => $v) {
+            $filed .= ",{$v['tableAlias']}.`{$v['show']}` as {$v['table']}_{$v['pri']}";
+            if ('YES' === $v['required']) {
+                $joinType = 'left';
+            }
+            $join .= "                  ->join(C('DB_PREFIX').'{$v['table']} as {$v['tableAlias']} on {$v['tableAlias']}.`{$v['pri']}`=a.`{$k}`','{$joinType}')".PHP_EOL;
+            $fktList .= "           ^{$v['table']}List = M('{$v['table']}')->field('{$v['pri']},{$v['show']}')->select();" . PHP_EOL;
+            $fktList .= "           ^this->assign('{$v['table']}List',^{$v['table']}List);" . PHP_EOL;
+        }
+        $filed .= "')" . PHP_EOL;
+
+        $code = <<<tag
+public function index()
+    {
+        if (IS_AJAX) {
+            ^where = " 1 ";
+            ^data = ^_POST;
+            parse_str(^data['para'], ^wherearray);
+            ^wherearray = I('data.', '', C('DEFAULT_FILTER'), ^wherearray);
+            ^page = empty(^data['page']) ? 1 : ^data['page'];
+            ^limit = empty(^data['limit']) ? 15 : ^data['limit'];
+            ^whereList = ^this->whereList;
+            foreach (^wherearray as ^k => ^v) {
+                if (isset(^v) && (strlen(^v) > 0)) {
+                    if (key_exists(^k, ^whereList)) {
+                        if ('eq' === ^whereList[^k]) {
+                            ^where .= " and a.`{^k}`='{^v}' ";
+                        } else {
+                            ^where .= " and a.`{^k}` like '%{^v}%' ";
+                        }
+                    } else {
+                        ^where .= " and a.`{^k}`='{^v}' ";
+                    }
+                }
+            }
+
+            ^list = M(^this->table . ' as a')
+                {$filed}{$join}                 ->where(^where)
+                ->limit((^page - 1) * ^limit, ^limit)
+                ->select();
+            ^count = M(^this->table . ' as a')
+            {$join}                 ->where(^where)
+            ->count();
+            ^res = array(
+                'code' => 0
+            , 'count' => ^count
+            , 'msg' => ''
+            , 'data' => ^list
+            );
+            ^this->ajaxReturn(^res);
+        } elseif (IS_GET) {
+            {$fktList}
+            ^this->display(^this->indexTemplet);
+        }
+    }
+tag;
+        $code = str_replace('^', '$', $code);
+        return $code;
+    }
+
+    private function makeAddAction($fList)
+    {
+        $fktList = '';
+        foreach ($fList as $k => $v) {
+            $fktList .= "           ^{$v['table']}List = M('{$v['table']}')->field('{$v['pri']},{$v['show']}')->select();" . PHP_EOL;
+            $fktList .= "           ^this->assign('{$v['table']}List',^{$v['table']}List);" . PHP_EOL;
+        }
+        $code = <<<tag
+public function add()
+    {
+        if (IS_AJAX) {
+            try {
+                parse_str(^_POST['para'], ^data);
+                ^data = I('data.', '', C('DEFAULT_FILTER'), ^data);
+                foreach (^data as ^k => ^v) {
+                    if (is_array(^v)) {
+                        ^data[^k] = implode(^v, ',');
+                    }
+                }
+                M(^this->table)->add(^data) ? ^this->success('添加成功') : ^this->error('网络故障');
+            } catch (Exception ^e) {
+                ^this->error("预期之外的错误，错误ID号：".^e->getErrorID());
+            }
+        } elseif (IS_GET) {
+{$fktList}
+            ^this->display(^this->addTemplet);
+        }
+    }
+tag;
+        $code = str_replace('^', '$', $code);
+        return $code;
+    }
+
+    private function makeEditAction($fList)
+    {
+        $fktList = '';
+        foreach ($fList as $k => $v) {
+            $fktList .= "           ^{$v['table']}List = M('{$v['table']}')->field('{$v['pri']},{$v['show']}')->select();" . PHP_EOL;
+            $fktList .= "           ^this->assign('{$v['table']}List',^{$v['table']}List);" . PHP_EOL;
+        }
+        $code = <<<tag
+    public function edit()
+    {
+        if (IS_GET && (!IS_AJAX)) {
+            ^info = M(^this->table)->getByid(I('get.id'));
+            ^this->assign('info', ^info);
+            {$fktList}
+            ^this->display(^this->editTemplet);
+        } elseif (IS_AJAX) {
+            try {
+                ^data = [];
+                parse_str(^_POST['para'], ^data);
+                ^data = I('data.', '', C('DEFAULT_FILTER'), ^data);
+                foreach (^data as ^k => ^v) {
+                    if (is_array(^v)) {
+                        ^data[^k] = implode(^v, ',');
+                    }
+                }
+                ^row = M(^this->table)->save(^data);
+                ^row === false ? ^this->error('网络故障') : ^row === 0 ?
+                    ^this->error('数据无改动', 'nojump', IS_AJAX, 2) : ^this->success('操作成功');
+            } catch (Exception ^e) {
+                ^this->error("预期之外的错误，错误ID号：".^e->getErrorID());
+            }
+        }
+    }
+tag;
+        $code = str_replace('^', '$', $code);
+        return $code;
     }
 }

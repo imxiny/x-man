@@ -10,8 +10,137 @@ layui.use(['bodyTab','form','element','layer'],function(){
     	layer = parent.layer === undefined ? layui.layer : top.layer;
 		tab = layui.bodyTab({
 			openTabNum : "15",  //最大可打开窗口数量
-			url : "/admin/index/getmenu" //获取菜单json地址
+			url : "/admin/index/getmenu", //获取菜单json地址
+            firstUrl:'/admin/index/index',//后台首页名
+            firstTitle:'后台首页'//后台首页url
 		});
+
+    //切换后获取当前窗口的内容
+    $("body").on("click",".top_tab li",function(){
+        var curmenu = '';
+        var menu = JSON.parse(window.sessionStorage.getItem("menu"));
+        if(window.sessionStorage.getItem("menu")) {
+            curmenu = menu[$(this).index() - 1];
+        }
+        if($(this).index() == 0){
+            window.sessionStorage.setItem("curmenu",'');
+        }else{
+            window.sessionStorage.setItem("curmenu",JSON.stringify(curmenu));
+            if(window.sessionStorage.getItem("curmenu") == "undefined"){
+                //如果删除的不是当前选中的tab,则将curmenu设置成当前选中的tab
+                if(curNav != JSON.stringify(delMenu)){
+                    window.sessionStorage.setItem("curmenu",curNav);
+                }else{
+                    window.sessionStorage.setItem("curmenu",JSON.stringify(menu[liIndex-1]));
+                }
+            }
+        }
+        element.tabChange(tabFilter,$(this).attr("lay-id")).init();
+        tab.changeRegresh($(this).index());
+        setTimeout(function(){
+            tab.tabMove();
+        },100);
+    });
+
+    //删除tab
+    $("body").on("click",".top_tab li i.layui-tab-close",function(){
+        //删除tab后重置session中的menu和curmenu
+        liIndex = $(this).parent("li").index();
+        var menu = JSON.parse(window.sessionStorage.getItem("menu"));
+        if(menu != null) {
+            //获取被删除元素
+            delMenu = menu[liIndex - 1];
+            var curmenu = window.sessionStorage.getItem("curmenu") == "undefined" ? undefined : window.sessionStorage.getItem("curmenu") == "" ? '' : JSON.parse(window.sessionStorage.getItem("curmenu"));
+            if (JSON.stringify(curmenu) != JSON.stringify(menu[liIndex - 1])) {  //如果删除的不是当前选中的tab
+                // window.sessionStorage.setItem("curmenu",JSON.stringify(curmenu));
+                curNav = JSON.stringify(curmenu);
+            } else {
+                if ($(this).parent("li").length > liIndex) {
+                    window.sessionStorage.setItem("curmenu", curmenu);
+                    curNav = curmenu;
+                } else {
+                    window.sessionStorage.setItem("curmenu", JSON.stringify(menu[liIndex - 1]));
+                    curNav = JSON.stringify(menu[liIndex - 1]);
+                }
+            }
+            menu.splice((liIndex - 1), 1);
+            window.sessionStorage.setItem("menu", JSON.stringify(menu));
+        }
+        element.tabDelete("bodyTab",$(this).parent("li").attr("lay-id")).init();
+        tab.tabMove();
+    });
+
+    //刷新当前
+    $(".refresh").on("click",function(){  //此处添加禁止连续点击刷新一是为了降低服务器压力，另外一个就是为了防止超快点击造成chrome本身的一些js文件的报错(不过貌似这个问题还是存在，不过概率小了很多)
+        if($(this).hasClass("refreshThis")){
+            $(this).removeClass("refreshThis");
+            let iframe = $($(".clildFrame .layui-tab-item.layui-show").find("iframe")[0]);
+            if(NProgress){
+                NProgress.done();
+                NProgress.start();
+                setTimeout(function(){
+                    NProgress.done();
+                },5000)
+            }
+            iframe.attr('src',iframe.attr('src'));
+            //以下方法同源限制
+            /*$(".clildFrame .layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();*/
+            setTimeout(function(){
+                $(".refresh").addClass("refreshThis");
+            },2000)
+        }else{
+            layer.msg("点击次数过多，请稍后");
+        }
+    });
+
+    //关闭其他
+    $(".closePageOther").on("click",function(){
+        if($("#top_tabs li").length>2 && $("#top_tabs li.layui-this cite").text()!==tab.tabConfig.firstTitle){
+            var menu = JSON.parse(window.sessionStorage.getItem("menu"));
+            $("#top_tabs li").each(function(){
+                if($(this).attr("lay-id") != '' && !$(this).hasClass("layui-this")){
+                    element.tabDelete("bodyTab",$(this).attr("lay-id")).init();
+                    //此处将当前窗口重新获取放入session，避免一个个删除来回循环造成的不必要工作量
+                    for(var i=0;i<menu.length;i++){
+                        if($("#top_tabs li.layui-this cite").text() == menu[i].title){
+                            menu.splice(0,menu.length,menu[i]);
+                            window.sessionStorage.setItem("menu",JSON.stringify(menu));
+                        }
+                    }
+                }
+            })
+        }else if($("#top_tabs li.layui-this cite").text()==tab.tabConfig.firstTitle && $("#top_tabs li").length>1){
+            $("#top_tabs li").each(function(){
+                if($(this).attr("lay-id") != '' && !$(this).hasClass("layui-this")){
+                    element.tabDelete("bodyTab",$(this).attr("lay-id")).init();
+                    window.sessionStorage.removeItem("menu");
+                    menu = [];
+                    window.sessionStorage.removeItem("curmenu");
+                }
+            })
+        }else{
+            layer.msg("没有可以关闭的窗口");
+        }
+        //渲染顶部窗口
+        tab.tabMove();
+    });
+    //关闭全部
+    $(".closePageAll").on("click",function(){
+        if($("#top_tabs li").length > 1){
+            $("#top_tabs li").each(function(){
+                if($(this).attr("lay-id") != ''){
+                    element.tabDelete("bodyTab",$(this).attr("lay-id")).init();
+                    window.sessionStorage.removeItem("menu");
+                    menu = [];
+                    window.sessionStorage.removeItem("curmenu");
+                }
+            })
+        }else{
+            layer.msg("没有可以关闭的窗口");
+        }
+        //渲染顶部窗口
+        tab.tabMove();
+    });
 
 	//通过顶部菜单获取左侧二三级菜单
     getData = function(id){

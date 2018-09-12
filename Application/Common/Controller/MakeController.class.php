@@ -49,7 +49,7 @@ trait MakeController
             parse_str($data['para'], $wherearray);
             $wherearray = I('data.', '', C('DEFAULT_FILTER'), $wherearray);
             $page = empty($data['page']) ? 1 : $data['page'];
-            $limit = empty($data['limit']) ? 10 : $data['limit'];
+            $limit = empty($data['limit']) ? 15 : $data['limit'];
             $whereList = $this->whereList;
             foreach ($wherearray as $k => $v) {
                 if (isset($v) && (strlen($v) > 0)) {

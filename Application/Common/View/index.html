@@ -45,7 +45,7 @@
         </a>
         </div>
     </script>
-<script type="text/javascript" src="/Public/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="/Public/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Public/static/layui/layui.js"></script>
 <script type="text/javascript">
     var tablist = '';
@@ -87,11 +87,6 @@
                 area:['60%','96%'],
                 maxmin:true
             });
-            //layui.layer.full(index);
-            //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
-            $(window).on("resize", function () {
-                layer.full(index);
-            })
         }
 
         $(".add_btn").on('click',function () {

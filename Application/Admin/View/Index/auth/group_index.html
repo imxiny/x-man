@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/Public/static/css/public.css" media="all"/>
+</head>
+<body class="childrenBody">
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form">
+            <div class="layui-inline">
+                <div class="layui-input-inline" style="width: 25%">
+                    <input type="search" name="keyword" autocomplete="off" class="layui-input" placeholder="角色组名"/>
+                </div>
+                <div class="layui-input-inline" style="width: 20%">
+                    <select name="status">
+                        <option value="">状态</option>
+                        <option value="1">使用</option>
+                        <option value='0'>停用</option>
+                    </select>
+                </div>
+                <div class="layui-btn-group">
+                    <a class="layui-btn layui-btn-green search_btn layui-btn-sm" title="搜索">
+                        <i class="layui-icon layui-icon-search"></i>
+                    </a>
+                    <a class="layui-btn layui-btn-normal add_btn layui-btn-sm" title="添加">
+                        <i class="layui-icon layui-icon-add-circle"></i>
+                    </a>
+                    <a class="layui-btn layui-btn-danger delAll_btn layui-btn-sm">
+                        <i class="layui-icon layui-icon-delete"></i>
+                    </a>
+                    <a class="layui-btn layui-btn-sm" title="刷新当前页" href="javascript:void(0);"
+                            onclick="layer.load(1);window.location.reload(true);"><i class="layui-icon">&#xe669;</i></a>
+                </div>
+            </div>
+        </form>
+    </blockquote>
+    <table id="table" lay-filter="table"></table>
+    <!--使用状态-->
+    <script type="text/html" id="status">
+        <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="正常|停用" lay-filter="status" {{ d.status == 1 ? 'checked' : '' }}>
+    </script>
+    <!--操作-->
+    <script type="text/html" id="tool">
+        <a class="layui-btn layui-btn-xs" lay-event="edit" title="编辑">
+            <i class="layui-icon layui-icon-edit"></i>
+        </a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del" title="删除">
+            <i class="layui-icon layui-icon-delete"></i>
+        </a>
+    </script>
+<script type="text/javascript" src="/Public/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    var tablist = '';
+    layui.use(['form', 'layer', 'laydate', 'table', 'laytpl'], function () {
+        var form = layui.form,
+            layer = parent.layer === undefined ? layui.layer : top.layer,
+            $ = layui.jquery,
+            laydate = layui.laydate,
+            laytpl = layui.laytpl,
+            table = layui.table;
+        //规则列表
+        tablist = table.render({
+            elem: '#table',
+            url: '/admin/auth/group',
+            method: 'post',
+            cellMinWidth: 95,
+            page: true,
+            height: "full-85",
+            limit: 15,
+            limits: [15, 20, 50, 100],
+            id: "table",
+            cols: [[
+                {type: "checkbox", fixed: "left", width: 50},
+                {field: 'id', title: 'ID', width: 60, align: "center"},
+                {field: 'title', title: '角色组',width:200},
+                {field: 'description', title: '描述', align: 'center'},
+                {field: 'status',unresize:true,width:95, title: '状态', align: 'center', templet: "#status"},
+                {title: '操作', width: 100, templet: '#tool', fixed: "right", align: "center"}
+            ]]
+        });
+        //检测更改使用状态
+        form.on('switch(status)', function (obj) {
+            var _this = $(obj.elem);
+            var index = layer.msg('操作中', {'icon': 16, shade: 0.1});
+            $.post("/admin/auth/fast_change_group", {
+                id: this.value,
+                name: this.name,
+                val: obj.elem.checked
+            }, function (data) {
+                layer.close(index);
+                if (data.code === 0) {
+                    window.parent.toast('操作成功', 0);
+                } else {
+                    !obj.elem.checked ? _this.prop('checked',true) : _this.removeAttr('checked');
+                    form.render('checkbox');
+                    window.parent.toast(data.info, data.code);
+                    //状态回滚
+                }
+            });
+        });
+        //搜索
+        $(".search_btn").on("click", function () {
+            search();
+        });
+        function search(){
+            tablist.reload({
+                page:{curr:1}
+                ,where:{
+                    keyword:$("input[name=keyword]").val()
+                    ,status:$('select[name=status]').val()
+                }
+            });
+        }
+
+        //添加
+        function addoredit(url,name) {
+            var index = layui.layer.open({
+                title: name,
+                type: 2,
+                content: url,
+                maxmin:true,
+                area:['60%','98%']
+            });
+            //layui.layer.full(index);
+            //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
+            $(window).on("resize", function () {
+                layer.full(index);
+            })
+        }
+
+        $(".add_btn").on('click',function () {
+            addoredit('/admin/auth/add_group','添加角色组');
+        });
+
+        //批量删除
+        $(".delAll_btn").on('click',function () {
+            var checkStatus = table.checkStatus('table'),
+                data = checkStatus.data,
+                ids = [];
+            if (data.length > 0) {
+                for (var i in data) {
+                    ids.push(data[i].id);
+                }
+                layer.confirm('确定删除选中的数据？', {icon: 3, title: '提示信息'}, function (index) {
+                    $.post("/admin/auth/del_group",{'id':ids},function(data){
+                        window.parent.toast(data.info,data.code);
+                        tablist.reload();
+                    });
+                    layer.close(index);
+                })
+            } else {
+                layer.msg("请选择需要删除的数据");
+            }
+        });
+
+        //列表操作
+        table.on('tool(table)', function (obj) {
+            var layEvent = obj.event,
+                data = obj.data;
+            if (layEvent === 'edit') { //编辑
+                addoredit('/admin/auth/edit_group/id/'+data.id,'修改角色组');
+            } else if (layEvent === 'del') { //删除
+                layer.confirm('确定删除此条数据？', {icon: 3, title: '提示'}, function (index) {
+                    layer.close(index);
+                    $.post("/admin/auth/del_group",{'id':data.id},function(data){
+                        window.parent.toast(data.info,data.code);
+                        tablist.reload();
+                    });
+                });
+            }
+        });
+
+    })
+</script>
+</body>
+</html>

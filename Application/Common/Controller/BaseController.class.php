@@ -69,9 +69,6 @@ class BaseController extends Controller {
 	}
 
 	public function getCodeImg() {
-		if ($_SERVER['HTTP_HOST'] != C('HTTP_HOST')) {
-			exit('not access get code img');
-		}
 		$config = array(
 			'seKey' => C('SEKEY'), // 验证码加密密钥
 			'codeSet' => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY', // 验证码字符集合
@@ -79,8 +76,8 @@ class BaseController extends Controller {
 			'useZh' => false, // 使用中文验证码
 			'useImgBg' => false, // 使用背景图片
 			'fontSize' => 17, // 验证码字体大小(px)
-			'useCurve' => true, // 是否画混淆曲线
-			'useNoise' => true, // 是否添加杂点
+			'useCurve' => false, // 是否画混淆曲线
+			'useNoise' => false, // 是否添加杂点
 			'imageH' => 36, // 验证码图片高度
 			'imageW' => 116, // 验证码图片宽度
 			'length' => 4, // 验证码位数

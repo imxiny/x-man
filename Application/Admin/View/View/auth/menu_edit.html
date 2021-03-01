@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>修改</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/layui/iconpick.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/css/public.css" media="all" />
+    <!--<link rel="stylesheet" href="//at.alicdn.com/t/font_495240_oxbe4zwl9tem6lxr.css" media="all"/>-->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_798193_ew7wixsziw8.css" media="all"/>
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" lay-filter="form1">
+    <input type="hidden" name="pid" value="{$Think.get.pid}">
+    <div class="layui-form-item">
+        <label class="layui-form-label">父级菜单</label>
+        <div class="layui-input-block">
+            <select name="pid" lay-search>
+                <option value="0">一级菜单</option>
+                <volist name="menus" id="v">
+                    <option value="{$v.id}">{$v._name}</option>
+                </volist>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">菜单名称</label>
+        <div class="layui-input-block">
+            <input type="text" lay-verify="required" lay-vertype="tips" title="菜单名称" name="name" placeholder="菜单名称" class="layui-input">
+        </div>
+    </div>
+    <input type="hidden" name="id" value="{$info.id}">
+    <div class="layui-form-item">
+        <label class="layui-form-label">打开位置</label>
+        <div class="layui-input-block">
+            <input type="radio" name="target" value="default" title="右侧">
+            <input type="radio" name="target" value="_blank" title="新页面" >
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">图标</label>
+        <div class="layui-inline">
+            <a class="layui-btn layui-btn-primary fl-l mr-5 icon-pick" style="width: 41px;padding: 0 10px;"><i class="{$info.icon}" style="font-size:18px;color:#76838f;"></i></a>
+        </div>
+        <div class="layui-inline" style="width: 50%">
+            <input type="text"  lay-verify="required" lay-vertype="tips" title="排序" name="icon" placeholder="图标" readonly id="iconpick" value="iconfont icon-menu1"  class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">链接</label>
+        <div class="layui-input-block">
+            <select name="rule_id" lay-search>
+                <option value="">选择地址</option>
+                <volist name="urlist" id="v">
+                <option value="{$v.id}">{$v._name}-{$v.name}</option>
+                </volist>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/Public/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/Public/static/layui/'
+    }).extend({
+        iconpick: 'iconpick'
+    });
+    layui.use(['form','layer','iconpick'],function(){
+        var form = layui.form,
+        layer = layui.layer,
+        iconpick = layui.iconpick;
+        $("#iconpick").on('click',function(e){
+            $(".icon-pick").click();
+            e.stopPropagation();
+        });
+
+        iconpick.pickinit('icon-pick','iconpick');
+        form.val('form1',{
+            name:"{$info.name}",
+            weight:"{$info.weight}",
+            icon:"{$info.icon}",
+            target:"{$info.target}",
+            rule_id:"{$info.rule_id}",
+            pid:"{$info.pid}"
+        });
+        form.on("submit(addData)",function(data){
+            //弹出loading
+            var index = layer.msg('数据提交中，请稍候',{icon: 16,time:false});
+            $.post("/admin/auth/edit_menu",{paras:$('form').serialize()},function(res){
+                layer.close(index);
+                window.parent.window.parent.toast(res.info,res.code);
+                if(0 === res.code){
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }
+            });
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

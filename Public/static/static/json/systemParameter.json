@@ -1,0 +1,14 @@
+{
+	"cmsName": "X-Man后台管理框架",
+	"version": "v1.0",
+	"author": "Xiny",
+	"homePage": "index.html",
+	"server": "windows|centos",
+	"dataBase": "8.00.2039",
+	"maxUpload": "2M",
+	"userRights": "超级管理员",
+	"description": "前端部分基于LayuiCMS2.0,layui,jquery,后台使用ThinkPHP3.2.3 可以一键生成增删改查、亦可以自主选择增删改查、支持控件多样化",
+	"powerby": "copyright @2018 Xiny",
+	"record": "辽ICP备17016820号-2",
+	"keywords": "X-Man后台管理框架、Xiny、i@xiny9.com"
+}

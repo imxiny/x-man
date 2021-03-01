@@ -1,0 +1,82 @@
+/*选中以后的颜色+左上角隐藏按钮*/
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover, .hideMenu, .layui-nav-tree .layui-nav-bar, .layui-nav-itemed:before {
+    background-color: #01AAED;
+}
+
+/*三级菜单悬停颜色*/
+.layui-nav .layui-nav-child a:hover, .layui-nav .layui-nav-child dd.layui-this a:hover {
+    background-color: #1E9Fbb;
+}
+
+/*左上边框颜色*/
+.layui-body {
+    border-top: 5px solid #01AAED;
+    border-left: 0px solid #01AAED;
+}
+
+/*上边框选中的颜色*/
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after {
+    background-color: gold;
+}
+
+.layui-tab-title .layui-this {
+    color: #01AAED;
+    border-bottom: 1px solid #01AAED;
+}
+
+/*顶部菜单被*/
+.topLevelMenus .layui-nav-item.layui-this a {
+    background-color: #595963;
+    /*color:#66CCFF!important;
+    font-weight: bolder;*/
+}
+
+/*移动版菜单颜色*/
+.layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+    background-color: #1E9Fbb;
+}
+
+/*右键菜单样式*/
+.ul-context-menu {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    min-width: 80px;
+    display: none;
+    font-family: '微软雅黑';
+    font-size: 14px;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    list-style: none;
+    padding: 5px 0px;
+    margin: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.15);
+    border-image: initial;
+    border-radius: 4px;
+}
+
+.ui-context-menu-item a {
+    /*padding-left: 5px;*/
+    display: block;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    background-color: rgb(51, 51, 51);
+}
+
+.ui-context-menu-item a:hover {
+    background-color: #1E9Fbb;
+    font-size: 13px;
+}
+
+.ui-context-menu-item a span {
+    margin-left: 3px;
+}
+.layui-select-tips .layui-this{
+    background-color: white!important;
+}

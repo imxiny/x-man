@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" style="width:90%;padding-left: 5%;" lay-filter="form1">
+    <div class="layui-form-item">
+        <label class="layui-form-label">父级规则</label>
+        <div class="layui-input-block">
+            <select name="pid" >
+                <option value="0">无</option>
+                <volist name="list" id="v">
+                    <option value="{$v.id}">{$v._name}</option>
+                </volist>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">规则名字</label>
+        <div class="layui-input-block">
+            <input type="text" autocomplete="off" class="layui-input" lay-verify="required|name" lay-Vertype="tips" name="name" placeholder="请输入规则名">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">中文名字</label>
+        <div class="layui-input-block">
+            <input autocomplete="off" type="text" name="title" lay-Vertype="tips" class="layui-input" lay-verify="required" placeholder="请输入中文名">
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">是否启用</label>
+            <div class="layui-input-block">
+                <input type="checkbox" checked name="status" lay-skin="switch" lay-text="开启|关闭" value="1" title="是否启用该rule">
+            </div>
+        </div>
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">支持表达式</label>
+            <div class="layui-input-block">
+                <input type="checkbox" checked name="type" lay-skin="switch" lay-text="开启|关闭" value="1" title="规则表达式">
+            </div>
+        </div>
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">链接</label>
+            <div class="layui-input-block">
+                <input type="checkbox" checked name="is_url" lay-skin="switch" lay-text="是|否" value="1" title="是否链接">
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">表达式</label>
+        <div class="layui-input-block">
+            <input type="text" autocomplete="off" name="condition" class="layui-input" title="表达式" lay-Vertype="tips" placeholder="{x1} > x2 #x1 为用户表字段" >
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/Public/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['form','layer'],function(){
+        var form = layui.form,
+        layer = parent.layer === undefined ? layui.layer : top.layer;
+        form.verify({
+            name: function(value, item){ //value：表单的值、item：表单的DOM对象
+                if(/[\u4E00-\u9FA5]/g.test(value)){
+                    return '规则名不可出现汉字';
+                }
+            }
+        });
+        form.val('form1',{
+            'pid':"{$pid}"
+        });
+        form.on("submit(addData)",function(data){
+            //弹出loading
+            var index = layer.msg('数据提交中，请稍候',{icon: 16,time:false});
+            $.post("/admin/auth/add_rule",{para:$('form').serialize()},function(res){
+                layer.close(index);
+                if(0 === res.code){
+                    window.parent.window.parent.toast(res.info,0);
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }else{
+                    window.parent.window.parent.toast(res.info,1);
+                }
+            });
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

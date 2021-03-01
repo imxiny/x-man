@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>修改</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" lay-filter="form1" style="width:90%;padding-left: 5%;">
+	<input type="hidden" name="id" value="{$info.id}"><div class="layui-form-item">
+	<label class="layui-form-label" for="title"><b style="color: red">* </b>文章名</label>
+	<div class="layui-input-block">
+		<input type="text" name="title" id="title" placeholder="文章名"  lay-verify="required" lay-verType="tips"   autocomplete="off"  maxlength="255" value=""  class="layui-input">
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="author"><b style="color: red">* </b>作者</label>
+	<div class="layui-input-block">
+		<input type="text" name="author" id="author" placeholder="作者"  lay-verify="required" lay-verType="tips"   autocomplete="off"  maxlength="255" value=""  class="layui-input">
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="content"><b style="color: red">* </b>内容</label>
+	<div class="layui-input-block">
+		<textarea name="content" placeholder="内容" id="content" class="layui-textarea"  lay-verify="required" lay-verType="msg"   >{$info.content|htmlspecialchars_decode}</textarea>
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="addtime"><b style="color: red">* </b>添加时间</label>
+	<div class="layui-input-block">
+		<input type="text" readonly name="addtime" id="addtime" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="show_switch">展示</label>
+	<div class="layui-input-block">
+		<input type="checkbox" lay-filter="show_switch" id="show_switch" title="" lay-skin="switch" lay-text="展示|隐藏" checked>
+		<input type="hidden" name="show_switch" value="1">
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="like">点赞数量</label>
+	<div class="layui-input-block">
+		<input type="number" name="like" id="like" placeholder="点赞数量"  autocomplete="off"  step="1" value="0"  class="layui-input">
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="category"><b style="color: red">* </b>分类</label>
+	<div class="layui-input-block">
+		<select name="category"  lay-verify="required" lay-verType="msg"   id="category" >
+			<option value="">请选择分类</option>
+			<option value=0 selected >娱乐</option>
+<option value=1  >政治</option>
+<option value=2  >新闻</option>
+<option value=3  >历史</option>
+<option value=4  >野史</option>
+<option value=5  >杂谈</option>
+
+		</select>
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="description"><b style="color: red">* </b>描述</label>
+	<div class="layui-input-block">
+		<textarea name="description" placeholder="描述" id="description" class="layui-textarea"  lay-verify="required" lay-verType="msg"   >{$info.description|htmlspecialchars_decode}</textarea>
+	</div>
+</div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/Public/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['form','layer','laydate','upload','layedit'],function(){
+        let form = layui.form,
+		laydate = layui.laydate,
+		upload = layui.upload,
+		layedit = layui.layedit,
+        layer = parent.layer === undefined ? layui.layer : top.layer;
+
+        
+
+                    let content = layedit.build('content', {
+                        uploadImage: {url: '/admin/FileUpload/upload', type: 'post'},
+                        height:200
+                    });
+                    $("iframe[textarea=content]").contents().find("body").blur(function(){
+            layedit.sync(content);
+        });
+                
+
+laydate.render({
+                          elem: '#addtime'
+                          ,theme: '#01AAED'
+                          ,type: 'datetime'
+                          ,trigger: 'click'
+                        });
+
+form.on('switch(show_switch)', function(data){
+                            let v = '0';
+                            if(data.elem.checked) v = '1';
+                            $('input[name=show_switch]').val(v);
+                        }); 
+
+
+                    let description = layedit.build('description', {
+                        uploadImage: {url: '/admin/FileUpload/upload', type: 'post'},
+                        height:200
+                    });
+                    $("iframe[textarea=description]").contents().find("body").blur(function(){
+            layedit.sync(description);
+        });
+                
+form.val("form1",{
+                    'title': '{$info.title}',
+                    'author': '{$info.author}',
+                    'addtime': '{$info.addtime}',
+                    'show_switch': '{$info.show_switch}',
+                    'like': '{$info.like}',
+                    'category': '{$info.category}'});                      $('#show_switch').prop('checked','{$info.show_switch}' === '1');
+                       form.render('checkbox');
+
+        form.on("submit(addData)",function(data){
+            let index = layer.msg('数据提交中，请稍候',{icon: 16,time:false});
+            $.post("/admin/Article/edit",{para:$('form').serialize()},function(res){
+                window.parent.window.parent.toast(res.info,res.code);
+                layer.close(index);
+                if(0 === res.code){
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

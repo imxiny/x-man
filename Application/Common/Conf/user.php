@@ -7,8 +7,6 @@
  */
 //存放自定义配置
 return array(
-	'HTTP_HOST' => '127.0.0.24', //必须配置 否则验证码失效
-	'SEKEY' => 'x-man', //验证码干扰值
 	'UPLOAD_TYPE' => 'local', //oss或local 配置oss 下面的ALIOSSCONF一定要配置正确
 	//阿里云存储设置
 	'ALIOSSCONF' => array(

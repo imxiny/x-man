@@ -98,6 +98,18 @@ class MakecodeController extends AdminBaseController
 
     public function index()
     {
+   $table = 'article';
+        /*$M = M();
+        $sql = "SELECT " . " * FROM `information_schema`.`columns` "
+            . "WHERE TABLE_SCHEMA = '" . C('DB_NAME') . "' AND table_name = '" .
+            C('DB_PREFIX') . $table . "' "
+            . "ORDER BY ORDINAL_POSITION";
+        $showTableCommentSql = "SELECT "."TABLE_COMMENT FROM information_schema.TABLES WHERE table_schema='" .C('DB_NAME'). "' and TABLE_NAME='" . C('DB_PREFIX') . $table . "'";
+        $tabinfo = $M->query($showTableCommentSql);
+        $sql = "show tables";
+        $list = M()->query($sql);
+        var_dump($tabinfo);die;
+        die;*/
         $sql = "show tables";
         $list = M()->query($sql);
         $list = array_column($list, 'tables_in_' . C('DB_NAME'));
@@ -123,7 +135,7 @@ class MakecodeController extends AdminBaseController
         $file = ROOT_PATH . trim(APP_PATH, './') . '/' .
             'Admin/View/' . $controller . '/' . $controller . '.lock';
         if (file_exists($file)) {
-            $this->error('该控制器已开启误触锁定，请手动删除以下文件:<br>' . '<span class="layui-blue">' . $file . '</span>');
+            $this->error('该控制器以开启误触锁定，请手动删除以下文件:<br>' . '<span class="layui-blue">' . $file . '</span>');
         }
         $table = strtolower(I('post.table'));
         $this->overwrite = I('post.over') === 'true' ? true : false;

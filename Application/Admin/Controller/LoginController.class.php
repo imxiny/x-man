@@ -38,7 +38,8 @@ class LoginController extends BaseController
     /**
      * 登陆主页
      */
-    protected $vid = '5b586bf6fc651147f425d5bf';
+    //protected $vid = '5b586bf6fc651147f425d5bf';
+  protected $vid = '5de071a83f11e776a4947f42';
 
     public function index()
     {
@@ -53,19 +54,18 @@ class LoginController extends BaseController
      */
     public function check()
     {
-        $token = '';
+        $vcode = '';
         $username = '';
         $password = '';
         parse_str($_POST['para'], $para);
         extract($para);
         $M = M('admin_user');
-        $para = "id={$this->vid}&secretkey=b058dc977c7a4cbbac18a5e6a2704e6f&"
-        ."token={$token}&ip=".get_client_ip();
-        $res = $this->curlGetInfo("http://api.vaptcha.com/v2/validate",'post',$para);
-        $t = json_decode($res,true);
-        if ('0' == $t['success']) {
-            $this->error('人机验证失败，请您重新验证');
+
+        $ob = new Verify(['seKey' => C('SEKEY')]);
+        if (!$ob->check($vcode)) {
+            $this->error('验证码错误');
         }
+
         /** @var array $user */
         $user = $M->getByusername($username);
         if (!($user !== false && !empty($user))) {

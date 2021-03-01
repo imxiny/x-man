@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/css/public.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/js/formSelects-v4.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" style="width:90%;padding-left: 5%">
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <label class="layui-form-label">账号 <b class="layui-red">*</b></label>
+        <div class="layui-input-block">
+            <input type="text" autocomplete="off" class="layui-input" lay-verify="required|username" lay-Vertype="tips" name="username" placeholder="请输入登陆账号">
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="magb15 layui-col-xs12 layui-col-md6">
+            <label class="layui-form-label">密码 <b class="layui-red">*</b></label>
+            <div class="layui-input-block">
+                <input autocomplete="off" type="text" name="password" lay-Vertype="tips" class="layui-input" lay-verify="required|username" placeholder="密码">
+            </div>
+        </div>
+        <div class="magb15 layui-col-xs12 layui-col-md6">
+            <label class="layui-form-label">昵称 <b class="layui-red">*</b></label>
+            <div class="layui-input-block">
+                <input autocomplete="off" type="text" name="nickname" lay-Vertype="tips" class="layui-input" lay-verify="required" placeholder="昵称">
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-block">
+                <input title="电话" placeholder="电话" type="text" autocomplete="off" name="phone" class="layui-input">
+            </div>
+        </div>
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input title="邮箱" type="text" placeholder="邮箱"  autocomplete="off" name="email" class="layui-input">
+            </div>
+        </div>
+        <div class="magb15 layui-col-md4 layui-col-xs12">
+            <label class="layui-form-label">生日</label>
+            <div class="layui-input-block">
+                <input title="生日" type="text" placeholder="生日"  id="birthday" autocomplete="off" name="birthday" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <label class="layui-form-label">角色组 <b class="layui-red">*</b></label>
+        <div class="layui-input-block">
+            <select name="groups" title="所属角色组" lay-verify="required"  xm-select="select1" xm-select-skin="normal">
+                <volist name="group_list" id="v">
+                    <option value="{$v.id}">{$v.title}</option>
+                </volist>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/Public/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base : "/Public/static/js/"
+    }).extend({
+        'formSelects': 'formSelects-v4'
+    });
+    layui.use(['form','layer','formSelects','laydate'],function(){
+        var form = layui.form,
+            laydate=layui.laydate,
+        formSelects = layui.formSelects,
+        layer = parent.layer === undefined ? layui.layer : top.layer;
+        laydate.render({
+            elem: '#birthday' //指定元素
+        });
+        form.verify({
+            username: function(value, item){ //value：表单的值、item：表单的DOM对象
+                if(/[\u4E00-\u9FA5]/g.test(value)){
+                    return '不可出现汉字';
+                }
+                if(value.length < 6 || value.length > 15){
+                    return '长度6-15';
+                }
+            }
+        });
+        form.on("submit(addData)",function(data){
+            var groups = formSelects.value('select1', 'val');
+            var index = layer.msg('数据提交中，请稍候',{icon: 16,time:false});
+            $.post("/admin/auth/add_admin",{para:$('form').serialize(),'groups':groups},function(res){
+                layer.close(index);
+                if(0 === res.code){
+                    window.parent.window.parent.toast(res.info,0);
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }else{
+                    window.parent.window.parent.toast(res.info,1);
+                }
+            });
+            return false;
+        });
+    })
+</script>
+</body>
+</html>

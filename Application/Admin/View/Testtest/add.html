@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/Public/static/css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form layui-form-pane" style="width:90%;padding-left: 5%;">
+	<div class="layui-form-item">
+	<label class="layui-form-label" for="tilte"><b style="color: red">* </b>文章名</label>
+	<div class="layui-input-block">
+		<input type="text" name="tilte" id="tilte" placeholder="文章名"  lay-verify="required" lay-verType="tips"   autocomplete="off"  maxlength="255" value=""  class="layui-input">
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="addtime"><b style="color: red">* </b>添加时间</label>
+	<div class="layui-input-block">
+		<input type="text" readonly  name="addtime" id="addtime" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
+	</div>
+</div>
+<div class="layui-form-item">
+	<label class="layui-form-label" for="image"><b style="color: red">* </b>头图</label>
+	<div class="layui-input-block">
+		<input type="text" readonly style="cursor: pointer" name="image" id="image" placeholder="头图"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
+		<img src="" id="image_show" alt="头图" style="height: 100px;width: auto;position: absolute;z-index: 10;border: 1px dashed #d2d2d2;display: none">
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="content">内容</label>
+	<div class="layui-input-block">
+		<textarea name="content" placeholder="内容" id="content" class="layui-textarea"  >{$info.content|htmlspecialchars_decode}</textarea>
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="category">分类</label>
+	<div class="layui-input-block">
+		<select name="category"  id="category" >
+			<option value="">请选择分类</option>
+			<option value=0 selected >历史</option>
+<option value=1  >政治</option>
+<option value=2  >新闻</option>
+
+		</select>
+	</div>
+</div><div class="layui-form-item">
+	<label class="layui-form-label" for="switch">是否展示</label>
+	<div class="layui-input-block">
+		<input type="checkbox" lay-filter="switch" id="switch" title="" lay-skin="switch" lay-text="展示|隐藏" checked>
+		<input type="hidden" name="switch" value="1">
+	</div>
+</div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="addData">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/Public/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['form','layer','laydate','upload','layedit'],function(){
+        let form = layui.form,
+		laydate = layui.laydate,
+		upload = layui.upload,
+            layedit = layui.layedit,
+        layer = parent.layer === undefined ? layui.layer : top.layer;
+
+        
+laydate.render({
+                          elem: '#addtime'
+                          ,theme: '#01AAED'
+                          ,type: 'datetime'
+                          ,trigger: 'click'
+                        });
+
+upload.render({
+            elem: "#image"
+            ,url: "/admin/FileUpload/upload"
+            ,before:function(){
+                layer.msg("图片上传中",{icon:16});
+            }
+            ,done: function(res){
+                let item = this.item;
+                layer.closeAll();
+                if(res.code === 0){
+                    layer.msg("上传成功",{icon:1});
+                    $(item).val(res.data.src);
+                }else{
+                    layer.alert(res.msg);
+                }
+            }
+        });
+        $("#image").hover(function(){
+            let _this = $(this);
+            if(_this.val() !== ''){
+                $('#image_show').attr("src",_this.val()).slideDown();
+            }
+        },function(){
+            $('#image_show').slideUp();
+        });
+        
+
+
+                    let content = layedit.build('content', {
+                        uploadImage: {url: '/admin/FileUpload/upload', type: 'post'},
+                        height:200
+                    });
+                    $("iframe[textarea=content]").contents().find("body").blur(function(){
+            layedit.sync(content);
+        });
+                
+
+form.on('switch(switch)', function(data){
+                            let v = '0';
+                            if(data.elem.checked) v = '1';
+                            $('input[name=switch]').val(v);
+                        }); 
+
+
+        form.on("submit(addData)",function(){
+            let index = layer.msg('数据提交中，请稍候',{icon: 16,time:false});
+            $.post("/admin/Testtest/add",{para:$('form').serialize()},function(res){
+                window.parent.window.parent.toast(res.info,res.code);
+                layer.close(index);
+                if(0 === res.code){
+                    parent.layer.closeAll();
+                    window.parent.tablist.reload();
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

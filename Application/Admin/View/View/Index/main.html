@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>X-Man管理模板</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/Public/static/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/Public/static/css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+
+	<div class="layui-row">
+		<div class="layui-col-md6">
+			<div style="border: 1px dashed #aaa;text-align: center;padding-top: 10px;">
+				<embed src='http://player.youku.com/player.php/sid/XMzc0NTM5OTIzMg==/v.swf' allowFullScreen='true' quality='high' width='95%' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+			</div>
+			<div style="border: 1px dashed #aaa;padding: 10px;">
+			<ul class="layui-timeline">
+				<volist name="list" id="v">
+					<li class="layui-timeline-item">
+						<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+						<div class="layui-timeline-content layui-text">
+							<h4 class="layui-timeline-title">{$v.addtime}</h4>
+							<p>
+								{$v.title}
+							</p>
+							<br>
+							<p>
+								<button data-image="{$v.image}"	class="layui-btn layui-btn-primary layui-btn-sm showImage">效果</button>
+							</p>
+						</div>
+					</li>
+				</volist>
+				<li class="layui-timeline-item">
+					<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<div class="layui-timeline-title">2018-07-25</div>
+						<p>version 1.0.0</p>
+					</div>
+				</li>
+			</ul>
+			</div>
+		</div>
+
+		<div class="layui-col-md6">
+			<blockquote class="layui-elem-quote layui-bg-green">
+				<div id="nowTime"></div>
+			</blockquote>
+			<blockquote class="layui-elem-quote main_btn">
+				<span class="layui-red">X-Man后台管理框架</span> --layui+thinkphp3.2.3快速开发后台应用，<span style="color: #0b90dd;font-weight: bolder">自主选择一键生成增删改查</span> 详情见系统设置代码生成器模块
+			</blockquote>
+			<blockquote class="layui-elem-quote">
+				<p>前端部分使用layuiCMS2.0框架为基础再此感谢 驊驊龔頾，感谢layuiCMS2.0、感谢 贤心大神 感谢layui</p>
+				<p>引入ztree、jquery、toast等插件，后台使用Thinkphp3.2.3为框架</p>
+				<p>基于Auth的完善权限管理模块</p>
+				<p>代码生成器功能，选择数据表，可自主选择生成增、删、改、查模块</p>
+				<p>日志功能、包括登录日志、操作日志、错误日志等、（日志模块完全使用代码生成器开发，无任何修改）开发十分快捷方便！</p>
+				<p>
+					菜单信息存放在localstroe中，修改菜单、权限、授权后，需要清除缓存
+				</p>
+				<p>
+					生成的html代码及js代码格式不规范，没有精力去优化，有强迫症的同学可以去更改
+				</p>
+				<p>
+					所有的图片上传与文件上传都是异步上传的，不管数据是否添加，上传的文件都会存在，需要写文件清理功能。否则可能会占用系统空间。
+				</p>
+				<p>
+					通过更改配置文件，可选择上传到本地或者阿里云OSS
+				</p>
+				<hr class="layui-bg-red">
+				<h3>代码生成器生成成功后</h3>
+				<h3>1.为角色组授权新的规则</h3>
+				<h3>2.将菜单与规则绑定</h3>
+			</blockquote>
+		</div>
+	</div>
+	<script type="text/javascript" src="/Public/static/layui/layui.js"></script>
+	<script type="text/javascript" src="/Public/static/js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="/Public/static/js/main.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer'],function(){
+		    let layer = layui.layer;
+            $(".showImage").on('click',function(){
+                layer.open({
+                    type: 1,
+                    title: '效果展示',
+                    shadeClose: true,
+					maxMin:true,
+                    shade: 0.8,
+                    area: ['80%', '80%'],
+                    content: "<div style='width: 100%;height: 100%;padding: 50px;'><img src='"+$(this).data('image')+"' style='width: 60%;' alt=''></div>"//iframe的url
+                });
+            });
+		});
+
+	</script>
+</body>
+</html>

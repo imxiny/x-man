@@ -199,10 +199,10 @@ class Auth{
             if (!empty($rule['condition'])) { //根据condition进行验证
                 $user = $this->getUserInfo($uid);//获取用户信息,一维数组
 
-                $command = preg_replace('/\{(\w*?)\}/', '$user[\'\\1\']', $rule['condition']);
-                //dump($command);//debug
-                @(eval('$condition=(' . $command . ');'));
-                if ($condition) {
+                $command = addslashes(preg_replace('/\{(\w*?)\}/', '$user[\'\\1\']', $rule['condition']));
+              	$command = '';
+              //@(eval('$condition=(' . $command . ');'));
+                if (false) {
                     $authList[] = strtolower($rule['name']);
                 }
             } else {

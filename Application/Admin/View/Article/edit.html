@@ -20,9 +20,16 @@
 		<input type="text" name="title" id="title" placeholder="文章名"  lay-verify="required" lay-verType="tips"   autocomplete="off"  maxlength="255" value=""  class="layui-input">
 	</div>
 </div><div class="layui-form-item">
-	<label class="layui-form-label" for="author"><b style="color: red">* </b>作者</label>
+	<label class="layui-form-label" for="category_id"><b style="color: red">* </b>分类</label>
 	<div class="layui-input-block">
-		<input type="text" name="author" id="author" placeholder="作者"  lay-verify="required" lay-verType="tips"   autocomplete="off"  maxlength="255" value=""  class="layui-input">
+		<select name="category_id" lay-search  lay-verify="required" lay-verType="tips"   id="category_id" >
+			<option value="">请选择分类</option>
+			
+                <volist name='categoryList' id='v'>
+                    <option value='{$v.id}'>{$v.title}</option>
+                </volist>
+                
+		</select>
 	</div>
 </div><div class="layui-form-item">
 	<label class="layui-form-label" for="content"><b style="color: red">* </b>内容</label>
@@ -30,39 +37,22 @@
 		<textarea name="content" placeholder="内容" id="content" class="layui-textarea"  lay-verify="required" lay-verType="msg"   >{$info.content|htmlspecialchars_decode}</textarea>
 	</div>
 </div><div class="layui-form-item">
-	<label class="layui-form-label" for="addtime"><b style="color: red">* </b>添加时间</label>
+	<label class="layui-form-label" for="user_id">作者</label>
 	<div class="layui-input-block">
-		<input type="text" readonly name="addtime" id="addtime" placeholder="年-月-日 时:分:秒"  lay-verify="required" lay-verType="tips"   autocomplete="off"  class="layui-input">
+		<select name="user_id" lay-search  id="user_id" >
+			<option value="">请选择作者</option>
+			
+                <volist name='userList' id='v'>
+                    <option value='{$v.id}'>{$v.name}</option>
+                </volist>
+                
+		</select>
 	</div>
 </div><div class="layui-form-item">
 	<label class="layui-form-label" for="show_switch">展示</label>
 	<div class="layui-input-block">
 		<input type="checkbox" lay-filter="show_switch" id="show_switch" title="" lay-skin="switch" lay-text="展示|隐藏" checked>
 		<input type="hidden" name="show_switch" value="1">
-	</div>
-</div><div class="layui-form-item">
-	<label class="layui-form-label" for="like">点赞数量</label>
-	<div class="layui-input-block">
-		<input type="number" name="like" id="like" placeholder="点赞数量"  autocomplete="off"  step="1" value="0"  class="layui-input">
-	</div>
-</div><div class="layui-form-item">
-	<label class="layui-form-label" for="category"><b style="color: red">* </b>分类</label>
-	<div class="layui-input-block">
-		<select name="category"  lay-verify="required" lay-verType="msg"   id="category" >
-			<option value="">请选择分类</option>
-			<option value=0 selected >娱乐</option>
-<option value=1  >政治</option>
-<option value=2  >新闻</option>
-<option value=3  >历史</option>
-<option value=4  >野史</option>
-<option value=5  >杂谈</option>
-
-		</select>
-	</div>
-</div><div class="layui-form-item">
-	<label class="layui-form-label" for="description"><b style="color: red">* </b>描述</label>
-	<div class="layui-input-block">
-		<textarea name="description" placeholder="描述" id="description" class="layui-textarea"  lay-verify="required" lay-verType="msg"   >{$info.description|htmlspecialchars_decode}</textarea>
 	</div>
 </div>
     <div class="layui-form-item">
@@ -93,35 +83,16 @@
         });
                 
 
-laydate.render({
-                          elem: '#addtime'
-                          ,theme: '#01AAED'
-                          ,type: 'datetime'
-                          ,trigger: 'click'
-                        });
-
 form.on('switch(show_switch)', function(data){
                             let v = '0';
                             if(data.elem.checked) v = '1';
                             $('input[name=show_switch]').val(v);
                         }); 
-
-
-                    let description = layedit.build('description', {
-                        uploadImage: {url: '/admin/FileUpload/upload', type: 'post'},
-                        height:200
-                    });
-                    $("iframe[textarea=description]").contents().find("body").blur(function(){
-            layedit.sync(description);
-        });
-                
 form.val("form1",{
                     'title': '{$info.title}',
-                    'author': '{$info.author}',
-                    'addtime': '{$info.addtime}',
-                    'show_switch': '{$info.show_switch}',
-                    'like': '{$info.like}',
-                    'category': '{$info.category}'});                      $('#show_switch').prop('checked','{$info.show_switch}' === '1');
+                    'category_id': '{$info.category_id}',
+                    'user_id': '{$info.user_id}',
+                    'show_switch': '{$info.show_switch}'});                      $('#show_switch').prop('checked','{$info.show_switch}' === '1');
                        form.render('checkbox');
 
         form.on("submit(addData)",function(data){
